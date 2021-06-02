@@ -1,0 +1,12 @@
+<Context>
+    <Resource name="jdbc/test"
+              auth="Container"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              type="javax.sql.DataSource"
+              maxActive="100" maxIdle="30" maxWait="10000"
+              username="root" password="ax0271ac"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              defaultAutoCommit="true"
+              defaultTransactionIsolation="READ_COMMITTED"
+              url="jdbc:mysql://localhost:3306/test"/>
+</Context>
