@@ -1,6 +1,6 @@
 package db;
 
-import entity.admin;
+import entity.user;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,10 +27,7 @@ public class DAOlogin {
             rs =pstmt.executeQuery();
             if (rs.next())
                 res=rs.getString(1);
-
-
-
-
+            con.close();
         } catch (SQLException  ex) {
             ex.printStackTrace();
         }
@@ -38,8 +35,8 @@ public class DAOlogin {
     }
 
 
-   public List<admin>  adminList() throws SQLException{
-       List<admin> adminList= new ArrayList<>();
+   public List<user>  adminList() throws SQLException{
+       List<user> adminList= new ArrayList<>();
        Statement stmt = null;
        ResultSet rs = null;
        Connection con = null;
@@ -49,12 +46,11 @@ public class DAOlogin {
            stmt = con.createStatement();
            rs = stmt.executeQuery(SQL__ALLPASSBYLIDIN);
            while (rs.next())
-               adminList.add((admin) rs);
+               adminList.add((user) rs);
+           con.close();
        } catch (SQLException  ex) {
            DBManager.getInstance().rollbackAndClose(con);
            ex.printStackTrace();
-       } finally {
-           DBManager.getInstance().commitAndClose(con);
        }
 
 

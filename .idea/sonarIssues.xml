@@ -113,7 +113,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/db/DAOanswer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/db/DAOlogin.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/db/DAOquestion.java">
           <value>
             <set />
           </value>
@@ -124,6 +134,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/db/DAOtest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/db/DAOusers.java">
           <value>
             <set />
           </value>
@@ -233,12 +248,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/entity/question.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/entity/qution.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/entity/test.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/entity/user.java">
           <value>
             <set />
           </value>
@@ -253,12 +278,42 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/servlet/addict.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/servlet/addit.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/servlet/addqushion.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/servlet/addtest.java">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/servlet/edit.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/servlet/homepage.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/servlet/login.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/servlet/passtest.java">
           <value>
             <set />
           </value>
@@ -283,6 +338,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/еуыеив.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/web/META-INF/context.xml">
           <value>
             <set />
@@ -293,12 +353,47 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/web/addans.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/web/addit.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/web/addquetionsaddanwers.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/web/addquetionsaddanwers.xhtml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/web/addqus.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/web/addtest.jsp">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/web/cabinet.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/web/edit.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/web/homepage.jsp">
           <value>
             <set />
           </value>
@@ -319,6 +414,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/web/login.xhtml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/web/passtest.jsp">
           <value>
             <set />
           </value>
@@ -359,6 +459,16 @@
           </value>
         </entry>
         <entry key="924b41df-c218-4f78-b675-345d14a1debd/schema/test/table/admin.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="924b41df-c218-4f78-b675-345d14a1debd/schema/test/table/answers.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="924b41df-c218-4f78-b675-345d14a1debd/schema/test/table/qutions.sql">
           <value>
             <set />
           </value>

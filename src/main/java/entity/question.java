@@ -1,6 +1,23 @@
 package entity;
 
-public class qution extends entity {
+import java.io.Serializable;
+
+public class question implements Serializable {
+    private static final long serialVersionUID= -8924523087156859187L;
+
+    String text;
+    int id;
+    int idtest;
+    int number;
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     public String getText() {
         return text;
     }
@@ -25,7 +42,5 @@ public class qution extends entity {
         this.idtest = idtest;
     }
 
-    String text;
-    int id;
-    int idtest;
+
 }

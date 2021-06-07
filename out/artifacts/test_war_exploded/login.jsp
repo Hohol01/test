@@ -5,7 +5,7 @@
   Time: 19:33
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <html>
     <head>
         <title>LOGIN</title>
@@ -16,8 +16,8 @@
             <h1>login</h1>
           <form  action="login" method="post" >
                  <table>
-                    <tr><td>User:<input name="login" type="text" size="10"></td></tr>
-                   <tr><td>Password:<input name="pass" type="password" size="10"></td></tr>
+                    <tr><td>User:<input name="login" type="text" ></td></tr>
+                   <tr><td>Password:<input name="pass" type="password" ></td></tr>
                      <tr><td> <input type="submit" name="go"></td></tr>
                  </table>
             </form>

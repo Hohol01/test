@@ -1,10 +1,15 @@
 package entity;
 
-public class answer extends entity{
+import java.io.Serializable;
+
+public class answer implements Serializable {
+
+    private static final long serialVersionUID= -2353316997940324134L;
+
     int id;
-    int idqution;
+    int induction;
     String answer;
-    Boolean corect;
+    Boolean correct;
 
     public int getId() {
         return id;
@@ -14,12 +19,12 @@ public class answer extends entity{
         this.id = id;
     }
 
-    public int getIdqution() {
-        return idqution;
+    public int getInduction() {
+        return induction;
     }
 
-    public void setIdqution(int idqution) {
-        this.idqution = idqution;
+    public void setInduction(int induction) {
+        this.induction = induction;
     }
 
     public String getAnswer() {
@@ -30,11 +35,11 @@ public class answer extends entity{
         this.answer = answer;
     }
 
-    public Boolean getCorect() {
-        return corect;
+    public Boolean getCorrect() {
+        return correct;
     }
 
-    public void setCorect(Boolean corect) {
-        this.corect = corect;
+    public void setCorrect(Boolean correct) {
+        this.correct = correct;
     }
 }

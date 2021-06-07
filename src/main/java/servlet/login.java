@@ -1,10 +1,12 @@
 package servlet;
 
 import db.DAOlogin;
+import entity.user;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -15,7 +17,7 @@ public class login extends HttpServlet {
 
         System.out.println("ok");
 
-        resp.setContentType("text/html");
+        req.setCharacterEncoding("UTF-8");
         String login = req.getParameter("login");
         String pass = req.getParameter("pass");
 
@@ -26,7 +28,9 @@ public class login extends HttpServlet {
 
 
         if (pass.equals(password)) {
-            resp.sendRedirect("cabinet");
+            HttpSession ses = req.getSession();
+            ses.setAttribute("id", ses);
+            resp.sendRedirect("home");
             System.out.println("pass");
         } else {
             resp.sendRedirect("login");
@@ -36,6 +40,10 @@ public class login extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");
         req.getRequestDispatcher("login.jsp").forward(req,resp);
+
+
     }
 }
