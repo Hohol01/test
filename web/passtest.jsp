@@ -1,4 +1,4 @@
-<%--
+<%@ page import="entity.question" %><%--
   Created by IntelliJ IDEA.
   User: artemmaniakin
   Date: 07.06.2021
@@ -12,19 +12,43 @@
     <title>PASSING</title>
 </head>
 <body>
+<form action="passingtest" method="post">
+<%
+    int count=0;
+
+%>
+
 <c:forEach var="ques" items="${ques}">
   <c:out value="${ques.text}"/>
     <table border="1">
     <c:forEach var="ans" items="${ans}">
+        <%
+            count++;
+        %>
         <tr>
             <td><c:out value="${ans.answer}"/></td>
-            <td><input type="checkbox" name="correct"></td>
+
+            <td><input type="checkbox" name="${ques.number}"  value="${ans.id}" <%
+                if (request.getAttribute("chec"+count)!=null){
+                    out.print("checked =\"checked\"");
+                }
+            %> ></td>
         </tr>
+
     </c:forEach>
+
     </table>
-    <form action="passingtest" method="post">
-        <input type="submit" name="previous" value="предыдущей вопрос">
-        <input type="submit" name="next" value="следующий вопрос">
+
+        <%
+            if (request.getAttribute("gotopre")!=null){
+                out.print("<input type=\"submit\" name=\"previous\" value=\"предыдущей вопрос\">");
+            }
+            if(request.getAttribute("gotonext")!=null){
+                out.print("<input type=\"submit\" name=\"next\" value=\"следующий вопрос\">");
+            }
+        %>
+
+
         <input type="submit" name="finish" value="закончить попытку">
     </form>
 </c:forEach>

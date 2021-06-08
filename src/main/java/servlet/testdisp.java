@@ -37,8 +37,6 @@ public class testdisp extends HttpServlet {
         int k = 0;
         while (true) {
             if (req.getParameter(String.valueOf(k)) != null) {
-                passtest passtest = new passtest();
-                passtest.setId(k);
 
                 req.getSession().setAttribute("testid",k);
                 System.out.println(k+"id");

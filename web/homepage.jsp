@@ -11,15 +11,16 @@
     <title>HOME PAGE</title>
 </head>
 <body>
+<center>
 <a href="test"> список тестов</a>
 <a>
     <form action="home" method="post">
         <input type="submit" name="test" value="перейти к тестам" /><br>
-        <input type="submit" name="add" value="добавить тест">
-
+        <input type="submit" name="add" value="добавить тест"><br>
+        <input type="submit" name="results" value="результаты тестов">
     </form>
 </a>
 
-
+</center>
 </body>
 </html>

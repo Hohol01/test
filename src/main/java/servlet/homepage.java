@@ -30,6 +30,8 @@ public class homepage extends HttpServlet {
         else if(req.getParameter("add")!=null){
             System.out.println("add");
             resp.sendRedirect("addtest");
+        } else if(req.getParameter("results")!= null){
+            resp.sendRedirect("results");
         }
     }
 }

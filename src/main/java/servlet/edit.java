@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @WebServlet("/edit")
@@ -28,15 +29,15 @@ public class edit extends HttpServlet {
 
 
 
-
+        idtest = Integer.parseInt(req.getParameter("idtest"));
 
         System.out.println(req.getParameter("idtest"));
         ArrayList<test> testArrayList= daOtest.gettesttsbyid(Integer.parseInt(req.getParameter("idtest")));
-        ArrayList<question> ques = daOquestion.getqustions(idtest);
+        List<question> ques = daOquestion.getqustions(idtest,1);
         ArrayList<answer> ans = daOanswer.getanwerbyid(daOquestion.getidtestbyid(idtest));
         req.setAttribute("ques", ques);
         req.setAttribute("ans", ans);
-        idtest = Integer.parseInt(req.getParameter("idtest"));
+
         req.setAttribute("test", testArrayList);
         req.setAttribute("displaying", "test");
 

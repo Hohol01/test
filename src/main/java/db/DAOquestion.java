@@ -7,15 +7,58 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DAOquestion {
-    private static final String SQL__SET_QUTION = "INSERT INTO qutions (text , idtest, number) values( ?, ?, ?)";
-    private static final String SQL__GET_ID_BY_TEXT ="SELECT id, idtest  FROM qutions WHERE text=?";
-    private static final String SQL__SELECT_ALL_BY_ID="SELECT * FROM qutions WHERE id =?";
-    private static final String SQL__GET_IDTEST_BY_ID="SELECT idtest FROM qutions where id = ?";
+    private static final String SQL__SET_QUTION = "INSERT INTO question (text , idtest, number) values( ?, ?, ?)";
+    private static final String SQL__GET_ID_BY_TEXT ="SELECT id, idtest  FROM question WHERE text=?";
+    private static final String SQL__GET_ALL_BY_TESTID="SELECT * FROM question WHERE idtest = ?";
+    private static final String SQL__SELECT_ALL_BY_IDTEST_AND_NUMBER="SELECT * FROM question WHERE (idtest =? and number=?)";
+    private static final String SQL__GET_IDTEST_BY_ID="SELECT idtest FROM question where id = ?";
+    private static final String SQL__GET_ID_BY_TEXT_AND_TESTID="SELECT ID FROM question WHERE ( text = ? AND idtest = ?";
 
     
 
+    public int getidbynumberandtestid(int number, int testid){
+        int id=0;
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__SELECT_ALL_BY_IDTEST_AND_NUMBER);
+            pstm.setInt(1, testid);
+            pstm.setInt(2, number);
+            rs = pstm.executeQuery();
+            if (rs.next())
+                id = rs.getInt(Fields.question_id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        return id;
+    }
+    
+    public int getquantityoftest(int testid){
+        int quantity=0;
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__GET_ALL_BY_TESTID);
+            pstm.setInt(1,testid);
+            rs = pstm.executeQuery();
+            while (rs.next())
+                quantity++;
+            con.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return quantity;
+    }
 
     public int getidtestbyid(int id){
         int idtest=0;
@@ -77,28 +120,31 @@ public class DAOquestion {
     }
 
 
-    public ArrayList<question> getqustions(int id){
-        ArrayList<question> retlist= new ArrayList<>();
+    public List<question> getqustions(int idtest, int number){
+        List<question> retlist= new ArrayList<>();
         Connection con = null;
         PreparedStatement pstm=null;
         ResultSet rs = null;
         try {
             con= DBManager.getInstance().getConnection();
-            pstm = con.prepareStatement(SQL__SELECT_ALL_BY_ID);
-            pstm.setString(1, String.valueOf(id));
+            pstm = con.prepareStatement(SQL__SELECT_ALL_BY_IDTEST_AND_NUMBER);
+            pstm.setInt(1, idtest);
+            pstm.setInt(2, number);
             rs = pstm.executeQuery();
             while (rs.next()){
                 question question = new question();
-                question.setId(id);
+                question.setId(rs.getInt(Fields.question_id));
                 question.setNumber(rs.getInt(Fields.question_number));
                 question.setText(rs.getString(Fields.question_text));
                 question.setIdtest(rs.getInt(Fields.question_idtest));
+
                 retlist.add(question);
             }
             con.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
         return retlist;
     }
 }

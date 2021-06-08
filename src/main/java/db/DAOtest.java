@@ -11,6 +11,29 @@ public class DAOtest {
     private static final String SQL__GET_ID_BY_NAME ="SELECT id FROM test WHERE name=?";
     private static final String SQL__SET_TEST= "INSERT TEST (name,subdgect,hardnest,time) value (?, ?, ?, ?) ";
     private static final String SQL__GET_TEST_BY_ID=" SELECT * FROM test WHERE id=?";
+    private static final String SQL__GET_NAME_BY_ID="SELECT name FROM test WHERE id = ?";
+
+    public String gettextbyid(int id){
+        String text = null;
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__GET_NAME_BY_ID);
+            pstm.setInt(1, id);
+
+            rs = pstm.executeQuery();
+            if (rs.next())
+                text = rs.getString(Fields.test_name);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        return text;
+    }
+
     public ArrayList<test> gettesttsbyid(int id){
         Connection con = null;
         PreparedStatement pstm=null;

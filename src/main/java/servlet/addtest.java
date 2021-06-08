@@ -17,7 +17,7 @@ public class addtest extends HttpServlet {
     int idtest = 0;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        number_qustion = 1;
 
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {

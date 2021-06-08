@@ -1,7 +1,6 @@
 package servlet;
 
-import db.DAOlogin;
-import entity.user;
+import db.DAOusers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,14 +21,16 @@ public class login extends HttpServlet {
         String pass = req.getParameter("pass");
 
         System.out.println(login + pass);
-        DAOlogin log = new DAOlogin();
-        String password = log.get_pass_by_login(req.getParameter("login"));
+        DAOusers daOusers = new DAOusers();
+        String password = daOusers.get_pass_by_login(req.getParameter("login"));
         System.out.println(password);
 
 
         if (pass.equals(password)) {
             HttpSession ses = req.getSession();
             ses.setAttribute("id", ses);
+            int userid= daOusers.getidbylogin(login);
+            ses.setAttribute("userid",userid);
             resp.sendRedirect("home");
             System.out.println("pass");
         } else {
@@ -40,8 +41,6 @@ public class login extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setCharacterEncoding("UTF-8");
-        req.setCharacterEncoding("UTF-8");
         req.getRequestDispatcher("login.jsp").forward(req,resp);
 
 
