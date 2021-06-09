@@ -15,9 +15,19 @@
 <a href="test"> список тестов</a>
 <a>
     <form action="home" method="post">
+
         <input type="submit" name="test" value="перейти к тестам" /><br>
-        <input type="submit" name="add" value="добавить тест"><br>
-        <input type="submit" name="results" value="результаты тестов">
+        <%System.out.println(request.getSession().getAttribute("role"));
+            if(request.getSession().getAttribute("role").equals("teacher") ){
+                out.print("<input type=\"submit\" name=\"add\" value=\"добавить тест\"><br>");
+                out.print("<input type=\"submit\" name=\"users\" value=\"пользователи\" /><br>");
+                out.print("<input type=\"submit\" name=\"addusers\" value=\"добавить пользователя\" /><br>");
+                out.print("<input type=\"submit\" name=\"editusers\" value=\"редактировать пользователя\" /><br>");
+            }
+            else
+                out.print("<input type=\"submit\" name=\"results\" value=\"результаты тестов\"><br> ");
+        %>
+       <input type="submit" name="out" value="выйти" /><br>
     </form>
 </a>
 

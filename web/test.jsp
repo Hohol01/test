@@ -16,11 +16,19 @@
 </head>
 <body>
 <center>
-    <form name="t" method="post" >
+
+
+    <form method="post" >
+        <a>найти по названию<input type="text" name="search" ></a><input type="submit" name="search1" value="search">
 <table border="1">
 <tr>
     <td>название теста</td>
-    <td>предмет</td>
+    <td>предмет:<select name="subject">
+        <option>все</option>
+        <c:forEach var="list" items="${list}"  >
+             <option value="${list.subdgect}"> ${list.subdgect}</option>
+        </c:forEach>
+    </select><input type="submit" name="select" value="выбрать" ></td>
     <td>сложность</td>
     <td>время</td>
 
@@ -35,7 +43,12 @@
 
 
                 <td><input type="submit" name="${tests.id }" value="пройти"></td>
-                <td><a href="edit?idtest=${tests.id} ">редактировать тест</a></td>
+                <%
+                    if(request.getSession().getAttribute("role").equals("teacher")){
+                        out.print("<td><a href=\"edit?idtest=${tests.id} \">редактировать тест</a></td>");
+                    }
+                %>
+
             </tr>
         </c:forEach>
 

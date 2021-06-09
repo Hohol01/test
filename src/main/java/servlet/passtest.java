@@ -42,6 +42,7 @@ public class passtest extends HttpServlet {
         menegernextpreev(req);
         numberofques = 1;
         quantityofquestion = daOquestion.getquantityoftest(idtest);
+        menegernextpreev(req);
 
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
@@ -60,8 +61,7 @@ public class passtest extends HttpServlet {
 
         double marc = 0;
         Boolean flag = false;
-
-
+        System.out.println(answers);
 
 
         if (req.getParameter("next") != null) {
@@ -71,14 +71,19 @@ public class passtest extends HttpServlet {
         } else if (req.getParameter("previous") != null) {
             answers.put(numberofques, req.getParameter(String.valueOf(numberofques)));
             numberofques = numberofques - 1;
+
             flag = true;
         } else if (req.getParameter("finish") != null) {
+            answers.put(numberofques, req.getParameter(String.valueOf(numberofques)));
+
+
             if (!answers.isEmpty()) {
 
                 for (int i = 0; i < answers.size(); i++) {
-                    if (daOanswer.checkanswerbyid(Integer.parseInt(answers.get(i + 1)))) {
-                        marc++;
-                    }
+                    if (answers.get(numberofques) != null)
+                        if (daOanswer.checkanswerbyid(Integer.parseInt(answers.get(i + 1)))) {
+                            marc++;
+                        }
                 }
             }
             marc = Math.ceil((double) 100 / daOquestion.getquantityoftest(idtest) * marc);
@@ -89,8 +94,8 @@ public class passtest extends HttpServlet {
             PrintWriter pw = resp.getWriter();
             resp.setContentType("text/html");
             resp.setCharacterEncoding("UTF-8");
-            pw.println("<center>ваш результат " +(int) marc + " балов" +
-                    "<br>"+
+            pw.println("<center>ваш результат " + (int) marc + " балов" +
+                    "<br>" +
                     "<a href=\"home\"> вернуться домой <a></center>");
             pw.close();
 

@@ -31,6 +31,8 @@ public class login extends HttpServlet {
             ses.setAttribute("id", ses);
             int userid= daOusers.getidbylogin(login);
             ses.setAttribute("userid",userid);
+            ses.setAttribute("role", daOusers.getrolebyid(userid));
+            System.out.println(daOusers.getrolebyid(userid));
             resp.sendRedirect("home");
             System.out.println("pass");
         } else {

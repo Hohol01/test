@@ -34,5 +34,8 @@ public class Fields {
     public static final String users_password="password";
     public static final String users_role="role";
     public static final String users_block="block";
+    public static final String user_name="name";
+    public static final String user_surname="surname";
+    public static final String user_patronymic="patronymic";
 
 }

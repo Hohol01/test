@@ -16,35 +16,56 @@ import java.util.List;
 
 @WebServlet("/test")
 public class testdisp extends HttpServlet {
-
+    DAOtest t = new DAOtest();
+    int k = 0;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("test");
-        DAOtest t = new DAOtest();
-        ArrayList<test> tests = t.getlistoftests();
+
+
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
         } else {
-            req.setAttribute("tests", tests);
-            req.getRequestDispatcher("test.jsp").forward(req, resp);
+            dispalltest(req,resp);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int k = 0;
-        while (true) {
-            if (req.getParameter(String.valueOf(k)) != null) {
 
-                req.getSession().setAttribute("testid",k);
-                System.out.println(k+"id");
+        k=0;
+        ArrayList<test> tests;
+        String search = req.getParameter("search");
+        if (req.getParameter("search1") != null) {
 
-                resp.sendRedirect("passingtest");
-                break;
+
+        } else if (req.getParameter("select") != null) {
+            String subject = req.getParameter("subject");
+            if (subject.equals("все"))
+                tests = t.getlistoftests();
+            else
+                tests = t.getlistoftestswithsubdgect(subject);
+            req.setAttribute("tests", tests);
+            req.getRequestDispatcher("test.jsp").forward(req, resp);
+        } else
+            while (true) {
+                if (req.getParameter(String.valueOf(k)) != null) {
+
+                    req.getSession().setAttribute("testid", k);
+                    System.out.println(k + "id");
+
+                    resp.sendRedirect("passingtest");
+                    break;
+                }
+                k++;
             }
-            k++;
-        }
+    }
+    private void dispalltest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ArrayList<test> tests = t.getlistoftests();
+        req.setAttribute("tests", tests);
+        req.getSession().setAttribute("list", tests);
+        req.getRequestDispatcher("test.jsp").forward(req, resp);
     }
 }

@@ -9,9 +9,64 @@ import java.util.ArrayList;
 public class DAOtest {
     private static final String SQL__GET_ALL_TESTS ="SELECT * FROM test";
     private static final String SQL__GET_ID_BY_NAME ="SELECT id FROM test WHERE name=?";
-    private static final String SQL__SET_TEST= "INSERT TEST (name,subdgect,hardnest,time) value (?, ?, ?, ?) ";
+    private static final String SQL__SET_TEST= "INSERT test (name,subdgect,hardnest,time) value (?, ?, ?, ?) ";
     private static final String SQL__GET_TEST_BY_ID=" SELECT * FROM test WHERE id=?";
     private static final String SQL__GET_NAME_BY_ID="SELECT name FROM test WHERE id = ?";
+    private static final String SQL__SERCH_BY_NAME="SELECT * FROM test WHERE name LIKE ?";
+    private static final String SQL__GET_ALL_BY_SUBDGECT="SELECT * FROM test WHERE subdgect = ?";
+
+    public  ArrayList<test> getlistoftestswithsubdgect(String name){
+        ArrayList<test> retlist= new ArrayList<test>();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        Connection con = null;
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__GET_ALL_BY_SUBDGECT);
+            pstm.setString(1,name );
+            rs= pstm.executeQuery();
+            testMapper mapper = new testMapper();
+            test test = new test();
+            while (rs.next()){
+                retlist.add(mapper.mapRow(rs));
+            }
+
+            con.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return retlist;
+    }
+
+
+    public  ArrayList<test> getlsearvhistoftests(String name){
+        ArrayList<test> retlist= new ArrayList<test>();
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        Connection con = null;
+
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__SERCH_BY_NAME);
+            pstm.setString(1,"%"+ name +"%" );
+            rs= pstm.executeQuery();
+            testMapper mapper = new testMapper();
+            test test = new test();
+            while (rs.next()){
+                retlist.add(mapper.mapRow(rs));
+            }
+
+            con.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return retlist;
+    }
 
     public String gettextbyid(int id){
         String text = null;
