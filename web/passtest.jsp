@@ -10,8 +10,27 @@
 <html>
 <head>
     <title>PASSING</title>
+    <script type="text/javascript">
+        var counter =2;
+
+
+        function time(){
+            counter --;
+
+            document.getElementById("count").innerText = "осталось "+(counter-counter%60)/60+":"+ counter%60;
+            if (counter!=0){
+                setTimeout("time()" ,1000);
+            }else {
+                document.getElementById("count").innerText = "время вышло нажмите завершить  ";
+            }
+
+        }
+
+
+    </script>
 </head>
-<body>
+<body  onload="time()">
+<samp id="count"></samp>
 <form action="passingtest" method="post">
 <%
     int count=0;

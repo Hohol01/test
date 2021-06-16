@@ -53,7 +53,9 @@
 
 
   </table>
-  <input type="submit" name="add" value="добавить пользователя">
+
+  <input type="submit" name="add" value="добавить пользователя"><br>
+  <a href="home">домой</a>
 </center>
 </form>
 </body>

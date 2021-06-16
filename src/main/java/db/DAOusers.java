@@ -13,7 +13,53 @@ public class DAOusers {
     private static final String SQL__GET_ROLE_BY_ID="SELECT role from users where id = ?";
     private static final String SQL__SET_USER="INSERT users (login, password, role , name, surname, patronymic) VALUE (?, ?, ?, ?, ?, ?)";
     private static final String SQL__DELETE_USER="DELETE FROM users WHERE id = ?";
+    private static final String SQL__UPDATE_USER="UPDATE users set login = ?, password = ?, role = ?, name =?, surname = ?, patronymic = ? WHERE id = ?";
+    private static final String SQL__GET_USER_BY_ID="SELECT * FROM users WHERE id = ?";
 
+
+    public ArrayList<user> getuserbyid(int id){
+        ArrayList<user> retlist = new ArrayList<>();
+        Connection con = null;
+        ResultSet rs = null;
+        PreparedStatement pstm = null;
+        userMapper userMapper = new userMapper();
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__GET_USER_BY_ID);
+            pstm.setInt(1, id);
+            rs = pstm.executeQuery();
+            if (rs.next()) {
+                retlist.add(userMapper.mapRow(rs));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return retlist;
+    }
+
+    public void edituser(String surname, String name, String patronymic,
+                         String role, String login, String password, int id){
+        PreparedStatement pstmt = null;
+        Connection con = null;
+        DBManager db = new DBManager();
+        try {
+            con=DBManager.getInstance().getConnection();
+            pstmt = con.prepareStatement(SQL__UPDATE_USER);
+            pstmt.setString(1, login);
+            pstmt.setString(2, password);
+            pstmt.setString(3, role);
+            pstmt.setString(4, name);
+            pstmt.setString(5, surname);
+            pstmt.setString(6, patronymic);
+            pstmt.setInt(7, id);
+            pstmt.executeUpdate();
+            db.commitAndClose(con);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 
     public void deleteuser(int id){
         PreparedStatement pstmt = null;
@@ -23,6 +69,7 @@ public class DAOusers {
             pstmt = con.prepareStatement(SQL__DELETE_USER);
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
+            con.commit();
             con.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -32,7 +79,6 @@ public class DAOusers {
     public void adduser(String surname, String name, String patronymic,
                         String role, String login, String password){
         PreparedStatement pstmt = null;
-        ResultSet rs=null;
         Connection con = null;
         DBManager db = new DBManager();
         try {
@@ -97,21 +143,14 @@ public class DAOusers {
         Statement stmt = null;
         ResultSet rs = null;
         Connection con = null;
+        userMapper userMapper = new userMapper();
         try {
             con = DBManager.getInstance().getConnection();
 
             stmt = con.createStatement();
             rs = stmt.executeQuery(SQL__ALL_PASS_BY_LIDIN);
             while (rs.next()){
-                user user = new user();
-                user.setId(rs.getInt(Fields.users_id));
-                user.setName(rs.getString(Fields.user_name));
-                user.setPatronymic(rs.getString(Fields.user_patronymic));
-                user.setSurname(rs.getString(Fields.user_surname));
-                user.setLogin(rs.getString(Fields.users_login));
-                user.setBlock(rs.getBoolean(Fields.users_block));
-                user.setRole(rs.getString(Fields.users_role));
-                List.add(user);
+                List.add(userMapper.mapRow(rs));
             }
 
             con.close();
@@ -146,5 +185,26 @@ public class DAOusers {
         }
         return id;
 
+    }
+    private static class userMapper implements EntityMapper<user>{
+
+        @Override
+        public  user mapRow(ResultSet rs) {
+            user user = new user();
+            try {
+                user.setId(rs.getInt(Fields.users_id));
+                user.setName(rs.getString(Fields.user_name));
+                user.setPatronymic(rs.getString(Fields.user_patronymic));
+                user.setSurname(rs.getString(Fields.user_surname));
+                user.setLogin(rs.getString(Fields.users_login));
+                user.setBlock(rs.getBoolean(Fields.users_block));
+                user.setRole(rs.getString(Fields.users_role));
+                user.setPassword(rs.getString(Fields.users_password));
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            return user;
+        }
     }
 }

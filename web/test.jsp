@@ -17,20 +17,24 @@
 <body>
 <center>
 
-
-    <form method="post" >
-        <a>найти по названию<input type="text" name="search" ></a><input type="submit" name="search1" value="search">
+    <samp></samp>
+    <form method="post">
+        <a>найти по названию<input type="text" name="search" ></a>
+        <input type="submit" name="search1" value="search">
 <table border="1">
+
 <tr>
-    <td>название теста</td>
+
+    <td><input type="submit" name="sort" value="название теста"></td>
     <td>предмет:<select name="subject">
         <option>все</option>
-        <c:forEach var="list" items="${list}"  >
+        <c:forEach  var="list" items="${list}"  >
+
              <option value="${list.subdgect}"> ${list.subdgect}</option>
         </c:forEach>
     </select><input type="submit" name="select" value="выбрать" ></td>
-    <td>сложность</td>
-    <td>время</td>
+    <td><input type="submit" name="sort" value="сложность"></td>
+    <td><input type="submit" name="sort" value="время"></td>
 
 </tr>
 
@@ -42,18 +46,18 @@
                 <td><c:out value="${tests.time}"/></td>
 
 
-                <td><input type="submit" name="${tests.id }" value="пройти"></td>
-                <%
-                    if(request.getSession().getAttribute("role").equals("teacher")){
-                        out.print("<td><a href=\"edit?idtest=${tests.id} \">редактировать тест</a></td>");
-                    }
-                %>
 
+                <td <% if(request.getSession().getAttribute("role").equals("teacher"))
+                    out.print("hidden");%> > <a href="passingtest?idtest=${tests.id}">пройти тест</a></td>
+
+                <td <% if(request.getSession().getAttribute("role").equals("student"))
+                    out.print("hidden");%> ><a href="edit?idtest=${tests.id}">редактировать тест</a></td>
             </tr>
         </c:forEach>
 
 </table>
     </form>
+    <a href="home">домой</a>
 </center>
 </body>
 </html>

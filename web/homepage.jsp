@@ -12,7 +12,7 @@
 </head>
 <body>
 <center>
-<a href="test"> список тестов</a>
+
 <a>
     <form action="home" method="post">
 
@@ -22,7 +22,6 @@
                 out.print("<input type=\"submit\" name=\"add\" value=\"добавить тест\"><br>");
                 out.print("<input type=\"submit\" name=\"users\" value=\"пользователи\" /><br>");
                 out.print("<input type=\"submit\" name=\"addusers\" value=\"добавить пользователя\" /><br>");
-                out.print("<input type=\"submit\" name=\"editusers\" value=\"редактировать пользователя\" /><br>");
             }
             else
                 out.print("<input type=\"submit\" name=\"results\" value=\"результаты тестов\"><br> ");

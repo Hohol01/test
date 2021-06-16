@@ -69,7 +69,7 @@ public class addtest extends HttpServlet {
                 boolean cor = false;
                 if (req.getParameter("correct" + i) != null)
                     cor = true;
-                a.addanswer(idqus, answer, cor);
+                a.addanswer(idqus, answer, cor, i);
             }
             req.getRequestDispatcher("addqus.jsp").forward(req, resp);
         }

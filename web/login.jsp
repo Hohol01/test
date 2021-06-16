@@ -18,8 +18,9 @@
                  <table>
                     <tr><td>User:<input name="login" type="text" ></td></tr>
                    <tr><td>Password:<input name="pass" type="password" ></td></tr>
-                     <tr><td> <input type="submit" name="go"></td></tr>
+
                  </table>
+              <input type="submit" name="go">
             </form>
         </center>
     </body>

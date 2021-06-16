@@ -11,14 +11,37 @@
     <title>addtest</title>
 </head>
 <body>
+<center>
     <form action="addtest" method="post">
-        <a>название теста = <input name="name" type="text"></a><br>
-        <c>ввремя в минутах = <input name="time" type="int"> </c><br>
-        <d>cложность = <input name="hardnest" type="int"> </d> <br>
-        <d>предмет = <input name="subdgect" type="text"> </d> <br>
-    <input type="submit" name="addtest" value="далее">
-</form>
+        <table>
+            <tr>
+                <td> название теста =</td>
+                <td> <input name="name" type="text"></td>
+            </tr>
 
+            <tr>
+                <td>ввремя в минутах = </td>
+                <td><input name="time" type="int"></td>
+            </tr>
+            <tr>
+                <td>cложность =</td>
+                <td><select name="hardnest">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td> предмет =</td>
+                <td> <input name="subdgect" type="text"> </td>
+            </tr>
+        </table>
+        <input type="submit" name="addtest" value="далее">
+</form>
+    <a href="home">домой</a>
+</center>
 
 
 </body>

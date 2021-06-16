@@ -38,7 +38,7 @@ public class homepage extends HttpServlet {
             resp.sendRedirect("login");
         } else if (req.getParameter("addusers") != null) {
             resp.sendRedirect("adduser");
-        } else if (req.getParameter("users")!=null){
+        } else if (req.getParameter("users") != null) {
             resp.sendRedirect("users");
         }
     }

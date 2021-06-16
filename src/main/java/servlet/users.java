@@ -18,21 +18,19 @@ public class users extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int count = 1;
 
-        if (req.getParameter("back")!=null){
+        if (req.getParameter("back") != null) {
             resp.sendRedirect("home");
-        }
-
-        else
-        while (true){
-            if (req.getParameter(String.valueOf(count))!=null){
-                DAOusers daOusers = new DAOusers();
-                daOusers.deleteuser(count);
-                System.out.println(count);
-                resp.sendRedirect("users");
-                break;
+        } else
+            while (true) {
+                if (req.getParameter(String.valueOf(count)) != null) {
+                    DAOusers daOusers = new DAOusers();
+                    daOusers.deleteuser(count);
+                    System.out.println(count);
+                    resp.sendRedirect("users");
+                    break;
+                }
+                count++;
             }
-            count++;
-        }
 
         System.out.println(req.getInputStream());
     }

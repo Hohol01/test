@@ -9,11 +9,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DAOanswer {
-    private final static String SQL__ADD_ANSWER = "INSERT answers (qutions_idqutions, anser, corect) VALUE (?, ?, ?)";
+    private final static String SQL__ADD_ANSWER = "INSERT answers (qutions_idqutions, anser, corect, number) VALUE (?, ?, ?, ?)";
     private final static String SQL__GET_ANSWER_BY_ID = "SELECT * FROM answers WHERE qutions_idqutions = ?";
     private final static String SQL__GET_CORECT_BY_ID = "SELECT  corect FROM answers WHERE id = ?";
+    private static final String SQL_UPDATE="UPDATE answers SET anser = ?, corect = ?, number = ? WHERE qutions_idqutions = ?";
 
+    public void uppdate(String text, boolean corect, int number, int idtqus){
+        Connection con = null;
+        PreparedStatement pstm = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL_UPDATE);
+            pstm.setString(1, text);
+            pstm.setBoolean(2,corect);
+            pstm.setInt(3,number);
+            pstm.setInt(4, idtqus);
+            pstm.executeUpdate();
+            con.commit();
+            con.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
+    }
 
     public boolean checkanswerbyid(int id){
         boolean check = false;
@@ -34,7 +52,7 @@ public class DAOanswer {
         return check;
     }
 
-    public void addanswer(int idqutions, String answer, Boolean corect) {
+    public void addanswer(int idqutions, String answer, Boolean corect, int number) {
         Connection con = null;
         PreparedStatement pstm = null;
         DBManager db = new DBManager();
@@ -44,6 +62,7 @@ public class DAOanswer {
             pstm.setInt(1, idqutions);
             pstm.setString(2, answer);
             pstm.setBoolean(3, corect);
+            pstm.setInt(4,number);
             pstm.executeUpdate();
             db.commitAndClose(con);
         } catch (SQLException throwables) {

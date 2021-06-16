@@ -27,7 +27,7 @@
         <td><c:out value="${user.surname}"/></td>
         <td><c:out value="${user.patronymic}"/></td>
 
-        <td><input type="submit" value="редактировать" name="${user.id}"></td>
+        <td><a href="edituser?userid=${user.id}">редактировать пользователя</a></td>
         <td><input type="submit" name="${user.id}" value="удалить пользователя" ></td>
     </tr>
 </c:forEach>

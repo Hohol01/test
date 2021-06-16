@@ -15,9 +15,24 @@ public class DAOquestion {
     private static final String SQL__GET_ALL_BY_TESTID="SELECT * FROM question WHERE idtest = ?";
     private static final String SQL__SELECT_ALL_BY_IDTEST_AND_NUMBER="SELECT * FROM question WHERE (idtest =? and number=?)";
     private static final String SQL__GET_IDTEST_BY_ID="SELECT idtest FROM question where id = ?";
-    private static final String SQL__GET_ID_BY_TEXT_AND_TESTID="SELECT ID FROM question WHERE ( text = ? AND idtest = ?";
+    private static final String SQL__GET_ID_BY_TEXT_AND_TESTID="SELECT ID FROM question WHERE ( text = ? AND idtest = ?)";
+    private static final String SQL_UPDATE="UPDATE  question SET text = ? WHERE id = ?";
 
-    
+    public void updatequs(String text, int id){
+        Connection con = null;
+        PreparedStatement pstm = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL_UPDATE);
+            pstm.setString(1, text);
+            pstm.setInt(2, id);
+            pstm.executeUpdate();
+            con.commit();
+            con.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     public int getidbynumberandtestid(int number, int testid){
         int id=0;
