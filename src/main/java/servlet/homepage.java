@@ -24,6 +24,7 @@ public class homepage extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //обработка кнопок
         if (req.getParameter("test") != null) {
             resp.sendRedirect("test");
             System.out.println("test");

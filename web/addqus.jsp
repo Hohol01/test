@@ -9,6 +9,8 @@
     <a>введите вопрос</a><input type="text" name="question" ><br>
     <a>введите ответ</a><input type="text" name="ans1" > <input type="checkbox" name="correct1"><br>
     <a>введите ответ</a><input type="text" name="ans2" > <input type="checkbox" name="correct2"><br>
+    <a>введите ответ</a><input type="text" name="ans3" > <input type="checkbox" name="correct3"><br>
+    <a>введите ответ</a><input type="text" name="ans4" > <input type="checkbox" name="correct4"><br>
     <%
         int count = 2;
         if (request.getParameter("addanswer")!=null){

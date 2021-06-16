@@ -11,7 +11,7 @@
 <head>
     <title>PASSING</title>
     <script type="text/javascript">
-        var counter =2;
+        var counter =<%=request.getAttribute("time")%>;
 
 
         function time(){
@@ -30,10 +30,11 @@
     </script>
 </head>
 <body  onload="time()">
+<center>
 <samp id="count"></samp>
 <form action="passingtest" method="post">
 <%
-    int count=0;
+    int count=1;
 
 %>
 
@@ -48,28 +49,29 @@
             <td><c:out value="${ans.answer}"/></td>
 
             <td><input type="checkbox" name="${ques.number}"  value="${ans.id}" <%
-                if (request.getAttribute("chec"+count)!=null){
+                if (request.getAttribute("${ques.number}")!=null){
                     out.print("checked =\"checked\"");
                 }
+                count++;
             %> ></td>
         </tr>
 
     </c:forEach>
 
     </table>
-
-        <%
-            if (request.getAttribute("gotopre")!=null){
-                out.print("<input type=\"submit\" name=\"previous\" value=\"предыдущей вопрос\">");
-            }
-            if(request.getAttribute("gotonext")!=null){
-                out.print("<input type=\"submit\" name=\"next\" value=\"следующий вопрос\">");
-            }
-        %>
+    <input  <% if (request.getAttribute("gotopre")==null)
+                out.print("hidden ");
+            %>  type="submit" name="previous" value="предыдущей вопрос">
 
 
-        <input type="submit" name="finish" value="закончить попытку">
+
+    <input <% if (request.getAttribute("gotonext")==null)
+                out.print("hidden ");
+            %> type="submit" name="next" value="следующий вопрос">
+
+    <input type="submit" name="finish" value="закончить попытку">
     </form>
 </c:forEach>
+</center>
 </body>
 </html>

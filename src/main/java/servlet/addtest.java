@@ -64,12 +64,13 @@ public class addtest extends HttpServlet {
             while (idqus==0){
                 idqus = q.get_idbyname(qution, idtest);
             }
-            for (int i = 1; i < 3; i++) {
+            for (int i = 1; i < 4; i++) {
                 String answer = req.getParameter("ans" + i);
                 boolean cor = false;
                 if (req.getParameter("correct" + i) != null)
                     cor = true;
-                a.addanswer(idqus, answer, cor, i);
+                if (answer!=null)
+                    a.addanswer(idqus, answer, cor, i);
             }
             req.getRequestDispatcher("addqus.jsp").forward(req, resp);
         }

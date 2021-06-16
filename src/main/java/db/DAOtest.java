@@ -18,6 +18,7 @@ public class DAOtest {
     private static final String SQL__GET_TIME_BY_ID ="SELECT time FROM test WHERE id = ?";
     private static final String SQL__UPDATE_BY_ID ="UPDATE test SET name = ?, subdgect = ?, hardnest = ?, time = ? WHERE id =?";
 
+
     public void update(String name , String subdgect , int hardnest, int time,int  id){
         PreparedStatement pstm = null;
         Connection con=null;

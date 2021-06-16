@@ -12,7 +12,7 @@ public class DAOanswer {
     private final static String SQL__ADD_ANSWER = "INSERT answers (qutions_idqutions, anser, corect, number) VALUE (?, ?, ?, ?)";
     private final static String SQL__GET_ANSWER_BY_ID = "SELECT * FROM answers WHERE qutions_idqutions = ?";
     private final static String SQL__GET_CORECT_BY_ID = "SELECT  corect FROM answers WHERE id = ?";
-    private static final String SQL_UPDATE="UPDATE answers SET anser = ?, corect = ?, number = ? WHERE qutions_idqutions = ?";
+    private static final String SQL_UPDATE="UPDATE answers SET anser = ?, corect = ? WHERE qutions_idqutions = ? AND number = ?";
 
     public void uppdate(String text, boolean corect, int number, int idtqus){
         Connection con = null;
@@ -22,8 +22,8 @@ public class DAOanswer {
             pstm = con.prepareStatement(SQL_UPDATE);
             pstm.setString(1, text);
             pstm.setBoolean(2,corect);
-            pstm.setInt(3,number);
-            pstm.setInt(4, idtqus);
+            pstm.setInt(3, idtqus);
+            pstm.setInt(4,number);
             pstm.executeUpdate();
             con.commit();
             con.close();

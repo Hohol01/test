@@ -29,23 +29,21 @@ public class edittest extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         number= 1;
         numberofquestion = 1;
-
-
+        if (daOquestion.checknext(numberofquestion+1))
+            req.setAttribute("next", "next");
         idtest = Integer.parseInt(req.getParameter("idtest"));
-
         System.out.println(req.getParameter("idtest"));
         ArrayList<test> testArrayList= daOtest.gettesttsbyid(Integer.parseInt(req.getParameter("idtest")));
-
         req.setAttribute("test", testArrayList);
         req.setAttribute("displaying", "test");
-
-
         req.getRequestDispatcher("edittest.jsp").forward(req, resp);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.removeAttribute("next");
+        if (daOquestion.checknext(numberofquestion+1))
+            req.setAttribute("next", "next");
 
         if (req.getParameter("next")!=null){
             String nane = req.getParameter("name");

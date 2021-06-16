@@ -30,8 +30,10 @@
     request.setAttribute("count", count);
   %>
 
-  <input type="submit" name="edit" value="изменить и перейти к следующему вопросу">
-  <input type="submit" name="finish" value="закончить изменение теста">
+  <input <% if (request.getAttribute("next")==null)
+                out.print("hidden ");
+%> type="submit" name="edit" value="изменить и перейти к следующему вопросу">
+  <input type="submit" name="finish" value="изменить и закончить изменение теста">
 
 </form>
 
