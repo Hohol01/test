@@ -12,12 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
-/**
- * Encoding filter.
- *
- * @author D.Kolesnikov
- *
- */
+
 public class EncodingFilter implements Filter {
 
     private static final Logger log = Logger.getLogger(EncodingFilter.class);
