@@ -13,8 +13,6 @@ m.idea/dataSources/924b41df-c218-4f78-b675-345d14a1debd/storage_v2/_src_/schema/
 web/cabinet.jsp,5/3/538e705022726ff91c0df5649628df11fec522dc
 O
 src/main/java/db/DBManager.java,7/9/79a520fd0ad03d6b422ba9c8b83aa0250d4d5a95
-=
-web/index.jsp,9/f/9f198ed450f32e45b10ec3c2b1406e609b4a96cd
 H
 web/META-INF/context.xml,0/b/0b5ed5dfc48d40f738ad3c8e8ec06325e849a9f7
 7
@@ -39,8 +37,6 @@ C
 web/WEB-INF/web.xml,c/d/cdcc12da5c4054f6995aab32914d7e0243194c05
 K
 src/main/java/testtttt.java,5/4/541a854afe9bdd24afef33a65ba5e910a746c9d6
-P
- src/main/java/servlet/login.java,b/b/bbc2f3f5b35ccef7d12f95dda5ef4ccc6fb2881e
 R
 "src/main/java/servlet/adduser.java,e/3/e35c1dab7b053e6465cfdc9b706207074f2295b3
 @
@@ -53,10 +49,6 @@ N
 web/adduser.jsp,4/c/4c8cf165cd4104337df9886df1095abd6bc9f790
 @
 web/edittest.jsp,f/2/f28b7ca5242ad0630033ac1ead6876d8373022e3
-S
-#src/main/java/servlet/edituser.java,0/0/0069b3bbd2883e744725150713f083fbd0323a77
-@
-web/homepage.jsp,a/d/adf2c7e22329bba4bfc420a226935ce83b45a284
 =
 web/login.jsp,9/6/96feae7a218a9e80e2acc1b853081519adaf9654
 8
@@ -67,7 +59,3 @@ H
 src/main/java/Timer.java,c/5/c5e52f79a92b982b3970a8c266cc04b9a6df44c5
 Y
 ).idea/runConfigurations/Tomcat_10_0_5.xml,4/6/4638d22b789c3f267029df398287eb128e10f87c
-P
- src/main/java/servlet/users.java,5/0/508c332de26479abaec7aec0044494bb0805e663
-=
-web/users.jsp,2/5/25a7f17e5a418e4240c842ad3a61151a12c7054f

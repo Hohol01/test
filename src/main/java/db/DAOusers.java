@@ -13,9 +13,26 @@ public class DAOusers {
     private static final String SQL__GET_ROLE_BY_ID="SELECT role from users where id = ?";
     private static final String SQL__SET_USER="INSERT users (login, password, role , name, surname, patronymic) VALUE (?, ?, ?, ?, ?, ?)";
     private static final String SQL__DELETE_USER="DELETE FROM users WHERE id = ?";
-    private static final String SQL__UPDATE_USER="UPDATE users set login = ?, password = ?, role = ?, name =?, surname = ?, patronymic = ? WHERE id = ?";
+    private static final String SQL__UPDATE_USER="UPDATE users set login = ?, password = ?, role = ?, name =?, surname = ?, patronymic = ?, block = ? WHERE id = ?";
     private static final String SQL__GET_USER_BY_ID="SELECT * FROM users WHERE id = ?";
 
+    public boolean getblock(int id){
+        boolean block = false;
+        Connection con = null;
+        ResultSet rs = null;
+        PreparedStatement pstm = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__GET_USER_BY_ID);
+            pstm.setInt(1,id);
+            rs = pstm.executeQuery();
+            if (rs.next())
+                block = rs.getBoolean(Fields.users_block);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return block;
+    }
 
     public ArrayList<user> getuserbyid(int id){
         ArrayList<user> retlist = new ArrayList<>();
@@ -38,7 +55,7 @@ public class DAOusers {
     }
 
     public void edituser(String surname, String name, String patronymic,
-                         String role, String login, String password, int id){
+                         String role, String login, String password, boolean block, int id){
         PreparedStatement pstmt = null;
         Connection con = null;
         DBManager db = new DBManager();
@@ -51,7 +68,8 @@ public class DAOusers {
             pstmt.setString(4, name);
             pstmt.setString(5, surname);
             pstmt.setString(6, patronymic);
-            pstmt.setInt(7, id);
+            pstmt.setBoolean(7,block);
+            pstmt.setInt(8, id);
             pstmt.executeUpdate();
             db.commitAndClose(con);
 

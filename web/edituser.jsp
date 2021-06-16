@@ -52,8 +52,14 @@
                 <td>Пароль пользователя</td>
                 <td><input type="text" name="password" value="${user.password}"></td>
             </tr>
-
-
+            <tr>
+                <td>заблокировать пользователя</td>
+                <td><input type="checkbox" name="block"   <%
+                    if (request.getAttribute("block")==null){
+                        out.print("checked");
+                    }
+                %>></td>
+            </tr>
 
         </table>
         </c:forEach>

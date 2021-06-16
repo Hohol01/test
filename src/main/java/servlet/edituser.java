@@ -23,6 +23,9 @@ public class edituser extends HttpServlet {
         System.out.println(iduser);
         ArrayList<user> user = daOusers.getuserbyid(iduser);
         req.setAttribute("user", user);
+        req.removeAttribute("block");
+        req.setAttribute("block",daOusers.getblock(iduser));
+
 
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {
@@ -40,7 +43,9 @@ public class edituser extends HttpServlet {
         String role = req.getParameter("role");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        daOusers.edituser(surname, name, patronymic, role, login, password, iduser);
+        boolean block = Boolean.parseBoolean(req.getParameter("block"));
+        System.out.println(block);
+        daOusers.edituser(surname, name, patronymic, role, login, password, block, iduser);
         if (req.getParameter("add") != null)
             resp.sendRedirect("users");
     }

@@ -29,6 +29,7 @@
 
         <td><a href="edituser?userid=${user.id}">редактировать пользователя</a></td>
         <td><input type="submit" name="${user.id}" value="удалить пользователя" ></td>
+
     </tr>
 </c:forEach>
 </table>
