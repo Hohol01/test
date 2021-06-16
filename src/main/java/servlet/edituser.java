@@ -37,13 +37,15 @@ public class edituser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        boolean block =false;
         String surname = req.getParameter("surname");
         String name = req.getParameter("name");
         String patronymic = req.getParameter("patronymic");
         String role = req.getParameter("role");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        boolean block = Boolean.parseBoolean(req.getParameter("block"));
+        if (req.getParameter("block")!=null)
+            block=true;
         System.out.println(block);
         daOusers.edituser(surname, name, patronymic, role, login, password, block, iduser);
         if (req.getParameter("add") != null)
