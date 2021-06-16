@@ -24,7 +24,8 @@ public class edituser extends HttpServlet {
         ArrayList<user> user = daOusers.getuserbyid(iduser);
         req.setAttribute("user", user);
         req.removeAttribute("block");
-        req.setAttribute("block",daOusers.getblock(iduser));
+        if (daOusers.getblock(iduser))
+            req.setAttribute("block","block");
 
 
         HttpSession ses = req.getSession();

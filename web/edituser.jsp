@@ -55,7 +55,7 @@
             <tr>
                 <td>заблокировать пользователя</td>
                 <td><input type="checkbox" name="block"   <%
-                    if (request.getAttribute("block")==null){
+                    if (request.getAttribute("block")!=null){
                         out.print("checked");
                     }
                 %>></td>
