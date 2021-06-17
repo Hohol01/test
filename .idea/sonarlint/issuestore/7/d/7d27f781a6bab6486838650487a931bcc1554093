@@ -1,0 +1,41 @@
+
+k
+java:S2095¦"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(æïÉìøÿÿÿÿ
+e
+java:S2095j"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ğğ¡
+e
+java:S2095V"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ş·ïÕ
+d
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Éä®]
+j
+java:S2095A"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(æïÉìøÿÿÿÿ
+e
+java:S2095|"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¦ˆÇ
+k
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ó´ïøÿÿÿÿ
+j
+java:S2095/"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿Òë£øÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(½„ìüÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¯’¸úşÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(…ä±
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(îØ¢
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Î¿÷Ãÿÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÏÿÈÛûÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(È¸šĞ
+J
+java:S6212"/Declare this local variable with "var" instead.(¬§ªÆùÿÿÿÿ
+J
+java:S6212;"/Declare this local variable with "var" instead.(“¼µüÿÿÿÿ
+D
+java:S6212P"/Declare this local variable with "var" instead.(¶‹¤h
+J
+java:S6212d"/Declare this local variable with "var" instead.(¹¨ßçÿÿÿÿÿ
+E
+java:S6212y"/Declare this local variable with "var" instead.(ÍÉ¬‘
+i	java:S100ˆ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬˜òºøÿÿÿÿ
+K
+java:S6212Œ"/Declare this local variable with "var" instead.(“¼µüÿÿÿÿ
+E
+java:S6212«"/Declare this local variable with "var" instead.(áò¹Z
+]
+java:S1068"BRemove this unused "SQL__GET_ID_BY_TEXT_AND_TESTID" private field.(ÏÿÈÛûÿÿÿÿ

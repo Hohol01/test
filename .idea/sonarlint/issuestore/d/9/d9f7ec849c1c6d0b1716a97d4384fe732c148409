@@ -1,0 +1,20 @@
+
+]
+java:S1192""GDefine a constant instead of duplicating this literal "idtest" 3 times.(îŞÿ
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¾±ßÆ
+D
+java:S1948")Make "daOtest" transient or serializable.(Ü±Ô±ûÿÿÿÿ
+H
+java:S1948"-Make "daOquestion" transient or serializable.(áæ¯åùÿÿÿÿ
+A
+java:S1948"+Make "daOanswer" transient or serializable.(ˆšìÔ
+E
+java:S62123"/Declare this local variable with "var" instead.(íŞæù
+E
+java:S62124"/Declare this local variable with "var" instead.(»ø´Ç
+E
+java:S6212P"/Declare this local variable with "var" instead.(¶‘ß€
+D
+java:S6212S"/Declare this local variable with "var" instead.(íª2
+E
+java:S6212T"/Declare this local variable with "var" instead.(êûşª

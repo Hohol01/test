@@ -1,0 +1,29 @@
+
+…
+java:S1319I"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(úş³o
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿Òë£øÿÿÿÿ
+j
+java:S2095Q"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ø¦Øüÿÿÿÿ
+j
+java:S2095+"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(÷«ùûÿÿÿÿ
+e
+java:S2095="OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‰ë÷
+e	java:S117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úş³o
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÕğÕĞşÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÆÊòßıÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(’÷é¨
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÕğÕĞşÿÿÿÿ
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÆÊòßıÿÿÿÿ
+[
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(’÷é¨
+J
+java:S6212%"/Declare this local variable with "var" instead.(’¼Œ‹øÿÿÿÿ
+L
+java:S6212:"/Declare this local variable with "var" instead.(ÍÉ¬‘8µšÓ±¡/
+t
+java:S2293J"YReplace the type specification in this constructor call with the diamond operator ("<>").(‘­¥ùÿÿÿÿ
+L
+java:S6212U"/Declare this local variable with "var" instead.(…§«Ü8¾šÓ±¡/
