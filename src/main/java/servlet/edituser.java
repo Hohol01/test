@@ -31,7 +31,9 @@ public class edituser extends HttpServlet {
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
-        } else
+        } else if (!ses.getAttribute("role").equals("teacher"))
+            resp.sendRedirect("home");
+        else
             req.getRequestDispatcher("edituser.jsp").forward(req, resp);
 
     }

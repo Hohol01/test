@@ -17,12 +17,13 @@ public class adduser extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-            HttpSession ses = req.getSession();
-            if (ses != ses.getAttribute("id")) {
-                resp.sendRedirect("login");
-            } else
-
-                req.getRequestDispatcher("adduser.jsp").forward(req, resp);
+        HttpSession ses = req.getSession();
+        if (ses != ses.getAttribute("id")) {
+            resp.sendRedirect("login");
+        } else if (!ses.getAttribute("role").equals("teacher"))
+            resp.sendRedirect("home");
+        else
+            req.getRequestDispatcher("adduser.jsp").forward(req, resp);
 
     }
 

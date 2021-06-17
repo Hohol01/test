@@ -40,7 +40,7 @@ public class DBManager {
         return con;
     }
 
-    public void commitAndClose(Connection con) {
+    public static void commitAndClose(Connection con) {
         try {
             con.commit();
             con.close();

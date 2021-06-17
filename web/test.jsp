@@ -52,6 +52,8 @@
 
                 <td <% if(request.getSession().getAttribute("role").equals("student"))
                     out.print("hidden");%> ><a href="edit?idtest=${tests.id}">редактировать тест</a></td>
+                <td <% if(request.getSession().getAttribute("role").equals("student"))
+                    out.print("hidden");%> ><a href="results?idtest=${tests.id}">результаты теста</a></td>
             </tr>
         </c:forEach>
 

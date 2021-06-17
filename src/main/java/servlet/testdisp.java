@@ -27,8 +27,7 @@ public class testdisp extends HttpServlet {
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
-        } else {
-
+        }else {
             dispalltest(req,resp);
         }
     }

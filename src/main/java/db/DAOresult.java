@@ -11,10 +11,10 @@ import java.util.List;
 
 public class DAOresult {
 
-    private static final String SQL__INSERT_IN_RESULT= "INSERT results (mark, users_id, testname) VALUE (?, ?, ?)";
+    private static final String SQL__INSERT_IN_RESULT= "INSERT results (mark, users_id, testname, test_id) VALUE (?, ?, ?, ?)";
     private static final String SQL__GET_ALL_BY_USERID="SELECT * FROM results WHERE users_id = ?";
 
-    public void isertintoresults(int mark , int userid, String testname){
+    public void isertintoresults(int mark , int userid, String testname, int testid){
         Connection con = null;
         PreparedStatement prst = null;
         try{
@@ -23,6 +23,7 @@ public class DAOresult {
             prst.setInt(1,mark);
             prst.setInt(2, userid);
             prst.setString(3, testname);
+            prst.setInt(4, testid);
             prst.executeUpdate();
             con.commit();
             con.close();

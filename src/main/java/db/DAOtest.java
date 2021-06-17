@@ -17,7 +17,22 @@ public class DAOtest {
     private static final String SQL__SORT_BY_VALUE = "SELECT * FROM  test ORDER BY";
     private static final String SQL__GET_TIME_BY_ID ="SELECT time FROM test WHERE id = ?";
     private static final String SQL__UPDATE_BY_ID ="UPDATE test SET name = ?, subdgect = ?, hardnest = ?, time = ? WHERE id =?";
+    private static final String SQL__DELETE_DY_ID = "DELETE FROM test WHERE id = ?";
 
+    public void delete(int id){
+        PreparedStatement pstm = null;
+        Connection con=null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__DELETE_DY_ID);
+            pstm.setInt(1,id);
+            pstm.executeUpdate();
+            DBManager.commitAndClose(con);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 
     public void update(String name , String subdgect , int hardnest, int time,int  id){
         PreparedStatement pstm = null;
@@ -205,7 +220,7 @@ public class DAOtest {
             pstmt = con.prepareStatement(SQL__GET_ID_BY_NAME);
             pstmt.setString(1, name);
             rs =pstmt.executeQuery();
-            if (rs.next())
+            while (rs.next())
                 id=rs.getInt(1);
             con.close();
         } catch (SQLException throwables) {

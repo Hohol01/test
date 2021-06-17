@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,9 +38,18 @@ public class users extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DAOusers daOusers = new DAOusers();
-        ArrayList<user> userlist = daOusers.usersList();
-        req.setAttribute("user", userlist);
-        req.getRequestDispatcher("users.jsp").forward(req, resp);
+
+
+        HttpSession ses = req.getSession();
+        if (ses != ses.getAttribute("id") && !ses.getAttribute("role").equals("teacher")) {
+            resp.sendRedirect("login");
+        } else if(ses.getAttribute("role").equals("teacher")){
+            DAOusers daOusers = new DAOusers();
+            ArrayList<user> userlist = daOusers.usersList();
+            req.setAttribute("user", userlist);
+            req.getRequestDispatcher("users.jsp").forward(req, resp);
+        }else
+            resp.sendRedirect("home");
+
     }
 }

@@ -33,10 +33,30 @@ public class passtest extends HttpServlet {
     DAOanswer daOanswer = new DAOanswer();
     DAOtest daOtest = new DAOtest();
 
+    Thread timer = new Thread() {
+        @Override
+        public void run() {
+            while (time > 0) {
+                time--;
+                try {
+                    sleep(1000);
+                    System.out.println(time);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (time == 0) {
+                    interrupt();
+                    checktest(marc);
+                    timeout = true;
+                }
+            }
+        }
+    };
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        marc = 0;
+        timer.interrupt();
         timeout = false;
         userid = (Integer) req.getSession().getAttribute("userid");
         answers = new HashMap<>();
@@ -50,32 +70,16 @@ public class passtest extends HttpServlet {
         quantityofquestion = daOquestion.getquantityoftest(idtest);
         menegernextpreev(req);
 
-        Thread timer = new Thread() {
-            @Override
-            public void run() {
-                while (time > 0) {
-                    time--;
-                    try {
-                        sleep(1000);
-                        System.out.println(time);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    if (time == 0) {
-                        interrupt();
-                        checktest(marc);
-                        timeout = true;
-                    }
-                }
-            }
-        };
+
         req.setAttribute("time", time);
 
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
+        } else if (ses.getAttribute("role").equals("teacher")) {
+            resp.sendRedirect("home");
         } else {
 
-            timer.start();
+
             List<question> ques = daOquestion.getqustions(idtest, 1);
             ArrayList<answer> ans = daOanswer.getanwerbyid(daOquestion.getidbynumberandtestid(1, idtest));
             req.setAttribute("ques", ques);
@@ -110,7 +114,7 @@ public class passtest extends HttpServlet {
         } else if (req.getParameter("finish") != null) {
             answers.put(numberofques, req.getParameter(String.valueOf(numberofques)));
             checktest(marc);
-
+            timer.interrupt();
             PrintWriter pw = resp.getWriter();
             resp.setContentType("text/html");
             resp.setCharacterEncoding("UTF-8");
@@ -123,7 +127,7 @@ public class passtest extends HttpServlet {
         }
 
 
-        if (flag) {
+        if (flag && !timeout) {
             menegernextpreev(req);
             List<question> ques = daOquestion.getqustions(idtest, numberofques);
             ArrayList<answer> ans = daOanswer.getanwerbyid(daOquestion.getidbynumberandtestid(numberofques, idtest));
@@ -151,7 +155,7 @@ public class passtest extends HttpServlet {
         marc = Math.ceil((double) 100 / daOquestion.getquantityoftest(idtest) * marc);
         DAOresult daOresult = new DAOresult();
         DAOtest daOtest = new DAOtest();
-        daOresult.isertintoresults((int) marc, userid, daOtest.gettextbyid(idtest));
+        daOresult.isertintoresults((int) marc, userid, daOtest.gettextbyid(idtest), idtest);
 
 
     }

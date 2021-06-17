@@ -24,7 +24,9 @@ public class addtest extends HttpServlet {
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
-        } else
+        } else if(!ses.getAttribute("role").equals("teacher"))
+            resp.sendRedirect("home");
+        else
             req.getRequestDispatcher("addtest.jsp").forward(req, resp);
     }
 
@@ -66,13 +68,14 @@ public class addtest extends HttpServlet {
             while (idqus==0){
                 idqus = q.get_idbyname(qution, idtest);
             }
-            for (int i = 1; i < 4; i++) {
+            for (int i = 1; i < 5; i++) {
+
                 String answer = req.getParameter("ans" + i);
                 boolean cor = false;
                 if (req.getParameter("correct" + i) != null)
                     cor = true;
-                if (answer!=null)
-                    a.addanswer(idqus, answer, cor, i);
+                if (!answer.equals(""))
+                    a.addanswer(idqus, answer, cor, i, idtest);
             }
             req.getRequestDispatcher("addqus.jsp").forward(req, resp);
         }

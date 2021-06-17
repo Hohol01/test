@@ -18,7 +18,22 @@ public class DAOquestion {
     private static final String SQL__GET_ID_BY_TEXT_AND_TESTID="SELECT ID FROM question WHERE ( text = ? AND idtest = ?)";
     private static final String SQL_UPDATE="UPDATE  question SET text = ? WHERE id = ?";
     private static final String SQL__SET_QUTION_BY_NUMBER="SELECT * FROM question WHERE number = ?";
+    private static final String SQL__DELETE_DY_ID = "DELETE FROM question WHERE idtest = ?";
 
+    public void delete(int testid){
+        PreparedStatement pstm = null;
+        Connection con=null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__DELETE_DY_ID);
+            pstm.setInt(1, testid);
+            pstm.executeUpdate();
+            DBManager.commitAndClose(con);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 
     public boolean checknext(int number){
         Connection con = null;

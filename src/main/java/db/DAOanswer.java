@@ -9,10 +9,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DAOanswer {
-    private final static String SQL__ADD_ANSWER = "INSERT answers (qutions_idqutions, anser, corect, number) VALUE (?, ?, ?, ?)";
+    private final static String SQL__ADD_ANSWER = "INSERT answers (qutions_idqutions, anser, corect, number, test_id) VALUE (?, ?, ?, ?, ?)";
     private final static String SQL__GET_ANSWER_BY_ID = "SELECT * FROM answers WHERE qutions_idqutions = ?";
     private final static String SQL__GET_CORECT_BY_ID = "SELECT  corect FROM answers WHERE id = ?";
     private static final String SQL_UPDATE="UPDATE answers SET anser = ?, corect = ? WHERE qutions_idqutions = ? AND number = ?";
+    private static final String SQL__DELETE_DY_ID = "DELETE FROM answers WHERE  test_id = ?";
+
+    public void delete(int testid){
+        PreparedStatement pstm = null;
+        Connection con=null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__DELETE_DY_ID);
+            pstm.setInt(1, testid);
+            pstm.executeUpdate();
+            DBManager.commitAndClose(con);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 
     public void uppdate(String text, boolean corect, int number, int idtqus){
         Connection con = null;
@@ -52,7 +68,7 @@ public class DAOanswer {
         return check;
     }
 
-    public void addanswer(int idqutions, String answer, Boolean corect, int number) {
+    public void addanswer(int idqutions, String answer, Boolean corect, int number, int testid) {
         Connection con = null;
         PreparedStatement pstm = null;
         DBManager db = new DBManager();
@@ -63,6 +79,7 @@ public class DAOanswer {
             pstm.setString(2, answer);
             pstm.setBoolean(3, corect);
             pstm.setInt(4,number);
+            pstm.setInt(5, testid);
             pstm.executeUpdate();
             db.commitAndClose(con);
         } catch (SQLException throwables) {

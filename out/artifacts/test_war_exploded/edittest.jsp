@@ -24,6 +24,7 @@
         <d>cложность = <input name="hardnest" type="int" value="${test.hardnest}"> </d> <br>
         <d>предмет = <input name="subdgect" type="text" value="${test.subdgect}"> </d> <br>
         <input type="submit" name="next" value="далее">
+        <input type="submit" name="delete" value="удалить">
     </c:forEach>
 </form>
 </body>
