@@ -53,24 +53,18 @@ Y
 web/addtest.jsp,3/8/3832d34fbcaea7f3d40179f2951159f17b21a42a
 >
 web/addqus.jsp,9/2/92503942379e9e565374fa6072ddeadf7989efc3
-R
-"src/main/java/servlet/addtest.java,f/3/f37f4fb2c56aac718dfc15c236414a8e0ac02136
 O
 src/main/java/db/DAOanswer.java,2/5/25ab3fc6959bb33698098662d684f8f9fa632c9d
 Q
 !src/main/java/db/DAOquestion.java,7/d/7d27f781a6bab6486838650487a931bcc1554093
 M
 src/main/java/db/DAOtest.java,5/d/5d97b92fbe2e54521b707f18632c6262d779e2a0
-S
-#src/main/java/servlet/edittest.java,d/9/d9f7ec849c1c6d0b1716a97d4384fe732c148409
 R
 "src/main/java/db/EntityMapper.java,a/0/a0e0368e64cdbb3aa38c68c8e0025d3f8b436946
 C
 web/editqustion.jsp,d/b/db8d05fca825c1b33db2a5519aec084016e1a4c8
 P
  src/main/java/servlet/users.java,5/0/508c332de26479abaec7aec0044494bb0805e663
-P
- src/main/java/servlet/login.java,b/b/bbc2f3f5b35ccef7d12f95dda5ef4ccc6fb2881e
 =
 web/users.jsp,2/5/25a7f17e5a418e4240c842ad3a61151a12c7054f
 F
