@@ -11,6 +11,35 @@ public class results implements Serializable {
     private int id;
     private int userid;
 
+    private String nameuser;
+    private String surname;
+    private String patronymic;
+
+    public String getNameuser() {
+        return nameuser;
+    }
+
+    public void setNameuser(String nameuser) {
+        this.nameuser = nameuser;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+
     public int getUserid() {
         return userid;
     }

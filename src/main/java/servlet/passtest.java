@@ -46,7 +46,7 @@ public class passtest extends HttpServlet {
                 }
                 if (time == 0) {
                     interrupt();
-                    checktest(marc);
+                    checktest();
                     timeout = true;
                 }
             }
@@ -86,6 +86,7 @@ public class passtest extends HttpServlet {
             req.setAttribute("ans", ans);
             req.getRequestDispatcher("passtest.jsp").forward(req, resp);
         }
+        timer.start();
     }
 
 
@@ -113,16 +114,15 @@ public class passtest extends HttpServlet {
             flag = true;
         } else if (req.getParameter("finish") != null) {
             answers.put(numberofques, req.getParameter(String.valueOf(numberofques)));
-            checktest(marc);
-            timer.interrupt();
+
+
             PrintWriter pw = resp.getWriter();
             resp.setContentType("text/html");
             resp.setCharacterEncoding("UTF-8");
-            pw.println("<center>ваш результат " + (int) marc + " балов" +
+            pw.println("<center>ваш результат " +checktest() + " балов" +
                     "<br>" +
                     "<a href=\"home\"> вернуться домой <a></center>");
             pw.close();
-
 
         }
 
@@ -142,7 +142,9 @@ public class passtest extends HttpServlet {
     }
 
     //проверка теста
-    private void checktest(double marc) {
+    private int  checktest() {
+        timer.interrupt();
+        marc =0;
         if (!answers.isEmpty()) {
 
             for (int i = 0; i < answers.size(); i++) {
@@ -157,7 +159,7 @@ public class passtest extends HttpServlet {
         DAOtest daOtest = new DAOtest();
         daOresult.isertintoresults((int) marc, userid, daOtest.gettextbyid(idtest), idtest);
 
-
+        return (int) marc;
     }
 
     // проверка можна ли перейти к след прев вопросу

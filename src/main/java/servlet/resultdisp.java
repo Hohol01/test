@@ -23,9 +23,13 @@ public class resultdisp extends HttpServlet {
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
-        } else if(ses.getAttribute("role").equals("teacher"))
-            resp.sendRedirect("home");
-        else{
+        } else if(ses.getAttribute("role").equals("teacher")) {
+            int testid = Integer.parseInt(req.getParameter("idtest"));
+            List<results> res = daOresult.getresultsfortracher(testid);
+            req.setAttribute("res", res);
+
+           req.getRequestDispatcher("resultforteach.jsp").forward(req,resp);
+        } else{
 
             int userid = (int) req.getSession().getAttribute("userid");
             System.out.println("userid = " + userid);
