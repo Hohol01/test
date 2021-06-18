@@ -29,14 +29,21 @@ public class login extends HttpServlet {
 
 
         if (pass.equals(password)) {
-            HttpSession ses = req.getSession();
+            int userid = daOusers.getidbylogin(login);
+
+            if (daOusers.getblock(userid)) {
+                req.setAttribute("block", "block");
+                req.getRequestDispatcher("login.jsp").forward(req,resp);
+            } else {
+                HttpSession ses = req.getSession();
             ses.setAttribute("id", ses);
-            int userid= daOusers.getidbylogin(login);
-            ses.setAttribute("userid",userid);
+
+            ses.setAttribute("userid", userid);
             ses.setAttribute("role", daOusers.getrolebyid(userid));
             System.out.println(daOusers.getrolebyid(userid));
             resp.sendRedirect("home");
             System.out.println("pass");
+        }
         } else {
             resp.sendRedirect("login");
             System.out.println("error");

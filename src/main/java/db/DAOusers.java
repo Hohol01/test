@@ -27,7 +27,7 @@ public class DAOusers {
             pstm.setInt(1,id);
             rs = pstm.executeQuery();
             if (rs.next())
-                block = rs.getBoolean(Fields.users_block);
+                block = true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

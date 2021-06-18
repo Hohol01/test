@@ -20,7 +20,11 @@
                    <tr><td>Password:<input name="pass" type="password" ></td></tr>
 
                  </table>
-              <input type="submit" name="go">
+              <input type="submit" name="go"><br>
+              <%
+              if(request.getAttribute("block")!=null)
+                  out.print("вы заблокированы");
+              %>
             </form>
         </center>
     </body>

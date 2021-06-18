@@ -12,7 +12,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>TESTS</title>
 </head>
 <body>
 <center>
