@@ -37,6 +37,8 @@ public class adduser extends HttpServlet {
             String name = req.getParameter("name");
             String patronymic = req.getParameter("patronymic");
             String role = req.getParameter("role");
+            if (role.equals(""))
+                role = "student";
             String login = req.getParameter("login");
             String password = req.getParameter("password");
             DAOusers daOusers = new DAOusers();

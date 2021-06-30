@@ -17,6 +17,8 @@ public class addtest extends HttpServlet {
 
     int number_qustion = 1;
     int idtest = 0;
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         number_qustion = 1;
@@ -24,8 +26,9 @@ public class addtest extends HttpServlet {
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
-        } else if(!ses.getAttribute("role").equals("teacher"))
+        } else if (!ses.getAttribute("role").equals("teacher"))
             resp.sendRedirect("home");
+
         else
             req.getRequestDispatcher("addtest.jsp").forward(req, resp);
     }
@@ -33,7 +36,6 @@ public class addtest extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("addtest");
-
 
 
         DAOtest t = new DAOtest();
@@ -61,12 +63,12 @@ public class addtest extends HttpServlet {
             String qution = req.getParameter("question");
             System.out.println(idtest);
 
-            q.setQution(qution, idtest, number_qustion);
+            q.setQuestion(qution, idtest, number_qustion);
             number_qustion++;
 
-            int idqus = q.get_idbyname(qution, idtest);
-            while (idqus==0){
-                idqus = q.get_idbyname(qution, idtest);
+            int idqus = q.getIdByName(qution, idtest);
+            while (idqus == 0) {
+                idqus = q.getIdByName(qution, idtest);
             }
             for (int i = 1; i < 5; i++) {
 
@@ -75,7 +77,7 @@ public class addtest extends HttpServlet {
                 if (req.getParameter("correct" + i) != null)
                     cor = true;
                 if (!answer.equals(""))
-                    a.addanswer(idqus, answer, cor, i, idtest);
+                    a.addAnswer(idqus, answer, cor, i, idtest);
             }
             req.getRequestDispatcher("addqus.jsp").forward(req, resp);
         }

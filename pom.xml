@@ -66,6 +66,10 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>jakarta.servlet.Filter</groupId>
+            <artifactId></artifactId>
+        </dependency>
 
 
     </dependencies>

@@ -3,7 +3,7 @@ package entity;
 import java.io.Serializable;
 
 public class question implements Serializable {
-    private static final long serialVersionUID= -8924523087156859187L;
+    private static final long serialVersionUID = -8924523087156859187L;
 
     String text;
     int id;

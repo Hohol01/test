@@ -39,7 +39,6 @@ public class results implements Serializable {
         this.patronymic = patronymic;
     }
 
-
     public int getUserid() {
         return userid;
     }

@@ -4,8 +4,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.sql.*;
-
+import java.sql.Connection;
+import java.sql.SQLException;
 
 
 public class DBManager {
@@ -29,10 +29,10 @@ public class DBManager {
         Connection con = null;
         try {
             Context initContext = new InitialContext();
-            Context envContext  = (Context)initContext.lookup("java:comp/env");
+            Context envContext = (Context) initContext.lookup("java:comp/env");
 
             // ST4DB - the name of data source
-            DataSource ds = (DataSource)envContext.lookup("jdbc/test");
+            DataSource ds = (DataSource) envContext.lookup("jdbc/test");
             con = ds.getConnection();
         } catch (NamingException ex) {
             ex.printStackTrace();

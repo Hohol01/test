@@ -1,5 +1,6 @@
 package servlet;
 
+import db.DAOusers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,11 +12,17 @@ import java.io.IOException;
 
 @WebServlet("/home")
 public class homepage extends HttpServlet {
+
+    DAOusers daOusers = new DAOusers();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {
+            resp.sendRedirect("login");
+        } else if (daOusers.getblock((Integer) ses.getAttribute("userid"))) {
+            ses.setAttribute("block", "block");
             resp.sendRedirect("login");
         } else
             req.getRequestDispatcher("homepage.jsp").forward(req, resp);

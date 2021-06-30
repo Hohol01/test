@@ -22,7 +22,7 @@
                  </table>
               <input type="submit" name="go"><br>
               <%
-              if(request.getAttribute("block")!=null)
+              if(session.getAttribute("block")!=null)
                   out.print("вы заблокированы");
               %>
             </form>

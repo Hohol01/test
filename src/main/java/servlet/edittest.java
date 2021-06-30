@@ -26,11 +26,12 @@ public class edittest extends HttpServlet {
     int idtest;
     int number;
     int numberofquestion;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         number = 1;
         numberofquestion = 1;
-        if (daOquestion.checknext(numberofquestion + 1))
+        if (daOquestion.checkNext(numberofquestion + 1))
             req.setAttribute("next", "next");
         idtest = Integer.parseInt(req.getParameter("idtest"));
         System.out.println(req.getParameter("idtest"));
@@ -51,7 +52,7 @@ public class edittest extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.removeAttribute("next");
-        if (daOquestion.checknext(numberofquestion + 1))
+        if (daOquestion.checkNext(numberofquestion + 1))
             req.setAttribute("next", "next");
 
         if (req.getParameter("next") != null) {
@@ -60,25 +61,25 @@ public class edittest extends HttpServlet {
             int hardnest = Integer.parseInt(req.getParameter("hardnest"));
             int time = Integer.parseInt(req.getParameter("time"));
             daOtest.update(nane, subdgect, hardnest, time, idtest);
-            numberofquestion = daOquestion.getquantityoftest(idtest);
+            numberofquestion = daOquestion.getQuantityOfTest(idtest);
 
-            ArrayList<answer> ans = daOanswer.getanwerbyid(daOquestion.getidtestbyid(idtest));
+            ArrayList<answer> ans = daOanswer.getAnwerById(daOquestion.getIdTestById(idtest));
 
             req.setAttribute("ans", ans);
 
-            List<question> ques = daOquestion.getqustions(idtest, number);
+            List<question> ques = daOquestion.getQustions(idtest, number);
             req.setAttribute("ques", ques);
             req.getRequestDispatcher("editqustion.jsp").forward(req, resp);
 
         } else if (req.getParameter("edit") != null) {
             updatequs(req);
             number++;
-            ArrayList<answer> ans = daOanswer.getanwerbyid(daOquestion.getidbynumberandtestid(number, idtest));
+            ArrayList<answer> ans = daOanswer.getAnwerById(daOquestion.getIdByNumberAndTestId(number, idtest));
             req.setAttribute("ans", ans);
-            List<question> ques = daOquestion.getqustions(idtest, number);
+            List<question> ques = daOquestion.getQustions(idtest, number);
             req.setAttribute("ques", ques);
             req.getRequestDispatcher("editqustion.jsp").forward(req, resp);
-        } else if (req.getParameter("delete")!=null) {
+        } else if (req.getParameter("delete") != null) {
             daOtest.delete(idtest);
             daOquestion.delete(idtest);
             daOanswer.delete(idtest);
@@ -89,12 +90,12 @@ public class edittest extends HttpServlet {
 
     }
 
-    private void updatequs(HttpServletRequest req){
+    private void updatequs(HttpServletRequest req) {
         String question = req.getParameter("question");
         int idqus = Integer.parseInt(req.getParameter("id"));
-        daOquestion.updatequs(question,idqus);
+        daOquestion.updateQus(question, idqus);
 
-        for (int i = 1; i <  3; i++) {
+        for (int i = 1; i < 3; i++) {
             boolean corect = false;
 
             String answers = req.getParameter("ans" + i);
@@ -102,7 +103,7 @@ public class edittest extends HttpServlet {
                 corect = true;
 
             System.out.println(answers);
-            daOanswer.uppdate(answers, corect, i, idqus);
+            daOanswer.update(answers, corect, i, idqus);
         }
     }
 }

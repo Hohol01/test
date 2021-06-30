@@ -26,24 +26,24 @@ public class login extends HttpServlet {
         DAOusers daOusers = new DAOusers();
         String password = daOusers.get_pass_by_login(req.getParameter("login"));
         System.out.println(password);
-
+        HttpSession ses = req.getSession();
 
         if (pass.equals(password)) {
             int userid = daOusers.getidbylogin(login);
-
+            ses.removeAttribute("block");
             if (daOusers.getblock(userid)) {
-                req.setAttribute("block", "block");
-                req.getRequestDispatcher("login.jsp").forward(req,resp);
+                ses.setAttribute("block", "block");
+                resp.sendRedirect("login");
             } else {
-                HttpSession ses = req.getSession();
-            ses.setAttribute("id", ses);
 
-            ses.setAttribute("userid", userid);
-            ses.setAttribute("role", daOusers.getrolebyid(userid));
-            System.out.println(daOusers.getrolebyid(userid));
-            resp.sendRedirect("home");
-            System.out.println("pass");
-        }
+                ses.setAttribute("id", ses);
+
+                ses.setAttribute("userid", userid);
+                ses.setAttribute("role", daOusers.getrolebyid(userid));
+                System.out.println(daOusers.getrolebyid(userid));
+                resp.sendRedirect("home");
+                System.out.println("pass");
+            }
         } else {
             resp.sendRedirect("login");
             System.out.println("error");
@@ -52,7 +52,7 @@ public class login extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("login.jsp").forward(req,resp);
+        req.getRequestDispatcher("login.jsp").forward(req, resp);
 
 
     }

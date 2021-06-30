@@ -2,7 +2,7 @@ package entity;
 
 import java.io.Serializable;
 
-public class test  implements Serializable {
+public class test implements Serializable {
     private static final long serialVersionUID = 5475229682929692578L;
     private int id;
     private String name;
@@ -11,7 +11,6 @@ public class test  implements Serializable {
     private int time;
     private int iduser;
 
-
     public int getIduser() {
         return iduser;
     }
@@ -19,8 +18,6 @@ public class test  implements Serializable {
     public void setIduser(int iduser) {
         this.iduser = iduser;
     }
-
-
 
     public int getId() {
         return id;

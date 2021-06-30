@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class answer implements Serializable {
 
-    private static final long serialVersionUID= -2353316997940324134L;
+    private static final long serialVersionUID = -2353316997940324134L;
 
     int id;
     int induction;

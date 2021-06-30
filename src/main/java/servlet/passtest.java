@@ -1,9 +1,6 @@
 package servlet;
 
-import db.DAOanswer;
-import db.DAOquestion;
-import db.DAOresult;
-import db.DAOtest;
+import db.*;
 import entity.answer;
 import entity.question;
 import jakarta.servlet.ServletException;
@@ -15,7 +12,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @WebServlet("/passingtest")
 public class passtest extends HttpServlet {
@@ -28,6 +28,7 @@ public class passtest extends HttpServlet {
     int userid;
     boolean timeout = false;
 
+
     Map<Integer, String> answers;
     DAOquestion daOquestion = new DAOquestion();
     DAOanswer daOanswer = new DAOanswer();
@@ -38,6 +39,7 @@ public class passtest extends HttpServlet {
         public void run() {
             while (time > 0) {
                 time--;
+
                 try {
                     sleep(1000);
                     System.out.println(time);
@@ -45,7 +47,7 @@ public class passtest extends HttpServlet {
                     e.printStackTrace();
                 }
                 if (time == 0) {
-                    interrupt();
+
                     checktest();
                     timeout = true;
                 }
@@ -58,35 +60,35 @@ public class passtest extends HttpServlet {
         marc = 0;
         timer.interrupt();
         timeout = false;
-        userid = (Integer) req.getSession().getAttribute("userid");
         answers = new HashMap<>();
         HttpSession ses = req.getSession();
         idtest = Integer.parseInt(req.getParameter("idtest"));
         time = daOtest.gettimebyid(idtest) * 60;
-
         req.setAttribute("time", time);
         System.out.println(time);
         numberofques = 1;
-        quantityofquestion = daOquestion.getquantityoftest(idtest);
+        quantityofquestion = daOquestion.getQuantityOfTest(idtest);
         menegernextpreev(req);
-
-
         req.setAttribute("time", time);
-
+        DAOusers daOusers = new DAOusers();
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
         } else if (ses.getAttribute("role").equals("teacher")) {
             resp.sendRedirect("home");
+        } else if (daOusers.getblock((Integer) ses.getAttribute("userid"))) {
+            ses.setAttribute("block", "block");
+            resp.sendRedirect("login");
         } else {
 
 
-            List<question> ques = daOquestion.getqustions(idtest, 1);
-            ArrayList<answer> ans = daOanswer.getanwerbyid(daOquestion.getidbynumberandtestid(1, idtest));
+            List<question> ques = daOquestion.getQustions(idtest, 1);
+            ArrayList<answer> ans = daOanswer.getAnwerById(daOquestion.getIdByNumberAndTestId(1, idtest));
             req.setAttribute("ques", ques);
             req.setAttribute("ans", ans);
             req.getRequestDispatcher("passtest.jsp").forward(req, resp);
+            timer.start();
         }
-        timer.start();
+
     }
 
 
@@ -119,7 +121,7 @@ public class passtest extends HttpServlet {
             PrintWriter pw = resp.getWriter();
             resp.setContentType("text/html");
             resp.setCharacterEncoding("UTF-8");
-            pw.println("<center>ваш результат " +checktest() + " балов" +
+            pw.println("<center>ваш результат " + checktest() + " балов" +
                     "<br>" +
                     "<a href=\"home\"> вернуться домой <a></center>");
             pw.close();
@@ -129,8 +131,8 @@ public class passtest extends HttpServlet {
 
         if (flag && !timeout) {
             menegernextpreev(req);
-            List<question> ques = daOquestion.getqustions(idtest, numberofques);
-            ArrayList<answer> ans = daOanswer.getanwerbyid(daOquestion.getidbynumberandtestid(numberofques, idtest));
+            List<question> ques = daOquestion.getQustions(idtest, numberofques);
+            ArrayList<answer> ans = daOanswer.getAnwerById(daOquestion.getIdByNumberAndTestId(numberofques, idtest));
             req.setAttribute("ques", ques);
             req.setAttribute("ans", ans);
 
@@ -142,19 +144,19 @@ public class passtest extends HttpServlet {
     }
 
     //проверка теста
-    private int  checktest() {
-        timer.interrupt();
-        marc =0;
+    private int checktest() {
+        time = 0;
+        marc = 0;
         if (!answers.isEmpty()) {
 
             for (int i = 0; i < answers.size(); i++) {
                 if (answers.get(numberofques) != null)
-                    if (daOanswer.checkanswerbyid(Integer.parseInt(answers.get(i + 1)))) {
+                    if (daOanswer.checkAnswerById(Integer.parseInt(answers.get(i + 1)))) {
                         marc++;
                     }
             }
         }
-        marc = Math.ceil((double) 100 / daOquestion.getquantityoftest(idtest) * marc);
+        marc = Math.ceil((double) 100 / daOquestion.getQuantityOfTest(idtest) * marc);
         DAOresult daOresult = new DAOresult();
         DAOtest daOtest = new DAOtest();
         daOresult.isertintoresults((int) marc, userid, daOtest.gettextbyid(idtest), idtest);
@@ -166,10 +168,10 @@ public class passtest extends HttpServlet {
     private void menegernextpreev(HttpServletRequest req) {
         req.setAttribute("gotonext", null);
         req.setAttribute("gotopre", null);
-        if (!daOquestion.getqustions(idtest, numberofques + 1).isEmpty() && !timeout) {
+        if (!daOquestion.getQustions(idtest, numberofques + 1).isEmpty() && !timeout) {
             req.setAttribute("gotonext", "next");
         }
-        if (!daOquestion.getqustions(idtest, numberofques - 1).isEmpty() && !timeout) {
+        if (!daOquestion.getQustions(idtest, numberofques - 1).isEmpty() && !timeout) {
             req.setAttribute("gotopre", "prev");
         }
     }

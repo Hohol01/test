@@ -45,6 +45,8 @@ public class edituser extends HttpServlet {
         String name = req.getParameter("name");
         String patronymic = req.getParameter("patronymic");
         String role = req.getParameter("role");
+        if(role.equals(""))
+            role ="student";
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         if (req.getParameter("block")!=null)

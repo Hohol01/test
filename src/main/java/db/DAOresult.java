@@ -15,7 +15,7 @@ public class DAOresult {
     private static final String SQL__GET_ALL_BY_USERID = "SELECT * FROM results WHERE users_id = ?";
     private static final String SQL__GET_RESULTS_FOR_TEACHER = "SELECT * FROM results LEFT JOIN users ON results.users_id = users.id WHERE test_id = ?";
 
-    public List<results> getresultsfortracher(int idtest){
+    public List<results> getresultsfortracher(int idtest) {
         List<results> retlist = new ArrayList<>();
         Connection con = null;
         PreparedStatement prst = null;
