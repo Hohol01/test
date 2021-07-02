@@ -42,7 +42,7 @@ public class adduser extends HttpServlet {
             String login = req.getParameter("login");
             String password = req.getParameter("password");
             DAOusers daOusers = new DAOusers();
-            daOusers.adduser(surname, name, patronymic, role, login, password);
+            daOusers.addUser(surname, name, patronymic, role, login, password);
             resp.sendRedirect("home");
         }
     }

@@ -5,6 +5,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
@@ -58,5 +59,16 @@ public class DBManager {
         }
     }
 
-
+    public Connection getConnectionWithDriverManager() throws SQLException {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Connection connection = DriverManager
+                .getConnection(FULLURL);
+        connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+        connection.setAutoCommit(false);
+        return connection;
+    }
 }

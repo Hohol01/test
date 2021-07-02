@@ -21,7 +21,7 @@ public class homepage extends HttpServlet {
         HttpSession ses = req.getSession();
         if (ses != ses.getAttribute("id")) {
             resp.sendRedirect("login");
-        } else if (daOusers.getblock((Integer) ses.getAttribute("userid"))) {
+        } else if (daOusers.getBlock((Integer) ses.getAttribute("userid"))) {
             ses.setAttribute("block", "block");
             resp.sendRedirect("login");
         } else

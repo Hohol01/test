@@ -35,7 +35,7 @@ public class edittest extends HttpServlet {
             req.setAttribute("next", "next");
         idtest = Integer.parseInt(req.getParameter("idtest"));
         System.out.println(req.getParameter("idtest"));
-        ArrayList<test> testArrayList = daOtest.gettesttsbyid(Integer.parseInt(req.getParameter("idtest")));
+        ArrayList<test> testArrayList = daOtest.getTestsById(Integer.parseInt(req.getParameter("idtest")));
         req.setAttribute("test", testArrayList);
         req.setAttribute("displaying", "test");
 

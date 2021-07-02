@@ -16,11 +16,16 @@
             <h1>login</h1>
           <form  action="login" method="post" >
                  <table>
-                    <tr><td>User:<input name="login" type="text" ></td></tr>
-                   <tr><td>Password:<input name="pass" type="password" ></td></tr>
+                    <tr><td>User:<input name="login" type="text" required></td></tr>
+                   <tr><td>Password:<input name="pass" type="password" required></td></tr>
 
                  </table>
               <input type="submit" name="go"><br>
+              <%
+                  if(request.getAttribute("error")!=null)
+                      out.print("неверный логин или пароль");
+              %>
+
               <%
               if(session.getAttribute("block")!=null)
                   out.print("вы заблокированы");

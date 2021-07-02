@@ -26,15 +26,15 @@ public class login extends HttpServlet {
 
         System.out.println(login + pass);
         DAOusers daOusers = new DAOusers();
-        String password = daOusers.get_pass_by_login(req.getParameter("login"));
-        log.debug("login=" + login + " pass=" + password);
+        String password = daOusers.getPassByLogin(req.getParameter("login"));
+        log.debug("login=" + login + " pass=" + pass);
         System.out.println(pass);
         HttpSession ses = req.getSession();
 
         if (pass.equals(password)) {
-            int userid = daOusers.getidbylogin(login);
+            int userid = daOusers.getIdByLogin(login);
             ses.removeAttribute("block");
-            if (daOusers.getblock(userid)) {
+            if (daOusers.getBlock(userid)) {
                 ses.setAttribute("block", "block");
                 resp.sendRedirect("login");
             } else {
@@ -42,15 +42,17 @@ public class login extends HttpServlet {
                 ses.setAttribute("id", ses);
 
                 ses.setAttribute("userid", userid);
-                ses.setAttribute("role", daOusers.getrolebyid(userid));
-                System.out.println(daOusers.getrolebyid(userid));
+                ses.setAttribute("role", daOusers.getRoleById(userid));
+                System.out.println(daOusers.getRoleById(userid));
                 resp.sendRedirect("home");
                 System.out.println("pass");
             }
         } else {
-            resp.sendRedirect("login");
+            req.setAttribute("error","error");
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
             System.out.println("error");
         }
+
     }
 
     @Override

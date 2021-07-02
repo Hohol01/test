@@ -21,10 +21,10 @@ public class edituser extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         iduser = Integer.parseInt(req.getParameter("userid"));
         System.out.println(iduser);
-        ArrayList<user> user = daOusers.getuserbyid(iduser);
+        ArrayList<user> user = daOusers.getUserById(iduser);
         req.setAttribute("user", user);
         req.removeAttribute("block");
-        if (daOusers.getblock(iduser))
+        if (daOusers.getBlock(iduser))
             req.setAttribute("block","block");
 
 
@@ -52,7 +52,7 @@ public class edituser extends HttpServlet {
         if (req.getParameter("block")!=null)
             block=true;
         System.out.println(block);
-        daOusers.edituser(surname, name, patronymic, role, login, password, block, iduser);
+        daOusers.editUser(surname, name, patronymic, role, login, password, block, iduser);
         if (req.getParameter("add") != null)
             resp.sendRedirect("users");
     }

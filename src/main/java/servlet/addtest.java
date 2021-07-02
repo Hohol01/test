@@ -49,8 +49,8 @@ public class addtest extends HttpServlet {
             String subdgect = req.getParameter("subdgect");
             int time = Integer.parseInt(req.getParameter("time"));
             int hardnest = Integer.parseInt(req.getParameter("hardnest"));
-            t.settest(name, subdgect, hardnest, time);
-            idtest = t.getidbyname(name);
+            t.setTest(name, subdgect, hardnest, time);
+            idtest = t.getIdByName(name);
             req.getSession().setAttribute("idtest", idtest);
             System.out.println(idtest);
             req.getRequestDispatcher("addqus.jsp").forward(req, resp);

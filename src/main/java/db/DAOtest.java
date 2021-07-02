@@ -29,6 +29,7 @@ public class DAOtest {
             pstm.executeUpdate();
             DBManager.commitAndClose(con);
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
 
@@ -49,11 +50,12 @@ public class DAOtest {
             con.commit();
             con.close();
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
     }
 
-    public int gettimebyid(int id) {
+    public int getTimeById(int id) {
         int time = 0;
         Connection con = null;
         PreparedStatement pstm = null;
@@ -67,13 +69,14 @@ public class DAOtest {
                 time = rs.getInt(Fields.test_time);
             }
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
 
         return time;
     }
 
-    public ArrayList<test> sortbyvalue(String search) {
+    public ArrayList<test> sortByValue(String search) {
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -88,13 +91,14 @@ public class DAOtest {
             con.close();
 
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
 
         return retlist;
     }
 
-    public ArrayList<test> getlistoftestswithsubdgect(String name) {
+    public ArrayList<test> getListOfTestsWithSubdgect(String name) {
         ArrayList<test> retlist = new ArrayList<test>();
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -113,6 +117,7 @@ public class DAOtest {
             con.close();
 
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
 
@@ -120,7 +125,7 @@ public class DAOtest {
     }
 
 
-    public ArrayList<test> getlistbyname(String name) {
+    public ArrayList<test> getListByName(String name) {
         ArrayList<test> retlist = new ArrayList<test>();
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -136,17 +141,16 @@ public class DAOtest {
             while (rs.next()) {
                 retlist.add(mapper.mapRow(rs));
             }
-
             con.close();
-
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
 
         return retlist;
     }
 
-    public String gettextbyid(int id) {
+    public String getTextById(int id) {
         String text = null;
         Connection con = null;
         PreparedStatement pstm = null;
@@ -160,6 +164,7 @@ public class DAOtest {
             if (rs.next())
                 text = rs.getString(Fields.test_name);
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
 
@@ -167,7 +172,7 @@ public class DAOtest {
         return text;
     }
 
-    public ArrayList<test> gettesttsbyid(int id) {
+    public ArrayList<test> getTestsById(int id) {
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -182,12 +187,13 @@ public class DAOtest {
                 retlist.add(mapper.mapRow(rs));
             }
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
         return retlist;
     }
 
-    public void settest(String name, String subdgect, int hardnest, int time) {
+    public void setTest(String name, String subdgect, int hardnest, int time) {
         Connection con = null;
         DBManager db = new DBManager();
         PreparedStatement pstm = null;
@@ -204,13 +210,14 @@ public class DAOtest {
             db.commitAndClose(con);
 
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
 
     }
 
 
-    public int getidbyname(String name) {
+    public int getIdByName(String name) {
         int id = 0;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -224,12 +231,13 @@ public class DAOtest {
                 id = rs.getInt(1);
             con.close();
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
         return id;
     }
 
-    public ArrayList<test> getlistoftests() {
+    public ArrayList<test> getListOfTests() {
         ArrayList<test> retlist = new ArrayList<test>();
         Statement stmt = null;
         ResultSet rs = null;
@@ -248,7 +256,10 @@ public class DAOtest {
             con.close();
 
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
+        } finally {
+
         }
 
         return retlist;

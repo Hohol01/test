@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/users")
 public class users extends HttpServlet {
@@ -25,7 +24,7 @@ public class users extends HttpServlet {
             while (true) {
                 if (req.getParameter(String.valueOf(count)) != null) {
                     DAOusers daOusers = new DAOusers();
-                    daOusers.deleteuser(count);
+                    daOusers.deleteUser(count);
                     System.out.println(count);
                     resp.sendRedirect("users");
                     break;

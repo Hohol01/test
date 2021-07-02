@@ -15,7 +15,7 @@ public class DAOresult {
     private static final String SQL__GET_ALL_BY_USERID = "SELECT * FROM results WHERE users_id = ?";
     private static final String SQL__GET_RESULTS_FOR_TEACHER = "SELECT * FROM results LEFT JOIN users ON results.users_id = users.id WHERE test_id = ?";
 
-    public List<results> getresultsfortracher(int idtest) {
+    public List<results> getResultsForTeacher(int idtest) {
         List<results> retlist = new ArrayList<>();
         Connection con = null;
         PreparedStatement prst = null;
@@ -43,7 +43,7 @@ public class DAOresult {
         return retlist;
     }
 
-    public void isertintoresults(int mark, int userid, String testname, int testid) {
+    public void isertIntoResults(int mark, int userid, String testname, int testid) {
         Connection con = null;
         PreparedStatement prst = null;
         try {
@@ -61,8 +61,8 @@ public class DAOresult {
         }
     }
 
-    public List<results> getresultsbyuserid(int userid) {
-        List<results> retlist = new ArrayList<>();
+    public List<results> getResultsByUserid(int userid) {
+        List<results> ret = new ArrayList<>();
         Connection con = null;
         PreparedStatement prst = null;
         ResultSet rs = null;
@@ -78,13 +78,13 @@ public class DAOresult {
                 results.setUserid(rs.getInt(Fields.results_userid));
                 results.setName(rs.getString(Fields.results_testname));
                 results.setMark(rs.getInt(Fields.results_mark));
-                retlist.add(results);
+                ret.add(results);
             }
             con.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-        return retlist;
+        return ret;
     }
 }

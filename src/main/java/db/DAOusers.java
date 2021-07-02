@@ -15,7 +15,7 @@ public class DAOusers {
     private static final String SQL__UPDATE_USER = "UPDATE users set login = ?, password = ?, role = ?, name =?, surname = ?, patronymic = ?, block = ? WHERE id = ?";
     private static final String SQL__GET_USER_BY_ID = "SELECT * FROM users WHERE id = ?";
 
-    public boolean getblock(int id) {
+    public boolean getBlock(int id) {
         boolean block = false;
         Connection con = null;
         ResultSet rs = null;
@@ -27,13 +27,15 @@ public class DAOusers {
             rs = pstm.executeQuery();
             if (rs.next())
                 block = rs.getBoolean(Fields.users_block);
+            con.close();
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
         return block;
     }
 
-    public ArrayList<user> getuserbyid(int id) {
+    public ArrayList<user> getUserById(int id) {
         ArrayList<user> retlist = new ArrayList<>();
         Connection con = null;
         ResultSet rs = null;
@@ -47,13 +49,15 @@ public class DAOusers {
             if (rs.next()) {
                 retlist.add(userMapper.mapRow(rs));
             }
+            con.close();
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
         return retlist;
     }
 
-    public void edituser(String surname, String name, String patronymic,
+    public void editUser(String surname, String name, String patronymic,
                          String role, String login, String password, boolean block, int id) {
         PreparedStatement pstmt = null;
         Connection con = null;
@@ -78,7 +82,7 @@ public class DAOusers {
 
     }
 
-    public void deleteuser(int id) {
+    public void deleteUser(int id) {
         PreparedStatement pstmt = null;
         Connection con = null;
         try {
@@ -86,14 +90,14 @@ public class DAOusers {
             pstmt = con.prepareStatement(SQL__DELETE_USER);
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
-            con.commit();
-            con.close();
+            DBManager.commitAndClose(con);
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
     }
 
-    public void adduser(String surname, String name, String patronymic,
+    public void addUser(String surname, String name, String patronymic,
                         String role, String login, String password) {
         PreparedStatement pstmt = null;
         Connection con = null;
@@ -111,16 +115,18 @@ public class DAOusers {
             db.commitAndClose(con);
 
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
     }
 
-    public String getrolebyid(int id) {
+    public String getRoleById(int id) {
         String role = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+        Connection con = null;
         try {
-            Connection con = DBManager.getInstance().getConnection();
+            con = DBManager.getInstance().getConnection();
             pstmt = con.prepareStatement(SQL__GET_ROLE_BY_ID);
             pstmt.setInt(1, id);
             rs = pstmt.executeQuery();
@@ -128,12 +134,13 @@ public class DAOusers {
                 role = rs.getString(Fields.users_role);
             con.close();
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
         return role;
     }
 
-    public String get_pass_by_login(String login) {
+    public String getPassByLogin(String login) {
         DBManager DB = new DBManager();
         PreparedStatement pstmt = null;
         Connection con = null;
@@ -149,6 +156,7 @@ public class DAOusers {
                 res = rs.getString(1);
             con.close();
         } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(con);
             ex.printStackTrace();
         }
         return res;
@@ -163,7 +171,6 @@ public class DAOusers {
         userMapper userMapper = new userMapper();
         try {
             con = DBManager.getInstance().getConnection();
-
             stmt = con.createStatement();
             rs = stmt.executeQuery(SQL__ALL_PASS_BY_LIDIN);
             while (rs.next()) {
@@ -181,7 +188,7 @@ public class DAOusers {
     }
 
 
-    public int getidbylogin(String login) {
+    public int getIdByLogin(String login) {
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -195,6 +202,7 @@ public class DAOusers {
                 id = rs.getInt(Fields.users_id);
             con.close();
         } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
         return id;

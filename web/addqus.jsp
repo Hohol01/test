@@ -6,11 +6,11 @@
 </head>
 <body>
 <form method="post" action="addtest">
-    <a>введите вопрос</a><input type="text" name="question" ><br>
-    <a>введите ответ</a><input type="text" name="ans1" value=""> <input type="checkbox" name="correct1"><br>
-    <a>введите ответ</a><input type="text" name="ans2" value=""> <input type="checkbox" name="correct2"><br>
-    <a>введите ответ</a><input type="text" name="ans3" value=""> <input type="checkbox" name="correct3"><br>
-    <a>введите ответ</a><input type="text" name="ans4" value=""> <input type="checkbox" name="correct4"><br>
+    <a>введите вопрос</a><input type="text" name="question" required><br>
+    <a>введите ответ</a><input type="text" name="ans1" value=""> <input type="checkbox" name="correct1" required><br>
+    <a>введите ответ</a><input type="text" name="ans2" value=""> <input type="checkbox" name="correct2" required><br>
+    <a>введите ответ</a><input type="text" name="ans3" value=""> <input type="checkbox" name="correct3" required><br>
+    <a>введите ответ</a><input type="text" name="ans4" value=""> <input type="checkbox" name="correct4" required><br>
     <%
         int count = 2;
         if (request.getParameter("addanswer")!=null){

@@ -63,7 +63,7 @@ public class passtest extends HttpServlet {
         answers = new HashMap<>();
         HttpSession ses = req.getSession();
         idtest = Integer.parseInt(req.getParameter("idtest"));
-        time = daOtest.gettimebyid(idtest) * 60;
+        time = daOtest.getTimeById(idtest) * 60;
         req.setAttribute("time", time);
         System.out.println(time);
         numberofques = 1;
@@ -75,7 +75,7 @@ public class passtest extends HttpServlet {
             resp.sendRedirect("login");
         } else if (ses.getAttribute("role").equals("teacher")) {
             resp.sendRedirect("home");
-        } else if (daOusers.getblock((Integer) ses.getAttribute("userid"))) {
+        } else if (daOusers.getBlock((Integer) ses.getAttribute("userid"))) {
             ses.setAttribute("block", "block");
             resp.sendRedirect("login");
         } else {
@@ -159,7 +159,7 @@ public class passtest extends HttpServlet {
         marc = Math.ceil((double) 100 / daOquestion.getQuantityOfTest(idtest) * marc);
         DAOresult daOresult = new DAOresult();
         DAOtest daOtest = new DAOtest();
-        daOresult.isertintoresults((int) marc, userid, daOtest.gettextbyid(idtest), idtest);
+        daOresult.isertIntoResults((int) marc, userid, daOtest.getTextById(idtest), idtest);
 
         return (int) marc;
     }

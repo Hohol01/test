@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/results")
@@ -27,18 +26,18 @@ public class resultdisp extends HttpServlet {
             resp.sendRedirect("login");
         } else if(ses.getAttribute("role").equals("teacher")) {
             int testid = Integer.parseInt(req.getParameter("idtest"));
-            List<results> res = daOresult.getresultsfortracher(testid);
+            List<results> res = daOresult.getResultsForTeacher(testid);
             req.setAttribute("res", res);
 
            req.getRequestDispatcher("resultforteach.jsp").forward(req,resp);
-        } else if (daOusers.getblock((Integer) ses.getAttribute("userid"))) {
+        } else if (daOusers.getBlock((Integer) ses.getAttribute("userid"))) {
             ses.setAttribute("block", "block");
             resp.sendRedirect("login");
         } else{
 
             int userid = (int) req.getSession().getAttribute("userid");
             System.out.println("userid = " + userid);
-            List<results> res = daOresult.getresultsbyuserid(userid);
+            List<results> res = daOresult.getResultsByUserid(userid);
             System.out.println(res);
             req.setAttribute("res", res);
             req.getRequestDispatcher("results.jsp").forward(req,resp);
