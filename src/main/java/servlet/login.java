@@ -7,11 +7,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 
 @WebServlet("/login")
 public class login extends HttpServlet {
+    private static final Logger log = Logger.getLogger(login.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,7 +27,8 @@ public class login extends HttpServlet {
         System.out.println(login + pass);
         DAOusers daOusers = new DAOusers();
         String password = daOusers.get_pass_by_login(req.getParameter("login"));
-        System.out.println(password);
+        log.debug("login=" + login + " pass=" + password);
+        System.out.println(pass);
         HttpSession ses = req.getSession();
 
         if (pass.equals(password)) {

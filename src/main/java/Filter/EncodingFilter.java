@@ -1,38 +1,28 @@
 package Filter;
 
-import java.io.IOException;
+import jakarta.servlet.*;
+import org.apache.log4j.Logger;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-
-import org.apache.log4j.Logger;
+import java.io.IOException;
 
 
 @WebFilter
-public class EncodingFilter implements javax.servlet.Filter {
+public class EncodingFilter implements Filter {
 
     private static final Logger log = Logger.getLogger(EncodingFilter.class);
 
     private String encoding;
 
-    public void destroy() {
-        log.debug("Filter destruction starts");
-        // do nothing
-        log.debug("Filter destruction finished");
-    }
+    @Override
 
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
 
         log.debug("Filter starts");
 
-        HttpServletRequest httpRequest = (HttpServletRequest)request;
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
         log.trace("Request uri --> " + httpRequest.getRequestURI());
 
         String requestEncoding = request.getCharacterEncoding();
@@ -52,4 +42,9 @@ public class EncodingFilter implements javax.servlet.Filter {
         log.debug("Filter initialization finished");
     }
 
+    public void destroy() {
+        log.debug("Filter destruction starts");
+        // do nothing
+        log.debug("Filter destruction finished");
+    }
 }
