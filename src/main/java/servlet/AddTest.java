@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/addtest")
-public class addtest extends HttpServlet {
+public class AddTest extends HttpServlet {
 
     int number_qustion = 1;
     int idtest = 0;
@@ -35,7 +35,7 @@ public class addtest extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("addtest");
+        System.out.println("AddTest");
 
 
         DAOtest t = new DAOtest();
@@ -43,7 +43,7 @@ public class addtest extends HttpServlet {
         DAOquestion q = new DAOquestion();
         DAOanswer a = new DAOanswer();
 
-        // adding test
+        // adding Test
         if (req.getParameter("addtest") != null) {
             String name = req.getParameter("name");
             String subdgect = req.getParameter("subdgect");

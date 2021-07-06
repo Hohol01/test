@@ -1,6 +1,6 @@
 package db;
 
-import entity.user;
+import entity.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,8 +35,8 @@ public class DAOusers {
         return block;
     }
 
-    public ArrayList<user> getUserById(int id) {
-        ArrayList<user> retlist = new ArrayList<>();
+    public ArrayList<User> getUserById(int id) {
+        ArrayList<User> retlist = new ArrayList<>();
         Connection con = null;
         ResultSet rs = null;
         PreparedStatement pstm = null;
@@ -163,8 +163,8 @@ public class DAOusers {
     }
 
 
-    public ArrayList<user> usersList() {
-        ArrayList<user> List = new ArrayList<>();
+    public ArrayList<User> usersList() {
+        ArrayList<User> List = new ArrayList<>();
         Statement stmt = null;
         ResultSet rs = null;
         Connection con = null;
@@ -209,11 +209,11 @@ public class DAOusers {
 
     }
 
-    private static class userMapper implements EntityMapper<user> {
+    private static class userMapper implements EntityMapper<User> {
 
         @Override
-        public user mapRow(ResultSet rs) {
-            user user = new user();
+        public User mapRow(ResultSet rs) {
+            User user = new User();
             try {
                 user.setId(rs.getInt(Fields.users_id));
                 user.setName(rs.getString(Fields.user_name));

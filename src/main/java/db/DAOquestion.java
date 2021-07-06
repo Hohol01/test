@@ -1,6 +1,6 @@
 package db;
 
-import entity.question;
+import entity.Question;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ public class DAOquestion {
     private static final String SQL__GET_ALL_BY_TESTID = "SELECT * FROM question WHERE idtest = ?";
     private static final String SQL__SELECT_ALL_BY_IDTEST_AND_NUMBER = "SELECT * FROM question WHERE (idtest =? and number=?)";
     private static final String SQL__GET_IDTEST_BY_ID = "SELECT idtest FROM question where id = ?";
-    private static final String SQL__GET_ID_BY_TEXT_AND_TESTID = "SELECT ID FROM question WHERE ( text = ? AND idtest = ?)";
+    private static final String SQL__GET_ID_BY_TEXT_AND_TESTID = "SELECT ID FROM Question WHERE ( text = ? AND idtest = ?)";
     private static final String SQL_UPDATE = "UPDATE  question SET text = ? WHERE id = ?";
     private static final String SQL__SET_QUTION_BY_NUMBER = "SELECT * FROM question WHERE number = ?";
     private static final String SQL__DELETE_DY_ID = "DELETE FROM question WHERE idtest = ?";
@@ -171,8 +171,8 @@ public class DAOquestion {
     }
 
 
-    public List<question> getQustions(int idtest, int number) {
-        List<question> retlist = new ArrayList<>();
+    public List<Question> getQustions(int idtest, int number) {
+        List<Question> retlist = new ArrayList<>();
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -183,7 +183,7 @@ public class DAOquestion {
             pstm.setInt(2, number);
             rs = pstm.executeQuery();
             while (rs.next()) {
-                question question = new question();
+                Question question = new Question();
                 question.setId(rs.getInt(Fields.question_id));
                 question.setNumber(rs.getInt(Fields.question_number));
                 question.setText(rs.getString(Fields.question_text));

@@ -5,6 +5,11 @@
 
 </head>
 <body>
+<span style="float: right">
+    <a href="?lang=en">en</a>
+    |
+    <a href="?lang=de">ru</a>
+</span>
 <form method="post" action="addtest">
     <a>введите вопрос</a><input type="text" name="question" required><br>
     <a>введите ответ</a><input type="text" name="ans1" value=""> <input type="checkbox" name="correct1" required><br>

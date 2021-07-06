@@ -1,6 +1,6 @@
 package db;
 
-import entity.results;
+import entity.Results;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,8 +15,8 @@ public class DAOresult {
     private static final String SQL__GET_ALL_BY_USERID = "SELECT * FROM results WHERE users_id = ?";
     private static final String SQL__GET_RESULTS_FOR_TEACHER = "SELECT * FROM results LEFT JOIN users ON results.users_id = users.id WHERE test_id = ?";
 
-    public List<results> getResultsForTeacher(int idtest) {
-        List<results> retlist = new ArrayList<>();
+    public List<Results> getResultsForTeacher(int idtest) {
+        List<Results> retlist = new ArrayList<>();
         Connection con = null;
         PreparedStatement prst = null;
         ResultSet rs = null;
@@ -27,7 +27,7 @@ public class DAOresult {
             prst.setInt(1, idtest);
             rs = prst.executeQuery();
             while (rs.next()) {
-                results results = new results();
+                Results results = new Results();
                 results.setId(idtest);
                 results.setMark(rs.getInt(Fields.results_mark));
                 results.setNameuser(rs.getString(Fields.user_name));
@@ -61,8 +61,8 @@ public class DAOresult {
         }
     }
 
-    public List<results> getResultsByUserid(int userid) {
-        List<results> ret = new ArrayList<>();
+    public List<Results> getResultsByUserid(int userid) {
+        List<Results> ret = new ArrayList<>();
         Connection con = null;
         PreparedStatement prst = null;
         ResultSet rs = null;
@@ -73,7 +73,7 @@ public class DAOresult {
             prst.setInt(1, userid);
             rs = prst.executeQuery();
             while (rs.next()) {
-                results results = new results();
+                Results results = new Results();
                 results.setId(userid);
                 results.setUserid(rs.getInt(Fields.results_userid));
                 results.setName(rs.getString(Fields.results_testname));

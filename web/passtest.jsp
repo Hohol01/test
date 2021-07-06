@@ -1,4 +1,4 @@
-<%@ page import="entity.question" %><%--
+<%@ page import="entity.Question" %><%--
   Created by IntelliJ IDEA.
   User: artemmaniakin
   Date: 07.06.2021

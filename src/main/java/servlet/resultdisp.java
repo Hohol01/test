@@ -2,7 +2,7 @@ package servlet;
 
 import db.DAOresult;
 import db.DAOusers;
-import entity.results;
+import entity.Results;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -26,7 +26,7 @@ public class resultdisp extends HttpServlet {
             resp.sendRedirect("login");
         } else if(ses.getAttribute("role").equals("teacher")) {
             int testid = Integer.parseInt(req.getParameter("idtest"));
-            List<results> res = daOresult.getResultsForTeacher(testid);
+            List<Results> res = daOresult.getResultsForTeacher(testid);
             req.setAttribute("res", res);
 
            req.getRequestDispatcher("resultforteach.jsp").forward(req,resp);
@@ -37,7 +37,7 @@ public class resultdisp extends HttpServlet {
 
             int userid = (int) req.getSession().getAttribute("userid");
             System.out.println("userid = " + userid);
-            List<results> res = daOresult.getResultsByUserid(userid);
+            List<Results> res = daOresult.getResultsByUserid(userid);
             System.out.println(res);
             req.setAttribute("res", res);
             req.getRequestDispatcher("results.jsp").forward(req,resp);

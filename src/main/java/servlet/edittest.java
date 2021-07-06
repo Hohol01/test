@@ -3,9 +3,9 @@ package servlet;
 import db.DAOanswer;
 import db.DAOquestion;
 import db.DAOtest;
-import entity.answer;
-import entity.question;
-import entity.test;
+import entity.Answer;
+import entity.Question;
+import entity.Test;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -35,9 +35,9 @@ public class edittest extends HttpServlet {
             req.setAttribute("next", "next");
         idtest = Integer.parseInt(req.getParameter("idtest"));
         System.out.println(req.getParameter("idtest"));
-        ArrayList<test> testArrayList = daOtest.getTestsById(Integer.parseInt(req.getParameter("idtest")));
+        ArrayList<Test> testArrayList = daOtest.getTestsById(Integer.parseInt(req.getParameter("idtest")));
         req.setAttribute("test", testArrayList);
-        req.setAttribute("displaying", "test");
+        req.setAttribute("displaying", "Test");
 
 
         HttpSession ses = req.getSession();
@@ -63,20 +63,20 @@ public class edittest extends HttpServlet {
             daOtest.update(nane, subdgect, hardnest, time, idtest);
             numberofquestion = daOquestion.getQuantityOfTest(idtest);
 
-            ArrayList<answer> ans = daOanswer.getAnwerById(daOquestion.getIdTestById(idtest));
+            ArrayList<Answer> ans = daOanswer.getAnwerById(daOquestion.getIdTestById(idtest));
 
             req.setAttribute("ans", ans);
 
-            List<question> ques = daOquestion.getQustions(idtest, number);
+            List<Question> ques = daOquestion.getQustions(idtest, number);
             req.setAttribute("ques", ques);
             req.getRequestDispatcher("editqustion.jsp").forward(req, resp);
 
         } else if (req.getParameter("edit") != null) {
             updatequs(req);
             number++;
-            ArrayList<answer> ans = daOanswer.getAnwerById(daOquestion.getIdByNumberAndTestId(number, idtest));
+            ArrayList<Answer> ans = daOanswer.getAnwerById(daOquestion.getIdByNumberAndTestId(number, idtest));
             req.setAttribute("ans", ans);
-            List<question> ques = daOquestion.getQustions(idtest, number);
+            List<Question> ques = daOquestion.getQustions(idtest, number);
             req.setAttribute("ques", ques);
             req.getRequestDispatcher("editqustion.jsp").forward(req, resp);
         } else if (req.getParameter("delete") != null) {

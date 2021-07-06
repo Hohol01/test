@@ -2,7 +2,7 @@ package entity;
 
 import java.io.Serializable;
 
-public class answer implements Serializable {
+public class Answer implements Serializable {
 
     private static final long serialVersionUID = -2353316997940324134L;
 

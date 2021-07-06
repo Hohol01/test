@@ -34,7 +34,7 @@ public class homepage extends HttpServlet {
         //обработка кнопок
         if (req.getParameter("test") != null) {
             resp.sendRedirect("test");
-            System.out.println("test");
+            System.out.println("Test");
         } else if (req.getParameter("add") != null) {
             System.out.println("add");
             resp.sendRedirect("addtest");

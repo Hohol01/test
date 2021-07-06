@@ -1,7 +1,7 @@
 package servlet;
 
 import db.DAOusers;
-import entity.user;
+import entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +21,7 @@ public class edituser extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         iduser = Integer.parseInt(req.getParameter("userid"));
         System.out.println(iduser);
-        ArrayList<user> user = daOusers.getUserById(iduser);
+        ArrayList<User> user = daOusers.getUserById(iduser);
         req.setAttribute("user", user);
         req.removeAttribute("block");
         if (daOusers.getBlock(iduser))

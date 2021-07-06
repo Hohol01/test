@@ -37,9 +37,8 @@
                 <tr>
                     <td>выберете роль пользователя</td>
                     <td><select name="role">
-                        <option></option>
-                        <option value="teacher"> админ</option>
                         <option value="student">студент</option>
+                        <option value="teacher"> админ</option>
                     </select></td>
                 </tr>
 

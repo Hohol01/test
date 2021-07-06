@@ -1,6 +1,6 @@
 package db;
 
-import entity.answer;
+import entity.Answer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -87,8 +87,8 @@ public class DAOanswer {
         }
     }
 
-    public ArrayList<answer> getAnwerById(int id_qution) {
-        ArrayList<answer> retlist = new ArrayList<answer>();
+    public ArrayList<Answer> getAnwerById(int id_qution) {
+        ArrayList<Answer> retlist = new ArrayList<Answer>();
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -99,7 +99,7 @@ public class DAOanswer {
             pstm.setInt(1, id_qution);
             rs = pstm.executeQuery();
             while (rs.next()) {
-                answer answer = new answer();
+                Answer answer = new Answer();
                 answer.setId(id_qution);
                 answer.setAnswer(rs.getString(Fields.answer_answer));
                 answer.setId(rs.getInt(Fields.answer_id));

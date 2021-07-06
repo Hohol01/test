@@ -5,12 +5,12 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='';
 
 -- -----------------------------------------------------
--- Schema test
+-- Schema Test
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `test` ;
 
 -- -----------------------------------------------------
--- Schema test
+-- Schema Test
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `test` DEFAULT CHARACTER SET utf8 ;
 SHOW WARNINGS;
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `test`
+-- Table `Test`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `test` ;
 
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `test` (
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `question`
+-- Table `Question`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `question` ;
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `answers` (
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `results`
+-- Table `Results`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `results` ;
 
@@ -113,7 +113,7 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `test`
+-- Data for table `Test`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `test`;
@@ -123,7 +123,7 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `question`
+-- Data for table `Question`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `test`;
@@ -147,7 +147,7 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `results`
+-- Data for table `Results`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `test`;

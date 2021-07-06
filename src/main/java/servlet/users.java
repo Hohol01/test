@@ -1,7 +1,7 @@
 package servlet;
 
 import db.DAOusers;
-import entity.user;
+import entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -44,7 +44,7 @@ public class users extends HttpServlet {
             resp.sendRedirect("login");
         } else if(ses.getAttribute("role").equals("teacher")){
             DAOusers daOusers = new DAOusers();
-            ArrayList<user> userlist = daOusers.usersList();
+            ArrayList<User> userlist = daOusers.usersList();
             req.setAttribute("user", userlist);
             req.getRequestDispatcher("users.jsp").forward(req, resp);
         }else

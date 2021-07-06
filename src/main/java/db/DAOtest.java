@@ -1,6 +1,6 @@
 package db;
 
-import entity.test;
+import entity.Test;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -76,11 +76,11 @@ public class DAOtest {
         return time;
     }
 
-    public ArrayList<test> sortByValue(String search) {
+    public ArrayList<Test> sortByValue(String search) {
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        ArrayList<test> retlist = new ArrayList<>();
+        ArrayList<Test> retlist = new ArrayList<>();
         try {
             con = DBManager.getInstance().getConnection();
             pstm = con.prepareStatement(SQL__SORT_BY_VALUE + " " + search);
@@ -98,8 +98,8 @@ public class DAOtest {
         return retlist;
     }
 
-    public ArrayList<test> getListOfTestsWithSubdgect(String name) {
-        ArrayList<test> retlist = new ArrayList<test>();
+    public ArrayList<Test> getListOfTestsWithSubdgect(String name) {
+        ArrayList<Test> retlist = new ArrayList<Test>();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         Connection con = null;
@@ -109,7 +109,7 @@ public class DAOtest {
             pstm = con.prepareStatement(SQL__GET_ALL_BY_SUBDGECT);
             pstm.setString(1, name);
             rs = pstm.executeQuery();
-            test test = new test();
+            Test test = new Test();
             testMapper mapper = new testMapper();
             while (rs.next()) {
                 retlist.add(mapper.mapRow(rs));
@@ -125,8 +125,8 @@ public class DAOtest {
     }
 
 
-    public ArrayList<test> getListByName(String name) {
-        ArrayList<test> retlist = new ArrayList<test>();
+    public ArrayList<Test> getListByName(String name) {
+        ArrayList<Test> retlist = new ArrayList<Test>();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         Connection con = null;
@@ -137,7 +137,7 @@ public class DAOtest {
             pstm.setString(1, "%" + name + "%");
             rs = pstm.executeQuery();
             testMapper mapper = new testMapper();
-            test test = new test();
+            Test test = new Test();
             while (rs.next()) {
                 retlist.add(mapper.mapRow(rs));
             }
@@ -172,11 +172,11 @@ public class DAOtest {
         return text;
     }
 
-    public ArrayList<test> getTestsById(int id) {
+    public ArrayList<Test> getTestsById(int id) {
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        ArrayList<test> retlist = new ArrayList<>();
+        ArrayList<Test> retlist = new ArrayList<>();
         try {
             con = DBManager.getInstance().getConnection();
             pstm = con.prepareStatement(SQL__GET_TEST_BY_ID);
@@ -237,8 +237,8 @@ public class DAOtest {
         return id;
     }
 
-    public ArrayList<test> getListOfTests() {
-        ArrayList<test> retlist = new ArrayList<test>();
+    public ArrayList<Test> getListOfTests() {
+        ArrayList<Test> retlist = new ArrayList<Test>();
         Statement stmt = null;
         ResultSet rs = null;
         Connection con = null;
@@ -248,7 +248,7 @@ public class DAOtest {
             stmt = con.createStatement();
             rs = stmt.executeQuery(SQL__GET_ALL_TESTS);
             testMapper mapper = new testMapper();
-            test test = new test();
+            Test test = new Test();
             while (rs.next()) {
                 retlist.add(mapper.mapRow(rs));
             }
@@ -265,12 +265,12 @@ public class DAOtest {
         return retlist;
     }
 
-    private static class testMapper implements EntityMapper<test> {
+    private static class testMapper implements EntityMapper<Test> {
         @Override
-        public test mapRow(ResultSet rs) {
+        public Test mapRow(ResultSet rs) {
 
             try {
-                test test = new test();
+                Test test = new Test();
                 test.setName(rs.getString(Fields.test_name));
                 test.setSubdgect(rs.getString(Fields.test_sbdgect));
                 test.setHardnest(rs.getInt(Fields.test_hardnest));

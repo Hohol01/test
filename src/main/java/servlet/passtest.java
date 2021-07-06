@@ -1,8 +1,8 @@
 package servlet;
 
 import db.*;
-import entity.answer;
-import entity.question;
+import entity.Answer;
+import entity.Question;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -81,8 +81,8 @@ public class passtest extends HttpServlet {
         } else {
 
 
-            List<question> ques = daOquestion.getQustions(idtest, 1);
-            ArrayList<answer> ans = daOanswer.getAnwerById(daOquestion.getIdByNumberAndTestId(1, idtest));
+            List<Question> ques = daOquestion.getQustions(idtest, 1);
+            ArrayList<Answer> ans = daOanswer.getAnwerById(daOquestion.getIdByNumberAndTestId(1, idtest));
             req.setAttribute("ques", ques);
             req.setAttribute("ans", ans);
             req.getRequestDispatcher("passtest.jsp").forward(req, resp);
@@ -131,8 +131,8 @@ public class passtest extends HttpServlet {
 
         if (flag && !timeout) {
             menegernextpreev(req);
-            List<question> ques = daOquestion.getQustions(idtest, numberofques);
-            ArrayList<answer> ans = daOanswer.getAnwerById(daOquestion.getIdByNumberAndTestId(numberofques, idtest));
+            List<Question> ques = daOquestion.getQustions(idtest, numberofques);
+            ArrayList<Answer> ans = daOanswer.getAnwerById(daOquestion.getIdByNumberAndTestId(numberofques, idtest));
             req.setAttribute("ques", ques);
             req.setAttribute("ans", ans);
 

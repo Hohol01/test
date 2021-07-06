@@ -1,7 +1,7 @@
 package servlet;
 
 import db.DAOtest;
-import entity.test;
+import entity.Test;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +19,7 @@ public class testdisp extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("test");
+        System.out.println("Test");
 
 
         HttpSession ses = req.getSession();
@@ -34,7 +34,7 @@ public class testdisp extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        ArrayList<test> tests;
+        ArrayList<Test> tests;
         tests = t.getListOfTests();
         req.setAttribute("list", tests);
         tests = null;
@@ -73,7 +73,7 @@ public class testdisp extends HttpServlet {
         }
     }
     private void dispalltest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArrayList<test> tests = t.getListOfTests();
+        ArrayList<Test> tests = t.getListOfTests();
         req.removeAttribute("tests");
         req.setAttribute("tests", tests);
         req.setAttribute("list", tests);
