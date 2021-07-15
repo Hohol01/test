@@ -50,7 +50,7 @@ public class DBManager {
         }
     }
 
-    public void rollbackAndClose(Connection con) {
+    public static void rollbackAndClose(Connection con) {
         try {
             con.rollback();
             con.close();

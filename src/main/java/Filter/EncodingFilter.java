@@ -17,22 +17,22 @@ public class EncodingFilter implements Filter {
 
     @Override
 
-    public void doFilter(ServletRequest request, ServletResponse response,
-                         FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+
 
         log.debug("Filter starts");
 
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         log.trace("Request uri --> " + httpRequest.getRequestURI());
 
-        String requestEncoding = request.getCharacterEncoding();
+        String requestEncoding = servletRequest.getCharacterEncoding();
         if (requestEncoding == null) {
             log.trace("Request encoding = null, set encoding --> " + encoding);
-            request.setCharacterEncoding(encoding);
+            servletRequest.setCharacterEncoding(encoding);
         }
 
         log.debug("Filter finished");
-        chain.doFilter(request, response);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     public void init(FilterConfig fConfig) throws ServletException {

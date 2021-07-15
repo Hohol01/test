@@ -31,6 +31,33 @@
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
+    
+    
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>Filter.AdminFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/adduser</url-pattern>
+        <url-pattern>/addtest</url-pattern>
+        <url-pattern>/adduser</url-pattern>
+        <url-pattern>/edit</url-pattern>
+        <url-pattern>/edituser</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>UserFilter</filter-name>
+        <filter-class>Filter.UserFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <url-pattern>/passingtest</url-pattern>
+
+    </filter-mapping>
+
 
     <!--============================================================
 	i18n support

@@ -1,0 +1,113 @@
+
+†
+java:S1319O"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ä’ë›
+†
+java:S1319e"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÕÌ­Ó
+‡
+java:S1319€"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¡Â‘µ
+‡
+java:S1319¯"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(çíÀô
+Œ
+java:S1319ğ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¹±·ıÿÿÿÿ
+d
+java:S2095V"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ß‡`
+f
+java:S2095Ì"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(´¨³Ú
+^
+java:S2095ø"GUse try-with-resources or close this "Statement" in a "finally" clause.(œïì”
+f
+java:S2095ˆ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(á•§Æ
+e
+java:S2095+"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‹ïĞÑ
+k
+java:S2095¶"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(—æñÿÿÿÿÿ
+f
+java:S2095 "OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Öù¯×
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚¾áˆ
+k
+java:S2095ã"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Î§Ç–ùÿÿÿÿ
+j
+java:S2095A"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ê¿‚ôşÿÿÿÿ
+e
+java:S2095m"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(°ê„±
+h	java:S101Œ"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Û¿ê“üÿÿÿÿ
+o	java:S115
+"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ôó›¸
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ñìõ¸şÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ëº»Ûıÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(—ÆŠÏ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ãş¦¸
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(´¢éıÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¼ÏÂşÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Û†ã»
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(©Ù×ÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‘ĞæÕ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ßŸœ©
+R
+java:S2209 "5Change this instance-reference to a static reference.(ÖÔ”‹8…†×´¨/
+R
+java:S22095"5Change this instance-reference to a static reference.(ÖÔ”‹8Š†×´¨/
+E
+java:S6212;"/Declare this local variable with "var" instead.(’ÇÎ½
+R
+java:S2209H"5Change this instance-reference to a static reference.(ÖÔ”‹8’†×´¨/
+J
+java:S6212X"/Declare this local variable with "var" instead.(³ŸØÿÿÿÿÿ
+R
+java:S2209^"5Change this instance-reference to a static reference.(ÖÔ”‹8†×´¨/
+S
+java:S1854p"8Remove this useless assignment to local variable "test".(Ú øüøÿÿÿÿ
+o
+java:S2293f"YReplace the type specification in this constructor call with the diamond operator ("<>").(§’ìÈ
+J
+java:S6212p"/Declare this local variable with "var" instead.(Ú øüøÿÿÿÿ
+J
+java:S6212q"/Declare this local variable with "var" instead.(³ŸØÿÿÿÿÿ
+R
+java:S2209x"5Change this instance-reference to a static reference.(ÖÔ”‹8¦†×´¨/
+T
+java:S1854Œ"8Remove this useless assignment to local variable "test".(Ú øüøÿÿÿÿ
+p
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(§’ìÈ
+K
+java:S6212‹"/Declare this local variable with "var" instead.(³ŸØÿÿÿÿÿ
+K
+java:S6212Œ"/Declare this local variable with "var" instead.(Ú øüøÿÿÿÿ
+S
+java:S2209’"5Change this instance-reference to a static reference.(ÖÔ”‹8«†×´¨/
+S
+java:S2209§"5Change this instance-reference to a static reference.(ÖÔ”‹8¯†×´¨/
+K
+java:S6212¸"/Declare this local variable with "var" instead.(³ŸØÿÿÿÿÿ
+S
+java:S2209¾"5Change this instance-reference to a static reference.(ÖÔ”‹8·†×´¨/
+F
+java:S6212Æ"/Declare this local variable with "var" instead.(ÍÉ¬‘
+K
+java:S2209Ò"5Change this instance-reference to a static reference.(ßù•
+S
+java:S2209Õ"5Change this instance-reference to a static reference.(ÖÔ”‹8¾†×´¨/
+K
+java:S6212İ"/Declare this local variable with "var" instead.(“¼µüÿÿÿÿ
+S
+java:S2209ê"5Change this instance-reference to a static reference.(ÖÔ”‹8À†×´¨/
+T
+java:S1854û"8Remove this useless assignment to local variable "test".(Ú øüøÿÿÿÿ
+p
+java:S2293ñ"YReplace the type specification in this constructor call with the diamond operator ("<>").(§’ìÈ
+K
+java:S6212ú"/Declare this local variable with "var" instead.(³ŸØÿÿÿÿÿ
+K
+java:S6212û"/Declare this local variable with "var" instead.(Ú øüøÿÿÿÿ
+S
+java:S2209ƒ"5Change this instance-reference to a static reference.(ÖÔ”‹8Ã†×´¨/
+?	java:S108…")Either remove or fill this block of code.(Úîø›
+K
+java:S6212‘"/Declare this local variable with "var" instead.(Ú øüøÿÿÿÿ
+D
+java:S1481p")Remove this unused "test" local variable.(Ú øüøÿÿÿÿ
+E
+java:S1481Œ")Remove this unused "test" local variable.(Ú øüøÿÿÿÿ
+E
+java:S1481û")Remove this unused "test" local variable.(Ú øüøÿÿÿÿ
