@@ -1,0 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:forEach begin="1" end="${sessionScope.count}" var="i">
+    <c:choose>
+        <c:when test="${sessionScope.curpage eq i}">
+            <a style="color: red">${i}</a>
+        </c:when>
+        <c:otherwise>
+            <a href="?page=${i}">${i}</a>
+        </c:otherwise>
+    </c:choose>
+</c:forEach>
