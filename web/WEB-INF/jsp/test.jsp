@@ -61,6 +61,9 @@
         </c:forEach>
 
 </table>
+
+    </form>
+    <form method="post">
         <%@include file="/WEB-INF/jspf/pagination.jspf"%>
     </form>
     <a href="home"><fmt:message key="test_jsp.home"/> </a>

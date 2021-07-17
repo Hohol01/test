@@ -24,5 +24,6 @@ public class BothFilter implements Filter {
             ses.removeAttribute("role");
             resp.sendRedirect("login");
         }
+        filterChain.doFilter(servletRequest,servletResponse);
     }
 }

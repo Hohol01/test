@@ -1,5 +1,6 @@
 package db;
 
+import entity.Results;
 import entity.Test;
 
 import java.sql.Connection;
@@ -30,6 +31,70 @@ public class DAOTest {
     private static final String SQL__DELETE_DY_ID = "DELETE FROM test WHERE id = ?";
     private static final String SQL__GET_SUBJECT_EN = "SELECT subdgect FROM en";
     private static final String SQL__GET_SUBJECT_RU = "SELECT subdgect FROM ru";
+    private static final String SQL__GET_COUNT_OF_TESTS ="SELECT COUNT(1) AS count FROM test";
+    private static final String SQL__GET_COUNT_OF_TESTS_WHERE ="SELECT COUNT(1) AS count FROM test";
+    private static final String SQL__WHERE_NAME_LIKE = "WHERE  name LIKE ?";
+    private static final String SQL__WHERE_SUB = "SELECT COUNT(1) AS count FROM test INNER JOIN ru ON idsubdgect = idsub WHERE ru.subdgect = ?";
+
+    public int getCountOfTestsWhereSub(String sub){
+        int ret = 0;
+        List<Results> retlist = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement prst = null;
+        ResultSet rs = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            prst = con.prepareStatement(SQL__WHERE_SUB);
+            prst.setString(1, sub);
+            rs = prst.executeQuery();
+            if (rs.next())
+                ret = rs.getInt("count");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    public int getCountOfTestsWhereName(String name){
+        int ret = 0;
+        List<Results> retlist = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement prst = null;
+        ResultSet rs = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            prst = con.prepareStatement(SQL__GET_COUNT_OF_TESTS_WHERE + SQL__WHERE_NAME_LIKE);
+            prst.setString(1, "%" + name + "%");
+            rs = prst.executeQuery();
+            if (rs.next())
+                ret = rs.getInt("count");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    public int getCountOfTests(){
+        int ret = 0;
+        List<Results> retlist = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement prst = null;
+        ResultSet rs = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            prst = con.prepareStatement(SQL__GET_COUNT_OF_TESTS);
+
+            rs = prst.executeQuery();
+            if (rs.next())
+                ret = rs.getInt("count");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return ret;
+    }
 
     public ArrayList<Test> getSubject(String lang) {
         ArrayList<Test> ret = new ArrayList<>();
@@ -114,7 +179,7 @@ public class DAOTest {
         return time;
     }
 
-    public ArrayList<Test> sortByValue(String search, String lang) {
+    public ArrayList<Test> sortByValue(String search, String lang, int page) {
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -122,9 +187,10 @@ public class DAOTest {
         try {
             con = DBManager.getInstance().getConnection();
             if (lang.equals("ru"))
-                pstm = con.prepareStatement(SQL__SORT_BY_VALUE_RU + " " + search);
+                pstm = con.prepareStatement(SQL__SORT_BY_VALUE_RU + " " + search + SQL__LIMIT);
             else
-                pstm = con.prepareStatement(SQL__SORT_BY_VALUE_EN + " " + search);
+                pstm = con.prepareStatement(SQL__SORT_BY_VALUE_EN + " " + search + SQL__LIMIT);
+            pstm.setInt(1,page);
             rs = pstm.executeQuery();
             testMapper mapper = new testMapper();
             while (rs.next())
@@ -139,7 +205,7 @@ public class DAOTest {
         return retlist;
     }
 
-    public ArrayList<Test> getListOfTestsWithSubdgect(String name, String lang) {
+    public ArrayList<Test> getListOfTestsWithSubdgect(String name, String lang, int page) {
         ArrayList<Test> retlist = new ArrayList<Test>();
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -148,12 +214,13 @@ public class DAOTest {
         try {
             con = DBManager.getInstance().getConnection();
             if (lang.equals("ru"))
-                pstm = con.prepareStatement(SQL__GET_ALL_BY_SUBJECT_RU);
+                pstm = con.prepareStatement(SQL__GET_ALL_BY_SUBJECT_RU + SQL__LIMIT);
             else
-                pstm = con.prepareStatement(SQL__GET_ALL_BY_SUBJECT_EN);
+                pstm = con.prepareStatement(SQL__GET_ALL_BY_SUBJECT_EN + SQL__LIMIT);
 
 
             pstm.setString(1, name);
+            pstm.setInt(2,page);
             rs = pstm.executeQuery();
             Test test = new Test();
             testMapper mapper = new testMapper();
@@ -171,7 +238,7 @@ public class DAOTest {
     }
 
 
-    public ArrayList<Test> getListByName(String name, String lang) {
+    public ArrayList<Test> getListByName(String name, String lang, int page) {
         ArrayList<Test> retlist = new ArrayList<Test>();
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -180,10 +247,11 @@ public class DAOTest {
         try {
             con = DBManager.getInstance().getConnection();
             if (lang.equals("ru"))
-                pstm = con.prepareStatement(SQL__SEARCH_BY_NAME_RU);
+                pstm = con.prepareStatement(SQL__SEARCH_BY_NAME_RU + SQL__LIMIT);
             else
-                pstm = con.prepareStatement(SQL__SEARCH_BY_NAME_EN);
+                pstm = con.prepareStatement(SQL__SEARCH_BY_NAME_EN + SQL__LIMIT);
             pstm.setString(1, "%" + name + "%");
+            pstm.setInt(2,page);
             rs = pstm.executeQuery();
             testMapper mapper = new testMapper();
             Test test = new Test();
@@ -289,7 +357,7 @@ public class DAOTest {
         return id;
     }
 
-    public ArrayList<Test> getListOfTests(String lang) {
+    public ArrayList<Test> getListOfTests(String lang, int page) {
         ArrayList<Test> retlist = new ArrayList<Test>();
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -298,9 +366,10 @@ public class DAOTest {
         try {
             con = DBManager.getInstance().getConnection();
             if (lang.equals("ru"))
-                pstm = con.prepareStatement(SQL__GET_ALL_TESTS + SQL_SELECT_LANG_RU);
+                pstm = con.prepareStatement(SQL__GET_ALL_TESTS + SQL_SELECT_LANG_RU + SQL__LIMIT);
             else
-                pstm = con.prepareStatement(SQL__GET_ALL_TESTS + SQL_SELECT_LANG_EN);
+                pstm = con.prepareStatement(SQL__GET_ALL_TESTS + SQL_SELECT_LANG_EN + SQL__LIMIT);
+            pstm.setInt(1,page);
             rs = pstm.executeQuery();
             testMapper mapper = new testMapper();
             Test test = new Test();

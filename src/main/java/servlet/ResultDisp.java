@@ -33,9 +33,6 @@ public class ResultDisp extends HttpServlet {
             List<Results> res = daOresult.getResultsForTeacher(testid);
             req.setAttribute("res", res);
             req.getRequestDispatcher("WEB-INF/jsp/admin/resultforteach.jsp").forward(req, resp);
-        } else if (daOusers.getBlock((Integer) ses.getAttribute("userid"))) {
-            ses.setAttribute("block", "block");
-            resp.sendRedirect("login");
         } else {
 
             int userid = (int) req.getSession().getAttribute("userid");

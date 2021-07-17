@@ -87,10 +87,7 @@ public class PassTest extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession ses = req.getSession();
-        if (ses != ses.getAttribute("id")) {
-            resp.sendRedirect("login");
-        } else if (!ses.getAttribute("role").equals("teacher"))
-            resp.sendRedirect("home");
+
 
         marc = 0;
         Boolean flag = false;
