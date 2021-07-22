@@ -40,9 +40,7 @@
 
     <filter-mapping>
         <filter-name>AdminFilter</filter-name>
-        <url-pattern>/adduser</url-pattern>
         <url-pattern>/addtest</url-pattern>
-        <url-pattern>/adduser</url-pattern>
         <url-pattern>/edit</url-pattern>
         <url-pattern>/edituser</url-pattern>
     </filter-mapping>

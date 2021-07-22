@@ -51,9 +51,11 @@ public class DAOUsersTest {
     @Test
     public void test() throws SQLException {
 
-        Mockito.when(connection.prepareStatement("INSERT users (login, password, role , name, surname, patronymic) VALUE (?, ?, ?, ?, ?, ?)")).thenReturn(statement);
+        connection = DBManager.getInstance().getConnectionWithDriverManager();
 
-        Mockito.when(daoUsers.addUser("w","w","w","stud","s","s")).thenReturn(true);
+        Mockito.when(connection.prepareStatement("INSERT users (login, password, role , name, surname, patronymic) VALUE ('s,r,e,d,c,x')")).thenReturn(statement);
+
+        //Mockito.when(daoUsers.addUser("w","w","w","stud","s","s")).thenReturn(true);
 
         Mockito.verify(statement).executeUpdate();
     }

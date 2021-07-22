@@ -1,6 +1,7 @@
 package servlet;
 
 import db.DAOUsers;
+import entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 @WebServlet("/adduser")
@@ -32,9 +34,27 @@ public class AddUser extends HttpServlet {
             String role = req.getParameter("role");
             String login = req.getParameter("login");
             String password = req.getParameter("password");
+
             DAOUsers daOusers = new DAOUsers();
-            daOusers.addUser(surname, name, patronymic, role, login, password);
-            resp.sendRedirect("home");
+            if (daOusers.checkLogin(login)){
+                ArrayList<User> users = new ArrayList<>();
+                User user = new User();
+                user.setName(name);
+                user.setPatronymic(patronymic);
+                user.setSurname(surname);
+                user.setLogin(login);
+                user.setRole(role);
+                user.setPassword(password);
+                users.add(user);
+
+                req.setAttribute("error","error");
+                req.setAttribute("user",users);
+                req.getRequestDispatcher("WEB-INF/jsp/admin/edituser.jsp").forward(req, resp);
+            }
+            else {
+                daOusers.addUser(surname, name, patronymic, role, login, password);
+                resp.sendRedirect("home");
+            }
         }
     }
 }

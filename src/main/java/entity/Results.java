@@ -10,7 +10,6 @@ public class Results implements Serializable {
     private int mark;
     private int id;
     private int userid;
-
     private String nameuser;
     private String surname;
     private String patronymic;

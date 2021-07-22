@@ -15,12 +15,12 @@
     <title>RESULT</title>
 </head>
 <body>
-
+<%@ include file="/WEB-INF/jspf/language.jspf" %>
 <center>
     <table border="1">
         <tr>
-            <td>название теста</td>
-            <td>оценка</td>
+            <td><fmt:message key="results_jsp.test_name"/> </td>
+            <td><fmt:message key="results_jsp.marc"/></td>
         </tr>
         <c:forEach var="res" items="${res}">
             <tr>

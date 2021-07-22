@@ -19,22 +19,22 @@
 
     <tr>
       <td><fmt:message key="adduser_jsp.surname"/></td>
-      <td><input type="text" name="surname"></td>
+      <td><input type="text" name="surname" required></td>
     </tr>
 
     <tr>
       <td><fmt:message key="adduser_jsp.name"/></td>
-      <td><input type="text" name="name"></td>
+      <td><input type="text" name="name" required></td>
     </tr>
 
 
     <tr>
       <td><fmt:message key="adduser_jsp.patronymic"/> </td>
-      <td><input type="text" name="patronymic"></td>
+      <td><input type="text" name="patronymic" required></td>
     </tr>
     <tr>
       <td><fmt:message key="adduser_jsp.choose_role"/></td>
-      <td><select name="role" >
+      <td><select name="role" required>
         <option></option>
         <option value="teacher"> <fmt:message key="adduser_jsp.role.admin"/> </option>
         <option value="student"><fmt:message key="adduser_jsp.role.user"/></option>
@@ -43,12 +43,12 @@
 
     <tr>
       <td><fmt:message key="adduser_jsp.login"/></td>
-      <td><input type="text" name="login"></td>
+      <td><input type="text" name="login" required></td>
     </tr>
 
     <tr>
       <td><fmt:message key="adduser_jsp.password"/></td>
-      <td><input type="text" name="password"></td>
+      <td><input type="text" name="password" required></td>
     </tr>
 
 

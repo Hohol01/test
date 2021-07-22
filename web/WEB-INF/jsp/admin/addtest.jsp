@@ -6,23 +6,25 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@include file="/WEB-INF/jspf/taglib.jspf" %>
 <html>
 <head>
     <title>ADDING TEST</title>
 </head>
 <body>
-<%@include file="/WEB-INF/jspf/language.jspf"%>
+<form method="post">
+    <%@include file="/WEB-INF/jspf/language.jspf" %>
+</form>
 <center>
     <form action="addtest" method="post">
         <table>
             <tr>
                 <td><fmt:message key="addtest_jsp.name_of_the_test"/> =</td>
-                <td> <input name="name" type="text" required></td>
+                <td><input name="name" type="text" required></td>
             </tr>
 
             <tr>
-                <td><fmt:message key="addtest_jsp.time"/> = </td>
+                <td><fmt:message key="addtest_jsp.time"/> =</td>
                 <td><input name="time" type="text" pattern="^[0-9]+"></td>
             </tr>
             <tr>
@@ -36,12 +38,18 @@
                 </select></td>
             </tr>
             <tr>
-                <td> <fmt:message key="addtest_jsp.subject"/> </td>
-                <td> <input name="subdgect" type="text" required> </td>
+                <td><fmt:message key="addtest_jsp.subject"/></td>
+                <td><select name="subdgect" required>
+                    <option></option>
+                    <c:forEach var="lang" items="${lang}">
+                        <option value=<c:out value="${lang.id}"/>/>
+                        <c:out value="${lang.subject}"/></option>
+                    </c:forEach>
+                </select></td>
             </tr>
         </table>
         <input type="submit" name="addtest" value='<fmt:message key="addtest_jsp.next"/>'>
-</form>
+    </form>
     <a href="home"><fmt:message key="addtest_jsp.home"/></a>
 </center>
 

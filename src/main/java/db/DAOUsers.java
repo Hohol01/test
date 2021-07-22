@@ -14,6 +14,27 @@ public class DAOUsers {
     private static final String SQL__DELETE_USER = "DELETE FROM users WHERE id = ?";
     private static final String SQL__UPDATE_USER = "UPDATE users set login = ?, password = ?, role = ?, name =?, surname = ?, patronymic = ?, block = ? WHERE id = ?";
     private static final String SQL__GET_USER_BY_ID = "SELECT * FROM users WHERE id = ?";
+    private static final String SQL__CHECK_LOGIN = "SELECT COUNT(1) AS count FROM users WHERE login = ?";
+
+    public boolean checkLogin(String login){
+        boolean res = false;
+        Connection con = null;
+        ResultSet rs = null;
+        PreparedStatement pstm = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            pstm = con.prepareStatement(SQL__CHECK_LOGIN);
+            pstm.setString(1, login);
+            rs = pstm.executeQuery();
+            if (rs.next())
+                res = true;
+            con.close();
+        } catch (SQLException throwables) {
+            DBManager.getInstance().rollbackAndClose(con);
+            throwables.printStackTrace();
+        }
+        return  res;
+    }
 
     public boolean getBlock(int id) {
         boolean block = false;

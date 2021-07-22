@@ -20,7 +20,7 @@ public class AdminFilter implements Filter {
         String uri = req.getRequestURI();
         String role = (String) req.getSession(false).getAttribute("role");
 
-        if (role == null || !role.equals("teacher")) {
+        if (req.getSession(false).getAttribute("role") == null || !role.equals("teacher")) {
             resp.sendRedirect("home");
             System.out.println(req.getSession(false).getAttribute("role"));
         } else if (req.getSession(false).getAttribute("id") == null) {

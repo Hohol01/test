@@ -60,11 +60,7 @@ public class DBManager {
     }
 
     public Connection getConnectionWithDriverManager() throws SQLException {
-        try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
         Connection connection = DriverManager
                 .getConnection(FULLURL);
         connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);

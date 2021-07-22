@@ -1,6 +1,7 @@
 package db;
 
 import entity.Results;
+import entity.Subject;
 import entity.Test;
 
 import java.sql.Connection;
@@ -18,7 +19,8 @@ public class DAOTest {
     private static final String SQL__GET_ALL_TESTS = "SELECT * FROM test";
     private static final String SQL__GET_ID_BY_NAME = "SELECT id FROM test WHERE name=?";
     private static final String SQL__SET_TEST = "INSERT test (name,idsubdgect,hardnest,time) value (?, ?, ?, ?) ";
-    private static final String SQL__GET_TEST_BY_ID = " SELECT * FROM test WHERE id=?";
+    private static final String SQL__GET_TEST_BY_ID_RU = " SELECT * FROM test INNER JOIN en ON idsubdgect = idsub WHERE id=?";
+    private static final String SQL__GET_TEST_BY_ID_EN = " SELECT * FROM test INNER JOIN en ON idsubdgect = idsub WHERE id=?";
     private static final String SQL__GET_NAME_BY_ID = "SELECT name FROM test WHERE id = ?";
     private static final String SQL__SEARCH_BY_NAME_EN = "SELECT * FROM test INNER JOIN en ON idsubdgect = idsub WHERE name LIKE ?";
     private static final String SQL__SEARCH_BY_NAME_RU = "SELECT * FROM test INNER JOIN ru ON idsubdgect = idsub WHERE name LIKE ?";
@@ -29,12 +31,38 @@ public class DAOTest {
     private static final String SQL__GET_TIME_BY_ID = "SELECT time FROM test WHERE id = ?";
     private static final String SQL__UPDATE_BY_ID = "UPDATE test SET name = ?, idsubdgect = ?, hardnest = ?, time = ? WHERE id =?";
     private static final String SQL__DELETE_DY_ID = "DELETE FROM test WHERE id = ?";
-    private static final String SQL__GET_SUBJECT_EN = "SELECT subdgect FROM en";
-    private static final String SQL__GET_SUBJECT_RU = "SELECT subdgect FROM ru";
+    private static final String SQL__GET_SUBJECT_EN = "SELECT * FROM en";
+    private static final String SQL__GET_SUBJECT_RU = "SELECT * FROM ru";
     private static final String SQL__GET_COUNT_OF_TESTS ="SELECT COUNT(1) AS count FROM test";
     private static final String SQL__GET_COUNT_OF_TESTS_WHERE ="SELECT COUNT(1) AS count FROM test";
     private static final String SQL__WHERE_NAME_LIKE = "WHERE  name LIKE ?";
     private static final String SQL__WHERE_SUB = "SELECT COUNT(1) AS count FROM test INNER JOIN ru ON idsubdgect = idsub WHERE ru.subdgect = ?";
+
+    public ArrayList<Subject> getSubjectAdd(String lang) {
+        ArrayList<Subject> ret = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            if (lang.equals("ru"))
+                pstm = con.prepareStatement(SQL__GET_SUBJECT_RU);
+            else
+                pstm = con.prepareStatement(SQL__GET_SUBJECT_EN);
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                Subject subject = new Subject();
+                subject.setId(rs.getInt("idsub"));
+                subject.setSubject(rs.getString("subdgect"));
+                ret.add(subject);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return ret;
+    }
 
     public int getCountOfTestsWhereSub(String sub){
         int ret = 0;
@@ -111,6 +139,7 @@ public class DAOTest {
             while (rs.next()) {
                 Test test = new Test();
                 test.setSubdgect(rs.getString("subdgect"));
+
                 ret.add(test);
             }
 
@@ -297,11 +326,12 @@ public class DAOTest {
         try {
             con = DBManager.getInstance().getConnection();
             if (lang.equals("ru"))
-                pstm = con.prepareStatement(SQL__GET_TEST_BY_ID + SQL_SELECT_LANG_RU);
+                pstm = con.prepareStatement(SQL__GET_TEST_BY_ID_RU);
             else
-                pstm = con.prepareStatement(SQL__GET_TEST_BY_ID + SQL_SELECT_LANG_EN);
+                pstm = con.prepareStatement(SQL__GET_TEST_BY_ID_EN);
             pstm.setInt(1, id);
             testMapper mapper = new testMapper();
+            System.out.println(pstm);
             rs = pstm.executeQuery();
             if (rs.next()) {
                 retlist.add(mapper.mapRow(rs));
