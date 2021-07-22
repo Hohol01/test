@@ -19,7 +19,7 @@ public class DAOTest {
     private static final String SQL__GET_ALL_TESTS = "SELECT * FROM test";
     private static final String SQL__GET_ID_BY_NAME = "SELECT id FROM test WHERE name=?";
     private static final String SQL__SET_TEST = "INSERT test (name,idsubdgect,hardnest,time) value (?, ?, ?, ?) ";
-    private static final String SQL__GET_TEST_BY_ID_RU = " SELECT * FROM test INNER JOIN en ON idsubdgect = idsub WHERE id=?";
+    private static final String SQL__GET_TEST_BY_ID_RU = " SELECT * FROM test INNER JOIN ru ON idsubdgect = idsub WHERE id=?";
     private static final String SQL__GET_TEST_BY_ID_EN = " SELECT * FROM test INNER JOIN en ON idsubdgect = idsub WHERE id=?";
     private static final String SQL__GET_NAME_BY_ID = "SELECT name FROM test WHERE id = ?";
     private static final String SQL__SEARCH_BY_NAME_EN = "SELECT * FROM test INNER JOIN en ON idsubdgect = idsub WHERE name LIKE ?";
@@ -167,14 +167,14 @@ public class DAOTest {
 
     }
 
-    public void update(String name, String subdgect, int hardnest, int time, int id) {
+    public void update(String name, int subdgect, int hardnest, int time, int id) {
         PreparedStatement pstm = null;
         Connection con = null;
         try {
             con = DBManager.getInstance().getConnection();
             pstm = con.prepareStatement(SQL__UPDATE_BY_ID);
             pstm.setString(1, name);
-            pstm.setString(2, subdgect);
+            pstm.setInt(2, subdgect);
             pstm.setInt(3, hardnest);
             pstm.setInt(4, time);
             pstm.setInt(5, id);
@@ -331,7 +331,6 @@ public class DAOTest {
                 pstm = con.prepareStatement(SQL__GET_TEST_BY_ID_EN);
             pstm.setInt(1, id);
             testMapper mapper = new testMapper();
-            System.out.println(pstm);
             rs = pstm.executeQuery();
             if (rs.next()) {
                 retlist.add(mapper.mapRow(rs));
@@ -343,7 +342,7 @@ public class DAOTest {
         return retlist;
     }
 
-    public void setTest(String name, String subdgect, int hardnest, int time) {
+    public void setTest(String name, int subdgect, int hardnest, int time) {
         Connection con = null;
         DBManager db = new DBManager();
         PreparedStatement pstm = null;
@@ -353,7 +352,7 @@ public class DAOTest {
             con = DBManager.getInstance().getConnection();
             pstm = con.prepareStatement(SQL__SET_TEST);
             pstm.setString(1, name);
-            pstm.setString(2, subdgect);
+            pstm.setInt(2, subdgect);
             pstm.setInt(3, hardnest);
             pstm.setInt(4, time);
             pstm.executeUpdate();

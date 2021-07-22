@@ -43,8 +43,9 @@
         <url-pattern>/addtest</url-pattern>
         <url-pattern>/edit</url-pattern>
         <url-pattern>/edituser</url-pattern>
+        <url-pattern>/adduser</url-pattern>
     </filter-mapping>
-<!--
+
     <filter>
         <filter-name>UserFilter</filter-name>
         <filter-class>Filter.UserFilter</filter-class>
@@ -55,7 +56,6 @@
         <url-pattern>/passingtest</url-pattern>
 
     </filter-mapping>
--->
     <filter>
         <filter-name>BothFilter</filter-name>
         <filter-class>Filter.BothFilter</filter-class>

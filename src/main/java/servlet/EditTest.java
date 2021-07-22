@@ -35,8 +35,11 @@ public class EditTest extends HttpServlet {
             req.setAttribute("next", "next");
         idtest = Integer.parseInt(req.getParameter("idtest"));
         System.out.println(req.getParameter("idtest"));
-        ArrayList<Test> testArrayList = daOtest.getTestsById(Integer.parseInt(req.getParameter("idtest")), String.valueOf(req.getSession().getAttribute("language")));
+        String language = String.valueOf(req.getSession().getAttribute("language"));
+        System.out.println(language);
+        ArrayList<Test> testArrayList = daOtest.getTestsById(Integer.parseInt(req.getParameter("idtest")), language);
         req.setAttribute("test", testArrayList);
+        req.setAttribute("lang", daOtest.getSubjectAdd(language));
         req.setAttribute("displaying", "Test");
         req.getRequestDispatcher("WEB-INF/jsp/admin/edittest.jsp").forward(req, resp);
     }
@@ -55,7 +58,7 @@ public class EditTest extends HttpServlet {
 
         if (req.getParameter("next") != null) {
             String nane = req.getParameter("name");
-            String subdgect = req.getParameter("subdgect");
+            int subdgect = Integer.parseInt(req.getParameter("subdgect"));
             int hardnest = Integer.parseInt(req.getParameter("hardnest"));
             int time = Integer.parseInt(req.getParameter("time"));
             daOtest.update(nane, subdgect, hardnest, time, idtest);

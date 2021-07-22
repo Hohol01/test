@@ -36,6 +36,8 @@ public class AddUser extends HttpServlet {
             String password = req.getParameter("password");
 
             DAOUsers daOusers = new DAOUsers();
+
+            System.out.println(daOusers.checkLogin(login));
             if (daOusers.checkLogin(login)){
                 ArrayList<User> users = new ArrayList<>();
                 User user = new User();
@@ -49,7 +51,7 @@ public class AddUser extends HttpServlet {
 
                 req.setAttribute("error","error");
                 req.setAttribute("user",users);
-                req.getRequestDispatcher("WEB-INF/jsp/admin/edituser.jsp").forward(req, resp);
+                req.getRequestDispatcher("WEB-INF/jsp/admin/adduser.jsp").forward(req, resp);
             }
             else {
                 daOusers.addUser(surname, name, patronymic, role, login, password);

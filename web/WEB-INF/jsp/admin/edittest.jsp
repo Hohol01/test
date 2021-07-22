@@ -12,20 +12,34 @@
     <title>EDIT TEST</title>
 </head>
 <body>
-<%
+<center>
 
-%>
-
-
-<form method="post">
-    <c:forEach var="test" items="${test}">
-        <a>название теста = <input name="name" type="text" value="${test.name}"></a><br>
-        <c>ввремя в минутах = <input name="time" type="int" value="${test.time}"> </c><br>
-        <d>cложность = <input name="hardnest" type="int" value="${test.hardnest}"> </d> <br>
-        <d>предмет = <input name="subdgect" type="text" value="${test.subdgect}"> </d> <br>
-        <input type="submit" name="next" value="далее">
-        <input type="submit" name="delete" value="удалить">
-    </c:forEach>
-</form>
+    <form method="post">
+        <c:forEach var="test" items="${test}">
+            <a>название теста = <input name="name" type="text" value="${test.name}"></a><br>
+            <c>ввремя в минутах = <input name="time" type="int" value="${test.time}"></c>
+            <br>
+            <d>cложность = <input name="hardnest" type="int" value="${test.hardnest}"></d>
+            <br>
+            <d>предмет =
+                <td><select name="subdgect" required>
+                    <c:forEach var="lang" items="${lang}">
+                        <c:if test="${test.subdgect==lang.subject}">
+                        <option value=<c:out value="${lang.id}"/>> <c:out value="${lang.subject}"/></option>
+                        </c:if>
+                    </c:forEach>
+                    <c:forEach var="lang" items="${lang}">
+                        <c:if test="${test.subdgect!=lang.subject}">
+                            <option value=<c:out value="${lang.id}"/>> <c:out value="${lang.subject}"/></option>
+                        </c:if>
+                    </c:forEach>
+                </select></td>
+            </d>
+            <br>
+            <input type="submit" name="next" value="далее">
+            <input type="submit" name="delete" value="удалить">
+        </c:forEach>
+    </form>
+</center>
 </body>
 </html>

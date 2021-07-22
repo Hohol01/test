@@ -51,7 +51,7 @@ public class AddTest extends HttpServlet {
         // adding Test
         if (req.getParameter("addtest") != null) {
             String name = req.getParameter("name");
-            String subdgect = req.getParameter("subdgect");
+            int subdgect = Integer.parseInt(req.getParameter("subdgect"));
             int time = Integer.parseInt(req.getParameter("time"));
             int hardnest = Integer.parseInt(req.getParameter("hardnest"));
             if (req.getParameter("addquss") == null)

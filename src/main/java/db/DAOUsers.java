@@ -16,7 +16,7 @@ public class DAOUsers {
     private static final String SQL__GET_USER_BY_ID = "SELECT * FROM users WHERE id = ?";
     private static final String SQL__CHECK_LOGIN = "SELECT COUNT(1) AS count FROM users WHERE login = ?";
 
-    public boolean checkLogin(String login){
+    public boolean checkLogin(String login) {
         boolean res = false;
         Connection con = null;
         ResultSet rs = null;
@@ -26,14 +26,18 @@ public class DAOUsers {
             pstm = con.prepareStatement(SQL__CHECK_LOGIN);
             pstm.setString(1, login);
             rs = pstm.executeQuery();
+            int check = 0;
             if (rs.next())
+                check = rs.getInt("count");
+            System.out.println(check);
+            if (check >= 1)
                 res = true;
             con.close();
         } catch (SQLException throwables) {
             DBManager.getInstance().rollbackAndClose(con);
             throwables.printStackTrace();
         }
-        return  res;
+        return res;
     }
 
     public boolean getBlock(int id) {
@@ -119,7 +123,7 @@ public class DAOUsers {
     }
 
     public boolean addUser(String surname, String name, String patronymic,
-                        String role, String login, String password) {
+                           String role, String login, String password) {
         PreparedStatement pstmt = null;
         Connection con = null;
         DBManager db = new DBManager();

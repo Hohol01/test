@@ -31,7 +31,7 @@ public class UserFilter implements Filter {
             ses.removeAttribute("id");
             ses.removeAttribute("role");
             resp.sendRedirect("login");
-        }
+        } else
             filterChain.doFilter(servletRequest, servletResponse);
 
     }

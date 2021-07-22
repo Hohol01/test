@@ -37,8 +37,6 @@ O
 src/main/java/db/DAOanswer.java,2/5/25ab3fc6959bb33698098662d684f8f9fa632c9d
 ?
 web/cabinet.jsp,5/3/538e705022726ff91c0df5649628df11fec522dc
-H
-src/main/java/ertyu.java,0/4/047eb00ff12f62b1c8c1f6d9741b58eab706857d
 L
 web/WEB-INF/jsp/homepage.jsp,f/9/f9bc04c696ece4402a29f687ffc63cbc58ffa765
 A
@@ -47,5 +45,43 @@ L
 web/WEB-INF/jspf/taglib.jspf,b/6/b6ec016bce64d1c9d8e137e65a1ebe068c0a65a8
 P
  src/main/java/servlet/Users.java,8/f/8fe128ec7832cb2ce48c6f0406ef63d41da9ab2f
+F
+SQL/dbcreate-derby.sql,3/a/3adf250fa47c5fa0ea8aef74cc1ba10f05c49dad
+H
+web/META-INF/context.xml,0/b/0b5ed5dfc48d40f738ad3c8e8ec06325e849a9f7
+O
+src/main/java/db/DAOAnswer.java,6/0/608cab8e76cccb4bd9a631120d91ea8ba07c3ab9
+Q
+!src/main/java/db/DAOQuestion.java,3/a/3aee1ec7195d0996f36a04b49cc8138dc396ffdf
+S
+#src/main/java/servlet/PassTest.java,6/6/66a645984aef4aff8a00c5f301dfc7bd2736bf5a
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+P
+ web/WEB-INF/jsp/user/results.jsp,8/f/8f48ff926a2b32b59816de74460bddd42d40c4ab
+=
+web/index.jsp,9/f/9f198ed450f32e45b10ec3c2b1406e609b4a96cd
+P
+ web/WEB-INF/jspf/pagination.jspf,2/0/20a0eb3d8833da7c51c12a4e727c1f924081bc4b
+X
+(web/WEB-INF/jsp/admin/resultforteach.jsp,3/a/3ab1a9f88ce28db35ceaca66310a053d9cd4b0a1
+O
+web/WEB-INF/jsp/admin/users.jsp,0/a/0abae73f3380169dff2d32c473660afcb321790b
+O
+src/main/java/db/DAOResult.java,0/1/016a1e166b63298d9bf126c8ef2902475dd738a4
+P
+ src/main/java/entity/Answer.java,b/c/bc71287e1035bd90404cd106823bc8cf88ad9bc8
 U
-%web/WEB-INF/jsp/admin/editqustion.jsp,5/1/51b0854f0945a9dcd9549dee9762293c2db07743
+%src/main/java/servlet/ResultDisp.java,8/4/84e4184566ba889a2e5064b611cc10b1fb7cecfe
+N
+web/WEB-INF/jspf/language.jspf,d/9/d9fa7202067578d3eaec87a9d15949f698b1f787
+Q
+!web/WEB-INF/jsp/user/passtest.jsp,7/7/77b940a94af21b74144472de87a565daacb68be9
+O
+src/test/java/DAOUsersTest.java,4/6/46bfb31f54ccf79e0c0f2a688dbc69249155713d
+O
+src/main/java/db/DBManager.java,7/9/79a520fd0ad03d6b422ba9c8b83aa0250d4d5a95
+Q
+!src/main/java/entity/Results.java,f/1/f123baf3c45047f3fa8783aa87e72b802b94e239
+Q
+!src/main/java/entity/Subject.java,1/d/1dacb52f6cd85402c3e1e0fe8e27bcd7fd91421c

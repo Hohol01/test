@@ -19,33 +19,41 @@ public class EditUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        iduser = Integer.parseInt(req.getParameter("userid"));
+
+
+        if (req.getParameter("userid") != null) {
+            iduser = Integer.parseInt(req.getParameter("userid"));
+            req.getSession().setAttribute("editUserId", iduser);
+            ArrayList<User> user = daOusers.getUserById(iduser);
+            req.setAttribute("user", user);
+            req.getRequestDispatcher("WEB-INF/jsp/admin/edituser.jsp").forward(req, resp);
+        }else if (req.getSession().getAttribute("editUserId")!=null){
+            iduser = Integer.parseInt(String.valueOf(req.getSession().getAttribute("editUserId")));
+            ArrayList<User> user = daOusers.getUserById(iduser);
+            req.setAttribute("user", user);
+            req.getRequestDispatcher("WEB-INF/jsp/admin/edituser.jsp").forward(req, resp);
+        } else
+            resp.sendRedirect("home");
         System.out.println(iduser);
-        ArrayList<User> user = daOusers.getUserById(iduser);
-        req.setAttribute("user", user);
-        req.getRequestDispatcher("WEB-INF/jsp/admin/edituser.jsp").forward(req, resp);
+
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession ses = req.getSession();
-        if (ses != ses.getAttribute("id")) {
-            resp.sendRedirect("login");
-        } else if (!ses.getAttribute("role").equals("teacher"))
-            resp.sendRedirect("home");
 
-        boolean block =false;
+        boolean block = false;
         String surname = req.getParameter("surname");
         String name = req.getParameter("name");
         String patronymic = req.getParameter("patronymic");
         String role = req.getParameter("role");
-        if(role.equals(""))
-            role ="student";
+        if (role.equals(""))
+            role = "student";
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        if (req.getParameter("block")!=null)
-            block=true;
+        if (req.getParameter("block") != null)
+            block = true;
         System.out.println(block);
         daOusers.editUser(surname, name, patronymic, role, login, password, block, iduser);
         if (req.getParameter("add") != null)

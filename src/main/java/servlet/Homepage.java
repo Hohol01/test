@@ -21,7 +21,6 @@ public class Homepage extends HttpServlet {
 
         req.getRequestDispatcher("WEB-INF/jsp/homepage.jsp").forward(req, resp);
 
-        System.out.println(req.getSession().getAttribute("language"));
     }
 
     @Override

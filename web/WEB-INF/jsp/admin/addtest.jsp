@@ -42,7 +42,7 @@
                 <td><select name="subdgect" required>
                     <option></option>
                     <c:forEach var="lang" items="${lang}">
-                        <option value=<c:out value="${lang.id}"/>/>
+                        <option value=<c:out value="${lang.id}"/>>
                         <c:out value="${lang.subject}"/></option>
                     </c:forEach>
                 </select></td>
