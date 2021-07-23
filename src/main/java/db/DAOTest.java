@@ -33,10 +33,11 @@ public class DAOTest {
     private static final String SQL__DELETE_DY_ID = "DELETE FROM test WHERE id = ?";
     private static final String SQL__GET_SUBJECT_EN = "SELECT * FROM en";
     private static final String SQL__GET_SUBJECT_RU = "SELECT * FROM ru";
-    private static final String SQL__GET_COUNT_OF_TESTS ="SELECT COUNT(1) AS count FROM test";
-    private static final String SQL__GET_COUNT_OF_TESTS_WHERE ="SELECT COUNT(1) AS count FROM test";
+    private static final String SQL__GET_COUNT_OF_TESTS = "SELECT COUNT(1) AS count FROM test";
+    private static final String SQL__GET_COUNT_OF_TESTS_WHERE = "SELECT COUNT(1) AS count FROM test";
     private static final String SQL__WHERE_NAME_LIKE = "WHERE  name LIKE ?";
-    private static final String SQL__WHERE_SUB = "SELECT COUNT(1) AS count FROM test INNER JOIN ru ON idsubdgect = idsub WHERE ru.subdgect = ?";
+    private static final String SQL__WHERE_SUB_RU = "SELECT COUNT(1) AS count FROM test INNER JOIN ru ON idsubdgect = idsub WHERE ru.subdgect = ?";
+    private static final String SQL__WHERE_SUB_EN = "SELECT COUNT(1) AS count FROM test INNER JOIN en ON idsubdgect = idsub WHERE en.subdgect = ?";
 
     public ArrayList<Subject> getSubjectAdd(String lang) {
         ArrayList<Subject> ret = new ArrayList<>();
@@ -64,7 +65,7 @@ public class DAOTest {
         return ret;
     }
 
-    public int getCountOfTestsWhereSub(String sub){
+    public int getCountOfTestsWhereSub(String sub, String lang) {
         int ret = 0;
         List<Results> retlist = new ArrayList<>();
         Connection con = null;
@@ -72,8 +73,12 @@ public class DAOTest {
         ResultSet rs = null;
         try {
             con = DBManager.getInstance().getConnection();
-            prst = con.prepareStatement(SQL__WHERE_SUB);
+            if (lang.equals("ru"))
+                prst = con.prepareStatement(SQL__WHERE_SUB_RU);
+            else
+                prst = con.prepareStatement(SQL__WHERE_SUB_EN);
             prst.setString(1, sub);
+            System.out.println(prst);
             rs = prst.executeQuery();
             if (rs.next())
                 ret = rs.getInt("count");
@@ -84,7 +89,7 @@ public class DAOTest {
         return ret;
     }
 
-    public int getCountOfTestsWhereName(String name){
+    public int getCountOfTestsWhereName(String name) {
         int ret = 0;
         List<Results> retlist = new ArrayList<>();
         Connection con = null;
@@ -104,7 +109,7 @@ public class DAOTest {
         return ret;
     }
 
-    public int getCountOfTests(){
+    public int getCountOfTests() {
         int ret = 0;
         List<Results> retlist = new ArrayList<>();
         Connection con = null;
@@ -219,7 +224,7 @@ public class DAOTest {
                 pstm = con.prepareStatement(SQL__SORT_BY_VALUE_RU + " " + search + SQL__LIMIT);
             else
                 pstm = con.prepareStatement(SQL__SORT_BY_VALUE_EN + " " + search + SQL__LIMIT);
-            pstm.setInt(1,page);
+            pstm.setInt(1, page);
             rs = pstm.executeQuery();
             testMapper mapper = new testMapper();
             while (rs.next())
@@ -249,7 +254,7 @@ public class DAOTest {
 
 
             pstm.setString(1, name);
-            pstm.setInt(2,page);
+            pstm.setInt(2, page);
             rs = pstm.executeQuery();
             Test test = new Test();
             testMapper mapper = new testMapper();
@@ -280,7 +285,7 @@ public class DAOTest {
             else
                 pstm = con.prepareStatement(SQL__SEARCH_BY_NAME_EN + SQL__LIMIT);
             pstm.setString(1, "%" + name + "%");
-            pstm.setInt(2,page);
+            pstm.setInt(2, page);
             rs = pstm.executeQuery();
             testMapper mapper = new testMapper();
             Test test = new Test();
@@ -398,7 +403,7 @@ public class DAOTest {
                 pstm = con.prepareStatement(SQL__GET_ALL_TESTS + SQL_SELECT_LANG_RU + SQL__LIMIT);
             else
                 pstm = con.prepareStatement(SQL__GET_ALL_TESTS + SQL_SELECT_LANG_EN + SQL__LIMIT);
-            pstm.setInt(1,page);
+            pstm.setInt(1, page);
             rs = pstm.executeQuery();
             testMapper mapper = new testMapper();
             Test test = new Test();

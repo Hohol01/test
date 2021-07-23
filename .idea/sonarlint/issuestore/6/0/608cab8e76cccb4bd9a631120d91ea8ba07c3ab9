@@ -1,0 +1,34 @@
+
+‹
+java:S1319Z"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¥‰ÒÇıÿÿÿÿ
+j
+java:S2095;"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(÷«ùûÿÿÿÿ
+j
+java:S2095b"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ø¦Øüÿÿÿÿ
+j
+java:S2095&"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿Òë£øÿÿÿÿ
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚¾áˆ
+e
+java:S2095M"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‰ë÷
+k	java:S117Z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥‰ÒÇıÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(äÕ¢Îüÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÆÊòßıÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(’÷é¨
+n	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ò’½
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(äÕ¢Îüÿÿÿÿ
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÆÊòßıÿÿÿÿ
+[
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(’÷é¨
+J
+java:S62125"/Declare this local variable with "var" instead.(’¼Œ‹øÿÿÿÿ
+E
+java:S6212J"/Declare this local variable with "var" instead.(ÍÉ¬‘
+J
+java:S2209T"5Change this instance-reference to a static reference.(ßù•
+t
+java:S2293["YReplace the type specification in this constructor call with the diamond operator ("<>").(úÉù¦ıÿÿÿÿ
+D
+java:S6212f"/Declare this local variable with "var" instead.(ûÖ“{

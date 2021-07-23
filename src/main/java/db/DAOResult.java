@@ -16,9 +16,29 @@ public class DAOResult {
 
     private static final String SQL__INSERT_IN_RESULT = "INSERT results (mark, users_id, testname, test_id) VALUE (?, ?, ?, ?)";
     private static final String SQL__GET_ALL_BY_USERID = "SELECT * FROM results WHERE users_id = ? LIMIT ?,3";
-    private static final String SQL__GET_RESULTS_FOR_TEACHER = "SELECT * FROM results LEFT JOIN users ON results.users_id = users.id WHERE test_id = ?";
+    private static final String SQL__GET_RESULTS_FOR_TEACHER = "SELECT * FROM results LEFT JOIN users ON results.users_id = users.id WHERE test_id = ? LIMIT ?,3";
     private static final String SQL__GET_COUNT_OF_RESULTS ="SELECT COUNT(1) AS count FROM results WHERE users_id = ?";
+    private static final String SQL__GET_COUNT_OF_RESULTS_BY_TEST_ID ="SELECT COUNT(1) AS count FROM results WHERE test_id = ?";
 
+    public int getCountOfResultsTestId(int userId){
+        int ret = 0;
+        List<Results> retlist = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement prst = null;
+        ResultSet rs = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            prst = con.prepareStatement(SQL__GET_COUNT_OF_RESULTS_BY_TEST_ID);
+            prst.setInt(1, userId);
+            rs = prst.executeQuery();
+            if (rs.next())
+                ret = rs.getInt("count");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return ret;
+    }
 
     public int getCountOfResults(int userId){
         int ret = 0;
@@ -42,7 +62,7 @@ public class DAOResult {
 
 
 
-    public List<Results> getResultsForTeacher(int idtest) {
+    public List<Results> getResultsForTeacher(int idtest, int page) {
         List<Results> retlist = new ArrayList<>();
         Connection con = null;
         PreparedStatement prst = null;
@@ -52,6 +72,7 @@ public class DAOResult {
             con = DBManager.getInstance().getConnection();
             prst = con.prepareStatement(SQL__GET_RESULTS_FOR_TEACHER);
             prst.setInt(1, idtest);
+            prst.setInt(2,page);
             rs = prst.executeQuery();
             while (rs.next()) {
                 Results results = new Results();

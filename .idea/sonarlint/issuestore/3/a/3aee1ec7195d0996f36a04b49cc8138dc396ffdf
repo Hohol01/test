@@ -1,0 +1,45 @@
+
+j
+java:S2095>"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¿Òë£øÿÿÿÿ
+k
+java:S2095µ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(æïÉìøÿÿÿÿ
+d
+java:S2095-"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Éä®]
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚¾áˆ
+j
+java:S2095P"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(æïÉìøÿÿÿÿ
+e
+java:S2095y"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ğğ¡
+e
+java:S2095e"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ş·ïÕ
+k
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ó´ïøÿÿÿÿ
+f
+java:S2095‹"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¦ˆÇ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(½„ìüÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¯’¸úşÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(…ä±
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(îØ¢
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Î¿÷Ãÿÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(öÿÉã
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(È¸šĞ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÛÎó”üÿÿÿÿ
+J
+java:S6212*"/Declare this local variable with "var" instead.(¬§ªÆùÿÿÿÿ
+J
+java:S6212J"/Declare this local variable with "var" instead.(“¼µüÿÿÿÿ
+D
+java:S6212_"/Declare this local variable with "var" instead.(¶‹¤h
+J
+java:S6212s"/Declare this local variable with "var" instead.(¹¨ßçÿÿÿÿÿ
+F
+java:S6212ˆ"/Declare this local variable with "var" instead.(ÍÉ¬‘
+K
+java:S2209"5Change this instance-reference to a static reference.(ßù•
+K
+java:S6212›"/Declare this local variable with "var" instead.(“¼µüÿÿÿÿ
+K
+java:S6212º"/Declare this local variable with "var" instead.(µ´ıÿÿÿÿ
+X
+java:S1068"BRemove this unused "SQL__GET_ID_BY_TEXT_AND_TESTID" private field.(öÿÉã

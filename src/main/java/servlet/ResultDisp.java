@@ -26,13 +26,33 @@ public class ResultDisp extends HttpServlet {
         HttpSession ses = req.getSession();
 
         DAOUsers daOusers = new DAOUsers();
+
         if (ses.getAttribute("role").equals("teacher")) {
             if (req.getParameter("idtest") != null)
                 ses.setAttribute("idtest", Integer.parseInt(req.getParameter("idtest")));
             int testid = (int) ses.getAttribute("idtest");
-            List<Results> res = daOresult.getResultsForTeacher(testid);
+            List<Results> res;
+
+            if (req.getParameter("page") == null) {
+                ses.setAttribute("curpage",1);
+                res = daOresult.getResultsForTeacher(testid, 1);
+            }else {
+                int page= Integer.parseInt(req.getParameter("page"));
+                ses.setAttribute("curpage",page);
+                if (page != 1){
+                    page=(page - 1)*3;
+                }
+                res = daOresult.getResultsForTeacher(testid, page);
+            }
             req.setAttribute("res", res);
+            int count = daOresult.getCountOfResultsTestId(testid);
+            if(count%3 !=0)
+                count = (count / 3)+1 ;
+            else
+                count = count/3;
+            ses.setAttribute("count",count);
             req.getRequestDispatcher("WEB-INF/jsp/admin/resultforteach.jsp").forward(req, resp);
+
         } else {
 
             int userid = (int) req.getSession().getAttribute("userid");

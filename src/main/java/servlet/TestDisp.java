@@ -25,9 +25,10 @@ public class TestDisp extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getParameter("delete")!=null){
+        HttpSession ses = req.getSession();
+        if (req.getParameter("delete") != null && ses.getAttribute("role").equals("teacher")) {
             int testId = Integer.parseInt(req.getParameter("delete"));
-            log.debug("delete test with id= "+ req.getParameter("delete"));
+            log.debug("delete test with id= " + req.getParameter("delete"));
             t.delete(testId);
             daoQuestion.delete(testId);
             daoAnswer.delete(testId);
@@ -35,16 +36,16 @@ public class TestDisp extends HttpServlet {
         }
         System.out.println("Test");
         ArrayList<Test> tests = null;
-        HttpSession ses = req.getSession();
+
         String language = String.valueOf(req.getSession().getAttribute("language"));
         if (req.getParameter("page") == null) {
             int count = 0;
             count = t.getCountOfTests();
-            if(count%3 !=0)
-                count = (count / 3)+1 ;
+            if (count % 3 != 0)
+                count = (count / 3) + 1;
             else
-                count = count/3;
-            ses.setAttribute("count",count);
+                count = count / 3;
+            ses.setAttribute("count", count);
             tests = t.getListOfTests(language, 0);
             req.removeAttribute("tests");
             ses.setAttribute("curpage", 1);
@@ -60,7 +61,7 @@ public class TestDisp extends HttpServlet {
             if (page != 1) {
                 page = (page - 1) * 3;
             } else if (page == 1)
-                page=0;
+                page = 0;
 
             String last = String.valueOf(ses.getAttribute("last"));
             System.out.println(last);
@@ -120,7 +121,7 @@ public class TestDisp extends HttpServlet {
                 else
                     tests = t.sortByValue("time", language, page);
             }
-        } else if (req.getParameter("language") == null){
+        } else if (req.getParameter("language") == null) {
             ses.setAttribute("curpage", 1);
             language = String.valueOf(ses.getAttribute("language"));
             req.setAttribute("list", t.getSubject(language));
@@ -129,11 +130,11 @@ public class TestDisp extends HttpServlet {
                 req.getSession().setAttribute("search", req.getParameter("search"));
                 int count = 0;
                 count = t.getCountOfTestsWhereName(req.getParameter("search"));
-                if(count%3 !=0)
-                    count = (count / 3)+1 ;
+                if (count % 3 != 0)
+                    count = (count / 3) + 1;
                 else
-                    count = count/3;
-                ses.setAttribute("count",count);
+                    count = count / 3;
+                ses.setAttribute("count", count);
                 tests = t.getListByName(req.getParameter("search"), language, 0);
 
             } else if (req.getParameter("select") != null) {
@@ -144,19 +145,21 @@ public class TestDisp extends HttpServlet {
                 if (subject.equals("все") || subject.equals("all")) {
                     count = t.getCountOfTests();
                     req.getSession().setAttribute("last", "getListOfTests");
-                    tests = t.getListOfTests(language, 1);
+                    tests = t.getListOfTests(language, 0);
                 } else {
                     req.getSession().setAttribute("last", "getListOfTestsWithSubdgect");
                     req.getSession().setAttribute("getListOfTestsWithSubdgect", subject);
                     tests = t.getListOfTestsWithSubdgect(subject, language, 0);
-                    count = t.getCountOfTestsWhereSub(subject);
+                    count = t.getCountOfTestsWhereSub(subject, language);
+                    System.out.println(count);
                 }
 
-                if(count%3 !=0)
-                    count = (count / 3)+1 ;
+
+                if (count % 3 != 0)
+                    count = (count / 3) + 1;
                 else
-                    count = count/3;
-                ses.setAttribute("count",count);
+                    count = count / 3;
+                ses.setAttribute("count", count);
 
 
             } else if (req.getParameter("sort") != null) {
@@ -176,11 +179,11 @@ public class TestDisp extends HttpServlet {
                 }
                 int count = 0;
                 count = t.getCountOfTests();
-                if(count%3 !=0)
-                    count = (count / 3)+1 ;
+                if (count % 3 != 0)
+                    count = (count / 3) + 1;
                 else
-                    count = count/3;
-                ses.setAttribute("count",count);
+                    count = count / 3;
+                ses.setAttribute("count", count);
 
             }
         }

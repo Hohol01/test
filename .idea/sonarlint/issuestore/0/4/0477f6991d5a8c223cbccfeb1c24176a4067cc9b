@@ -1,0 +1,83 @@
+
+†
+java:S1319?"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ê‘ğ¡
+†
+java:S1319Â"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ùı:
+f
+java:S2095â"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÒİÁ¹
+^
+java:S2095Ê"GUse try-with-resources or close this "Statement" in a "finally" clause.(œïì”
+k
+java:S2095…"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(íãµ’üÿÿÿÿ
+e
+java:S20952"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ò€êÉ
+e
+java:S2095´"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ĞŠE
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ĞÇ–€úÿÿÿÿ
+j
+java:S2095s"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ªŒ´êıÿÿÿÿ
+k
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ì«Õ ûÿÿÿÿ
+j
+java:S2095\"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ŞæìÄúÿÿÿÿ
+e
+java:S2095G"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ò€êÉ
+Q	java:S107U"<Method has 8 parameters, which is greater than 7 authorized.(«ÔÕ‰
+c	java:S101ğ"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(†öÓ
+l	java:S117¬"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ŒÆĞøÿÿÿÿ
+l	java:S117Ã"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­åªêúÿÿÿÿ
+t	java:S115	"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(–ó•Äøÿÿÿÿ
+o	java:S115
+"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(˜—øü
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‡¤µ«
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(òé÷ƒşÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(§¿½ÿşÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ãäæ‘
+n	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(÷•Şw
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Í¸ÙÍ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(û¡«ùşÿÿÿÿ
+E
+java:S6212"/Declare this local variable with "var" instead.(ìÚèº
+J
+java:S6212"/Declare this local variable with "var" instead.(«Ô×¸üÿÿÿÿ
+K
+java:S2209%"5Change this instance-reference to a static reference.(ÖÔ”‹
+E
+java:S6212,"/Declare this local variable with "var" instead.(Í³‘
+K
+java:S22099"5Change this instance-reference to a static reference.(ÖÔ”‹
+E
+java:S6212D"/Declare this local variable with "var" instead.(à¿¸È
+K
+java:S2209O"5Change this instance-reference to a static reference.(ÖÔ”‹
+E
+java:S6212Y"/Declare this local variable with "var" instead.(ÍÉ¬‘
+J
+java:S2209f"5Change this instance-reference to a static reference.(ßù•
+K
+java:S2209x"5Change this instance-reference to a static reference.(ÖÔ”‹
+F
+java:S6212"/Declare this local variable with "var" instead.(ÍÉ¬‘
+K
+java:S2209"5Change this instance-reference to a static reference.(ßù•
+L
+java:S2209‘"5Change this instance-reference to a static reference.(ÖÔ”‹
+L
+java:S2209¥"5Change this instance-reference to a static reference.(ÖÔ”‹
+K
+java:S6212¬"/Declare this local variable with "var" instead.(«ŒÆĞøÿÿÿÿ
+Q
+java:S2209³"5Change this instance-reference to a static reference.(ĞõËÿÿÿÿÿ
+L
+java:S2209»"5Change this instance-reference to a static reference.(ÖÔ”‹
+F
+java:S6212Ç"/Declare this local variable with "var" instead.(à¿¸È
+L
+java:S2209Ò"5Change this instance-reference to a static reference.(ÖÔ”‹
+K
+java:S6212ß"/Declare this local variable with "var" instead.(“¼µüÿÿÿÿ
+L
+java:S2209é"5Change this instance-reference to a static reference.(ÖÔ”‹
+F
+java:S6212ô"/Declare this local variable with "var" instead.(Ç­‚û

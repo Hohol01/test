@@ -14,7 +14,6 @@
     <title>LOGIN</title>
 </head>
 <body>
-<div id="topNavLine">здесь содержимое твоей полоски.</div>
     <%@ include file="/WEB-INF/jspf/language.jspf"%>
 <center>
     <h1>login</h1>

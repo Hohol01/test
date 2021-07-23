@@ -48,6 +48,9 @@
                 </select></td>
             </tr>
         </table>
+        <c:if test="${requestScope.error != null}">
+            <a>Заполните поля правильно</a><br>
+        </c:if>
         <input type="submit" name="addtest" value='<fmt:message key="addtest_jsp.next"/>'>
     </form>
     <a href="home"><fmt:message key="addtest_jsp.home"/></a>

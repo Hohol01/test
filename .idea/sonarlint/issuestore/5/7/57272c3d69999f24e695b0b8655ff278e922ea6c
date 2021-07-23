@@ -1,0 +1,23 @@
+
+]
+java:S1192$"GDefine a constant instead of duplicating this literal "idtest" 3 times.(îŞÿ
+D
+java:S1948")Make "daOtest" transient or serializable.(ÿ‰œáøÿÿÿÿ
+C
+java:S1948"-Make "daOquestion" transient or serializable.(Ïæ¶§
+@
+java:S1948"+Make "daOanswer" transient or serializable.(·õ±S
+E
+java:S6212&"/Declare this local variable with "var" instead.(Ú‹ĞÖ
+E
+java:S6212="/Declare this local variable with "var" instead.(öñ¿œ
+E
+java:S6212>"/Declare this local variable with "var" instead.(íŞæù
+E
+java:S6212?"/Declare this local variable with "var" instead.(»ø´Ç
+E
+java:S6212`"/Declare this local variable with "var" instead.(¶‘ß€
+D
+java:S6212c"/Declare this local variable with "var" instead.(íª2
+E
+java:S6212d"/Declare this local variable with "var" instead.(êûşª

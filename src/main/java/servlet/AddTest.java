@@ -54,13 +54,17 @@ public class AddTest extends HttpServlet {
             int subdgect = Integer.parseInt(req.getParameter("subdgect"));
             int time = Integer.parseInt(req.getParameter("time"));
             int hardnest = Integer.parseInt(req.getParameter("hardnest"));
-            if (req.getParameter("addquss") == null)
-                t.setTest(name, subdgect, hardnest, time);
-            idtest = t.getIdByName(name);
-            req.getSession().setAttribute("idtest", idtest);
-            System.out.println(idtest);
-            resp.sendRedirect("addtest" + "?addqus=true");
-
+            if ((name.isEmpty()) || (subdgect == 0) || time <= 0 || hardnest > 5 || hardnest < 1) {
+                req.setAttribute("error", "error");
+                req.getRequestDispatcher("WEB-INF/jsp/admin/addtest.jsp");
+            } else {
+                if (req.getParameter("addquss") == null)
+                    t.setTest(name, subdgect, hardnest, time);
+                idtest = t.getIdByName(name);
+                req.getSession().setAttribute("idtest", idtest);
+                System.out.println(idtest);
+                resp.sendRedirect("addtest" + "?addqus=true");
+            }
         }
 
 

@@ -31,6 +31,7 @@
             </tr>
         </c:forEach>
     </table>
+    <%@include file="/WEB-INF/jspf/pagination.jspf"%>
     <form action="results" method="post">
 
         <input type="submit" name="back" value='<fmt:message key="resultforteach_jsp.button.back"/>'>

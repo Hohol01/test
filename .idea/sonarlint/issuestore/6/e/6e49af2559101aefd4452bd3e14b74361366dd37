@@ -1,0 +1,11 @@
+
+f
+java:S1192"KDefine a constant instead of duplicating this literal "editUserId" 3 times.(¦Ñöüÿÿÿÿ
+E
+java:S1948"*Make "daOusers" transient or serializable.(¨šŸÿÿÿÿÿ
+R
+java:S1854,"7Remove this useless assignment to local variable "ses".(ˆ¢»”ıÿÿÿÿ
+E
+java:S6212."/Declare this local variable with "var" instead.(Í³‘
+C
+java:S1481,"(Remove this unused "ses" local variable.(ˆ¢»”ıÿÿÿÿ

@@ -55,16 +55,10 @@ P
  web/WEB-INF/jsp/user/results.jsp,8/f/8f48ff926a2b32b59816de74460bddd42d40c4ab
 =
 web/index.jsp,9/f/9f198ed450f32e45b10ec3c2b1406e609b4a96cd
-X
-(web/WEB-INF/jsp/admin/resultforteach.jsp,3/a/3ab1a9f88ce28db35ceaca66310a053d9cd4b0a1
 O
 web/WEB-INF/jsp/admin/users.jsp,0/a/0abae73f3380169dff2d32c473660afcb321790b
-O
-src/main/java/db/DAOResult.java,0/1/016a1e166b63298d9bf126c8ef2902475dd738a4
 P
  src/main/java/entity/Answer.java,b/c/bc71287e1035bd90404cd106823bc8cf88ad9bc8
-N
-web/WEB-INF/jspf/language.jspf,d/9/d9fa7202067578d3eaec87a9d15949f698b1f787
 Q
 !web/WEB-INF/jsp/user/passtest.jsp,7/7/77b940a94af21b74144472de87a565daacb68be9
 O
@@ -75,3 +69,43 @@ Q
 !src/main/java/entity/Results.java,f/1/f123baf3c45047f3fa8783aa87e72b802b94e239
 Q
 !src/main/java/entity/Subject.java,1/d/1dacb52f6cd85402c3e1e0fe8e27bcd7fd91421c
+U
+%web/WEB-INF/jsp/admin/editqustion.jsp,5/1/51b0854f0945a9dcd9549dee9762293c2db07743
+N
+src/main/java/db/DAOUsers.java,0/4/0477f6991d5a8c223cbccfeb1c24176a4067cc9b
+S
+#src/main/java/servlet/EditTest.java,5/7/57272c3d69999f24e695b0b8655ff278e922ea6c
+R
+"web/WEB-INF/jsp/admin/edittest.jsp,1/2/12cac7536056276ef315a87f21083f94f5ce9863
+H
+src/main/java/ertyu.java,0/4/047eb00ff12f62b1c8c1f6d9741b58eab706857d
+R
+"web/WEB-INF/jsp/admin/edituser.jsp,9/0/90360f8899af7a9a0fbd9f0107bda59b5b57c8bd
+S
+#src/main/java/servlet/EditUser.java,6/e/6e49af2559101aefd4452bd3e14b74361366dd37
+A
+web/style/st4.css,6/2/6283b807ed170aeb6896e14b01cb8c11150eb0fe
+U
+%src/main/java/Filter/AdminFilter.java,f/9/f920e38079bf141712f66ca0467c1e1a3c4c3941
+X
+(src/main/java/Filter/EncodingFilter.java,f/2/f2ad16b5de98555133fa028397ec8ae5b0dfac76
+T
+$src/main/java/Filter/BothFilter.java,f/e/fefb1950840bc28f3fe44dc7992035f520df33e3
+N
+src/main/java/entity/Test.java,6/a/6a50ebcc71557542e804f70430da5ff637afe3ca
+O
+src/main/java/db/DAOAnswer.java,6/0/608cab8e76cccb4bd9a631120d91ea8ba07c3ab9
+P
+ web/WEB-INF/jspf/pagination.jspf,2/0/20a0eb3d8833da7c51c12a4e727c1f924081bc4b
+P
+ web/WEB-INF/jsp/admin/addqus.jsp,3/3/332d840d66056339d87436a000dbdd9b21a59095
+R
+"src/main/java/servlet/AddUser.java,d/0/d0e00969969d973187bf95f14c7b83a7059e32a8
+Q
+!web/WEB-INF/jsp/admin/adduser.jsp,2/6/26ada38a78340afae2a466e9d2e2ce4e68db03f1
+R
+"web/WEB-INF/jsp/error_page_404.jsp,1/c/1c4ad047ebae22062f3cbc7af9e3ab9574688ca7
+R
+"web/WEB-INF/jsp/error_page_500.jsp,6/a/6af6ee3eb8b969c83f7d0ac4384c0811743e4163
+C
+web/WEB-INF/web.xml,c/d/cdcc12da5c4054f6995aab32914d7e0243194c05

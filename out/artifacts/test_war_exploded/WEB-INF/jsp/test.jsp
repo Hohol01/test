@@ -60,6 +60,11 @@
                     <td <% if (request.getSession().getAttribute("role").equals("student"))
                         out.print("hidden");%> ><a href="results?idtest=${tests.id}"><fmt:message
                             key="test_jsp.results"/> </a></td>
+                    <c:if test="${sessionScope.role.equals('teacher')}">
+                        <form method="post">
+                            <td><a href="?delete=${tests.id}">Удалить тест</a></td>
+                        </form>
+                    </c:if>
                 </tr>
             </c:forEach>
 
