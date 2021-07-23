@@ -100,6 +100,10 @@
             <c:out value="Логин уже занят "/>
             <br>
         </c:if>
+        <c:if test="${requestScope.valid != null}">
+            <c:out value="Заполните все поля "/>
+            <br>
+        </c:if>
         <a hidden>Заполните все поля</a>
         <a href="home"><fmt:message key="adduser_jsp.home"/> </a>
     </center>

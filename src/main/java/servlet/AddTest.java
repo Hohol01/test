@@ -65,33 +65,45 @@ public class AddTest extends HttpServlet {
 
 
         //adding questions and answers
-        else if (req.getParameter("add") != null) {
+        if (req.getParameter("add") != null) {
+            if (!req.getParameter("question").equals("")) {
+                String qution = req.getParameter("question");
+                System.out.println(qution);
 
-            String qution = req.getParameter("question");
-            System.out.println(idtest);
+                q.setQuestion(qution, idtest, number_qustion);
+                number_qustion++;
 
-            q.setQuestion(qution, idtest, number_qustion);
-            number_qustion++;
+                int idqus = q.getIdByName(qution, idtest);
+                while (idqus == 0) {
+                    idqus = q.getIdByName(qution, idtest);
+                }
+                for (int i = 1; i < 5; i++) {
 
-            int idqus = q.getIdByName(qution, idtest);
-            while (idqus == 0) {
-                idqus = q.getIdByName(qution, idtest);
+                    String answer = req.getParameter("ans" + i);
+                    boolean cor = false;
+                    if (req.getParameter("correct" + i) != null)
+                        cor = true;
+                    if (!answer.equals(""))
+                        a.addAnswer(idqus, answer, cor, i, idtest);
+                }
+            } else {
+                req.setAttribute("error", "error");
+                ;
             }
-            for (int i = 1; i < 5; i++) {
-
-                String answer = req.getParameter("ans" + i);
-                boolean cor = false;
-                if (req.getParameter("correct" + i) != null)
-                    cor = true;
-                if (!answer.equals(""))
-                    a.addAnswer(idqus, answer, cor, i, idtest);
-            }
+            req.setAttribute("addqus", true);
             req.getRequestDispatcher("WEB-INF/jsp/admin/addqus.jsp").forward(req, resp);
-        } else if (req.getParameter("language") != null) {
+        }
+        if (req.getParameter("language") != null) {
             String lang = String.valueOf(req.getParameter("language"));
             req.setAttribute("lang", t.getSubjectAdd(lang));
             log.debug("language sub = " + lang);
-            req.getRequestDispatcher("WEB-INF/jsp/admin/addtest.jsp").forward(req, resp);
+            System.out.println(req.getRequestURI());
+            if (req.getParameter("addqus") == null)
+                req.getRequestDispatcher("WEB-INF/jsp/admin/addtest.jsp").forward(req, resp);
+            else {
+                req.setAttribute("addqus", true);
+                req.getRequestDispatcher("WEB-INF/jsp/admin/addqus.jsp").forward(req, resp);
+            }
         }
 
         if (req.getParameter("finish") != null) {

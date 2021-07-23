@@ -12,7 +12,9 @@
     <title>EDIT USER</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/jspf/language.jspf"%>
+<form method="get">
+    <%@ include file="/WEB-INF/jspf/language.jspf" %>
+</form>
 <center>
     <form method="post">
 
@@ -32,7 +34,7 @@
 
 
                 <tr>
-                    <td><fmt:message key="adduser_jsp.patronymic"/> </td>
+                    <td><fmt:message key="adduser_jsp.patronymic"/></td>
                     <td><input type="text" name="patronymic" value="${user.patronymic}"></td>
                 </tr>
                 <tr>
@@ -63,7 +65,7 @@
 
             </table>
         </c:forEach>
-        <input type="submit" name="add" value="изменить пользователя"><br>
+        <input type="submit" name="add" value='<fmt:message key="adduser_jsp.edit_user"/>'><br>
 
 
     </form>

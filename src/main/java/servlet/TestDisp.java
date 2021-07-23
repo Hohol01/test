@@ -1,5 +1,7 @@
 package servlet;
 
+import db.DAOAnswer;
+import db.DAOQuestion;
 import db.DAOTest;
 import entity.Test;
 import jakarta.servlet.ServletException;
@@ -8,27 +10,41 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet("/test")
 public class TestDisp extends HttpServlet {
+    private static final Logger log = Logger.getLogger(TestDisp.class);
     DAOTest t = new DAOTest();
+    DAOQuestion daoQuestion = new DAOQuestion();
+    DAOAnswer daoAnswer = new DAOAnswer();
     int k = 0;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (req.getParameter("delete")!=null){
+            int testId = Integer.parseInt(req.getParameter("delete"));
+            log.debug("delete test with id= "+ req.getParameter("delete"));
+            t.delete(testId);
+            daoQuestion.delete(testId);
+            daoAnswer.delete(testId);
+
+        }
         System.out.println("Test");
         ArrayList<Test> tests = null;
         HttpSession ses = req.getSession();
         String language = String.valueOf(req.getSession().getAttribute("language"));
         if (req.getParameter("page") == null) {
-            int cout = 0;
-            cout = t.getCountOfTests();
-            if(cout/3 !=0)
-                cout = (cout / 3) +1;
-            ses.setAttribute("count",cout);
+            int count = 0;
+            count = t.getCountOfTests();
+            if(count%3 !=0)
+                count = (count / 3)+1 ;
+            else
+                count = count/3;
+            ses.setAttribute("count",count);
             tests = t.getListOfTests(language, 0);
             req.removeAttribute("tests");
             ses.setAttribute("curpage", 1);
@@ -67,6 +83,7 @@ public class TestDisp extends HttpServlet {
 
             }
         }
+
         req.setAttribute("tests", tests);
 
         req.getRequestDispatcher("WEB-INF/jsp/test.jsp").forward(req, resp);
@@ -103,39 +120,43 @@ public class TestDisp extends HttpServlet {
                 else
                     tests = t.sortByValue("time", language, page);
             }
-        } else {
+        } else if (req.getParameter("language") == null){
             ses.setAttribute("curpage", 1);
             language = String.valueOf(ses.getAttribute("language"));
             req.setAttribute("list", t.getSubject(language));
             if (req.getParameter("search1") != null) {
                 req.getSession().setAttribute("last", "getListByName");
                 req.getSession().setAttribute("search", req.getParameter("search"));
-                int cout = 0;
-                cout = t.getCountOfTestsWhereName(req.getParameter("search"));
-                if(cout/3 !=0)
-                    cout = (cout / 3) +1;
-                ses.setAttribute("count",cout);
+                int count = 0;
+                count = t.getCountOfTestsWhereName(req.getParameter("search"));
+                if(count%3 !=0)
+                    count = (count / 3)+1 ;
+                else
+                    count = count/3;
+                ses.setAttribute("count",count);
                 tests = t.getListByName(req.getParameter("search"), language, 0);
 
             } else if (req.getParameter("select") != null) {
-                int cout = 0;
+                int count = 0;
 
 
                 String subject = req.getParameter("subject");
                 if (subject.equals("все") || subject.equals("all")) {
-                    cout = t.getCountOfTests();
+                    count = t.getCountOfTests();
                     req.getSession().setAttribute("last", "getListOfTests");
                     tests = t.getListOfTests(language, 1);
                 } else {
                     req.getSession().setAttribute("last", "getListOfTestsWithSubdgect");
                     req.getSession().setAttribute("getListOfTestsWithSubdgect", subject);
                     tests = t.getListOfTestsWithSubdgect(subject, language, 0);
-                    cout = t.getCountOfTestsWhereSub(subject);
+                    count = t.getCountOfTestsWhereSub(subject);
                 }
 
-                if(cout/3 !=0)
-                    cout = (cout / 3) +1;
-                ses.setAttribute("count",cout);
+                if(count%3 !=0)
+                    count = (count / 3)+1 ;
+                else
+                    count = count/3;
+                ses.setAttribute("count",count);
 
 
             } else if (req.getParameter("sort") != null) {
@@ -153,14 +174,18 @@ public class TestDisp extends HttpServlet {
                     tests = t.sortByValue("time", language, 0);
                     System.out.println("3");
                 }
-                int cout = 0;
-                cout = t.getCountOfTests();
-                if(cout/3 !=0)
-                    cout = (cout / 3) +1;
-                ses.setAttribute("count",cout);
+                int count = 0;
+                count = t.getCountOfTests();
+                if(count%3 !=0)
+                    count = (count / 3)+1 ;
+                else
+                    count = count/3;
+                ses.setAttribute("count",count);
 
             }
         }
+
+
         System.out.println(tests);
         req.setAttribute("tests", tests);
 

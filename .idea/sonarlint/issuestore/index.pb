@@ -39,8 +39,6 @@ O
 web/cabinet.jsp,5/3/538e705022726ff91c0df5649628df11fec522dc
 L
 web/WEB-INF/jsp/homepage.jsp,f/9/f9bc04c696ece4402a29f687ffc63cbc58ffa765
-A
-web/style/st4.css,6/2/6283b807ed170aeb6896e14b01cb8c11150eb0fe
 L
 web/WEB-INF/jspf/taglib.jspf,b/6/b6ec016bce64d1c9d8e137e65a1ebe068c0a65a8
 P
@@ -49,20 +47,14 @@ F
 SQL/dbcreate-derby.sql,3/a/3adf250fa47c5fa0ea8aef74cc1ba10f05c49dad
 H
 web/META-INF/context.xml,0/b/0b5ed5dfc48d40f738ad3c8e8ec06325e849a9f7
-O
-src/main/java/db/DAOAnswer.java,6/0/608cab8e76cccb4bd9a631120d91ea8ba07c3ab9
 Q
 !src/main/java/db/DAOQuestion.java,3/a/3aee1ec7195d0996f36a04b49cc8138dc396ffdf
-S
-#src/main/java/servlet/PassTest.java,6/6/66a645984aef4aff8a00c5f301dfc7bd2736bf5a
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 P
  web/WEB-INF/jsp/user/results.jsp,8/f/8f48ff926a2b32b59816de74460bddd42d40c4ab
 =
 web/index.jsp,9/f/9f198ed450f32e45b10ec3c2b1406e609b4a96cd
-P
- web/WEB-INF/jspf/pagination.jspf,2/0/20a0eb3d8833da7c51c12a4e727c1f924081bc4b
 X
 (web/WEB-INF/jsp/admin/resultforteach.jsp,3/a/3ab1a9f88ce28db35ceaca66310a053d9cd4b0a1
 O
@@ -71,8 +63,6 @@ O
 src/main/java/db/DAOResult.java,0/1/016a1e166b63298d9bf126c8ef2902475dd738a4
 P
  src/main/java/entity/Answer.java,b/c/bc71287e1035bd90404cd106823bc8cf88ad9bc8
-U
-%src/main/java/servlet/ResultDisp.java,8/4/84e4184566ba889a2e5064b611cc10b1fb7cecfe
 N
 web/WEB-INF/jspf/language.jspf,d/9/d9fa7202067578d3eaec87a9d15949f698b1f787
 Q

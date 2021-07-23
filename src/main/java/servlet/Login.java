@@ -52,8 +52,18 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-        req.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(req, resp);
+        DAOUsers daoUsers = new DAOUsers();
+        if (req.getSession().getAttribute("userid") != null){
+        if (daoUsers.getBlock(Integer.parseInt(String.valueOf(req.getSession().getAttribute("userid"))))) {
+            HttpSession ses = req.getSession();
+            ses.removeAttribute("id");
+            ses.removeAttribute("role");
+            ses.removeAttribute("userid");
+            req.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(req, resp);
+        } else
+            resp.sendRedirect("home");
+        } else
+            req.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(req, resp);
 
 
     }

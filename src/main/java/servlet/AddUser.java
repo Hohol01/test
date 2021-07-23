@@ -18,7 +18,7 @@ public class AddUser extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-            req.getRequestDispatcher("WEB-INF/jsp/admin/adduser.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/admin/adduser.jsp").forward(req, resp);
 
     }
 
@@ -28,6 +28,7 @@ public class AddUser extends HttpServlet {
         if (req.getParameter("add") != null) {
 
 
+            DAOUsers daOusers = new DAOUsers();
             String surname = req.getParameter("surname");
             String name = req.getParameter("name");
             String patronymic = req.getParameter("patronymic");
@@ -35,10 +36,11 @@ public class AddUser extends HttpServlet {
             String login = req.getParameter("login");
             String password = req.getParameter("password");
 
-            DAOUsers daOusers = new DAOUsers();
+            if (surname == null || name == null || patronymic == null || role == null || login == null || password == null) {
 
-            System.out.println(daOusers.checkLogin(login));
-            if (daOusers.checkLogin(login)){
+
+                System.out.println(daOusers.checkLogin(login));
+
                 ArrayList<User> users = new ArrayList<>();
                 User user = new User();
                 user.setName(name);
@@ -49,11 +51,25 @@ public class AddUser extends HttpServlet {
                 user.setPassword(password);
                 users.add(user);
 
-                req.setAttribute("error","error");
-                req.setAttribute("user",users);
+                req.setAttribute("valid", "valid");
+                req.setAttribute("user", users);
                 req.getRequestDispatcher("WEB-INF/jsp/admin/adduser.jsp").forward(req, resp);
-            }
-            else {
+
+            } else if (daOusers.checkLogin(login)) {
+                ArrayList<User> users = new ArrayList<>();
+                User user = new User();
+                user.setName(name);
+                user.setPatronymic(patronymic);
+                user.setSurname(surname);
+                user.setLogin(login);
+                user.setRole(role);
+                user.setPassword(password);
+                users.add(user);
+
+                req.setAttribute("error", "error");
+                req.setAttribute("user", users);
+                req.getRequestDispatcher("WEB-INF/jsp/admin/adduser.jsp").forward(req, resp);
+            } else {
                 daOusers.addUser(surname, name, patronymic, role, login, password);
                 resp.sendRedirect("home");
             }

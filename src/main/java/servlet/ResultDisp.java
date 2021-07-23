@@ -49,7 +49,12 @@ public class ResultDisp extends HttpServlet {
                 }
                 res = daOresult.getResultsByUserid(userid, page);
             }
-            ses.setAttribute("count", daOresult.getCountOfResults(userid)/3);
+            int count = daOresult.getCountOfResults(userid);
+            if(count%3 !=0)
+                count = (count / 3)+1 ;
+            else
+                count = count/3;
+            ses.setAttribute("count",count);
 
             req.setAttribute("res", res);
             req.getRequestDispatcher("WEB-INF/jsp/user/results.jsp").forward(req, resp);

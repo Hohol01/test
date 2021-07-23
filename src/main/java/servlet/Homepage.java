@@ -36,7 +36,9 @@ public class Homepage extends HttpServlet {
             resp.sendRedirect("results");
         } else if (req.getParameter("out") != null) {
             HttpSession ses = req.getSession();
-            ses.setAttribute("id", null);
+            ses.removeAttribute("id");
+            ses.removeAttribute("role");
+            ses.removeAttribute("userid");
             resp.sendRedirect("login");
         } else if (req.getParameter("addusers") != null) {
             resp.sendRedirect("adduser");
